@@ -2,6 +2,8 @@ import numpy as np
 from scipy import linalg as LA
 
 
+## NOTE: * operator does NOT PERFORM MATRIX MULTIPLICATION IN PYTHON UNLESS the matrices are np.matrix objects
+
 def A(W1, W2, V1, V2):
     '''
     :param W1: gap E-field modes
@@ -12,23 +14,50 @@ def A(W1, W2, V1, V2):
     # or outsid eof it
     :return:
     '''
+    assert type(W1) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(W2) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(V1) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(V2) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+
     A = np.linalg.inv(W1) * W2 + np.linalg.inv(V1) * V2;
     return A;
 
 def B(W1, W2, V1, V2):
+    assert type(W1) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(W2) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(V1) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(V2) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+
     B = np.linalg.inv(W1)*W2 - np.linalg.inv(V1)*V2;
     return B;
 
+def A_B_matrices(W1,W2, V1, V2):
+    '''
+    single function to output the a and b matrices needed for the scatter matrices
+    :param W1:
+    :param W2:
+    :param V1:
+    :param V2:
+    :return:
+    '''
+    a = A(W1, W2, V1, V2);
+    b = B(W1, W2, V1, V2);
+    return a, b;
 
 def S_layer(A,B, Li, k0, modes):
     '''
     function to create scatter matrix in the ith layer of the uniform layer structure
+    we assume that gap layers are used so we need only one A and one B
     :param A: function A =
     :param B: function B
-    :param k0 #free -space wavevector
-    :param Li #length of ith layer
-    :return:
+    :param k0 #free -space wavevector magnitude (normalization constant) in Si Units
+    :param Li #length of ith layer (in Si units)
+    :return: S (4x4 scatter matrix) and Sdict, which contains the 2x2 block matrix as a dictionary
     '''
+    assert type(A) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(B) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+
+
     X_i = LA.expm(modes * Li * k0);  # k and L are in Si Units
     term1 = (A - X_i * B * A.I * X_i * B).I
     S11 = term1 * (X_i * B * A.I * X_i * A - B);
@@ -40,18 +69,41 @@ def S_layer(A,B, Li, k0, modes):
     return S, S_dict;
 
 
-def S_R(A,B):
+def S_R(Ar, Br):
     '''
     function to create scattering matrices in the reflection regions
     different from S_layer because these regions only have one boundary condition to satisfy
-    :param A:
-    :param B:
+    :param Ar:
+    :param Br:
     :return:
     '''
-    S11 = -np.linalg.inv(A)*B;
-    S12 = 2*np.linalg.inv(A);
-    S21 = 0.5*(A - B*np.linalg.inv(A)*B);
-    S22 = B*np.linalg.inv(A)
+    assert type(Ar) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(Br) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+
+
+    S11 = -np.linalg.inv(Ar) * Br;
+    S12 = 2*np.linalg.inv(Ar);
+    S21 = 0.5*(Ar - Br * np.linalg.inv(Ar) * Br);
+    S22 = Br * np.linalg.inv(Ar)
+    S_dict = {'S11': S11, 'S22': S22,  'S12': S12,  'S21': S21};
+    S = np.block([[S11, S12], [S21, S22]]);
+    return S, S_dict;
+
+def S_T(At, Bt):
+    '''
+    function to create scattering matrices in the transmission regions
+    different from S_layer because these regions only have one boundary condition to satisfy
+    :param At:
+    :param Bt:
+    :return:
+    '''
+    assert type(At) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(Bt) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+
+    S11 = (Bt) * np.linalg.inv(At);
+    S21 = 2*np.linalg.inv(At);
+    S12 = 0.5*(At - Bt * np.linalg.inv(At) * Bt);
+    S22 = - np.linalg.inv(At)*Bt
     S_dict = {'S11': S11, 'S22': S22,  'S12': S12,  'S21': S21};
     S = np.block([[S11, S12], [S21, S22]]);
     return S, S_dict;
