@@ -6,7 +6,6 @@ Nx = 100
 Ny = 100;
 
 A = np.ones((Nx,Ny));
-
 ci = 50; cj= 50;
 cr = 40;
 I,J=np.meshgrid(np.arange(A.shape[0]),np.arange(A.shape[1]));

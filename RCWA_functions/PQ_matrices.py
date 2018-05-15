@@ -8,7 +8,13 @@ import numpy as np
 ##====================================##
 
 def P(Kx, Ky, e_conv):
-        return np.matrix([[Kx * Ky,  e_conv - Kx * Kx],
+    '''
+    :param Kx: now a matrix (NM x NM)
+    :param Ky: now a matrix
+    :param e_conv: (NM x NM) matrix containing the 2d convmat
+    :return:
+    '''
+    return np.matrix([[Kx * Ky,  e_conv - Kx * Kx],
                                          [Ky ** 2 - e_conv, -Kx * Ky]]);
 
 
