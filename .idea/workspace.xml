@@ -2,18 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3156230-ee27-4ac5-8769-122dc6654d3f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/PWEM_2D_photonic_circle.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/PWEM_functions/K_matrix.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/PWEM_functions/PWEM_eigen_problem.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/RCWA_functions/K_matrix.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/convolution_matrices/convmat1D.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/RCWA_LHI.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/RCWA_functions/homogeneous_layer.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/RCWA_functions/rcwa_initial_conditions.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/RCWA_functions/redheffer_star.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/RCWA_photonic_circle.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/PWEM_functions/K_matrix.py" afterPath="$PROJECT_DIR$/PWEM_functions/K_matrix.py" />
+      <change beforePath="$PROJECT_DIR$/RCWA_functions/K_matrix.py" afterPath="$PROJECT_DIR$/RCWA_functions/K_matrix.py" />
       <change beforePath="$PROJECT_DIR$/RCWA_functions/PQ_matrices.py" afterPath="$PROJECT_DIR$/RCWA_functions/PQ_matrices.py" />
-      <change beforePath="$PROJECT_DIR$/RCWA_functions/function_tester.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/convolution_matrices/convmat.py" afterPath="$PROJECT_DIR$/convolution_matrices/convmat3D.py" />
-      <change beforePath="$PROJECT_DIR$/convolution_matrices/convmat2D.py" afterPath="$PROJECT_DIR$/convolution_matrices/convmat2D.py" />
-      <change beforePath="$PROJECT_DIR$/convolution_matrices/test2D_convmat.py" afterPath="$PROJECT_DIR$/convolution_matrices/test2D_convmat.py" />
-      <change beforePath="$PROJECT_DIR$/fourier_transforms/1D_squares.py" afterPath="$PROJECT_DIR$/fourier_decomps/1D_squares.py" />
+      <change beforePath="$PROJECT_DIR$/TMM_functions/PQ_matrices.py" afterPath="$PROJECT_DIR$/TMM_functions/PQ_matrices.py" />
+      <change beforePath="$PROJECT_DIR$/TMM_functions/eigen_modes.py" afterPath="$PROJECT_DIR$/TMM_functions/eigen_modes.py" />
+      <change beforePath="$PROJECT_DIR$/TMM_functions/scatter_matrices.py" afterPath="$PROJECT_DIR$/TMM_functions/scatter_matrices.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -22,65 +22,62 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="RCWA" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="750">
-      <file leaf-file-name="convmat3D.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/convolution_matrices/convmat3D.py">
+      <file leaf-file-name="PWEM_2D_photonic_circle.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PWEM_2D_photonic_circle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="convmat1D.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/convolution_matrices/convmat1D.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="7" column="5" lean-forward="true" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="convmat2D.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/convolution_matrices/convmat2D.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="137">
-              <caret line="18" column="91" lean-forward="false" selection-start-line="18" selection-start-column="91" selection-end-line="18" selection-end-column="91" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test2D_convmat.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/convolution_matrices/test2D_convmat.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="K_matrix.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PWEM_functions/K_matrix.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="337">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding>
-                <element signature="e#70#88#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PWEM_2D_photonic_circle.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PWEM_2D_photonic_circle.py">
+      <file leaf-file-name="RCWA_photonic_circle.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RCWA_photonic_circle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="27" column="10" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="640">
+              <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rcwa_initial_conditions.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RCWA_functions/rcwa_initial_conditions.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="737">
+              <caret line="41" column="67" lean-forward="true" selection-start-line="41" selection-start-column="67" selection-end-line="41" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RCWA_LHI.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RCWA_LHI.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="680">
+              <caret line="101" column="40" lean-forward="false" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="homogeneous_layer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RCWA_functions/homogeneous_layer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="560">
+              <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -91,30 +88,32 @@
       <file leaf-file-name="PQ_matrices.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_functions/PQ_matrices.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+            <state relative-caret-position="504">
+              <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="K_matrix.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/RCWA_functions/K_matrix.py">
+      <file leaf-file-name="scatter_matrices.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TMM_functions/scatter_matrices.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="2" column="39" lean-forward="false" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PWEM_eigen_problem.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PWEM_functions/PWEM_eigen_problem.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="22" column="39" lean-forward="false" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
+            <state relative-caret-position="360">
+              <caret line="54" column="70" lean-forward="false" selection-start-line="54" selection-start-column="70" selection-end-line="54" selection-end-column="70" />
               <folding>
-                <element signature="e#1#19#0" expanded="true" />
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="redheffer_star.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RCWA_functions/redheffer_star.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-623">
+              <caret line="9" column="49" lean-forward="false" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="49" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -151,6 +150,9 @@
       <find>cinc</find>
       <find>apend</find>
       <find>X_storage</find>
+      <find>pq</find>
+      <find>Pr</find>
+      <find>N</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,9 +177,6 @@
         <option value="$PROJECT_DIR$/TMM_LHI_investigation.py" />
         <option value="$PROJECT_DIR$/TMM_functions/redheffer_star.py" />
         <option value="$PROJECT_DIR$/TMM_functions/generate_initial_conditions.py" />
-        <option value="$PROJECT_DIR$/TMM_functions/scatter_matrices.py" />
-        <option value="$PROJECT_DIR$/TMM_functions/PQ_matrices.py" />
-        <option value="$PROJECT_DIR$/TMM_functions/eigen_modes.py" />
         <option value="$PROJECT_DIR$/notebooks/TMM_example.ipynb" />
         <option value="$PROJECT_DIR$/TMM_scattering_test_fabry_perot.py" />
         <option value="$PROJECT_DIR$/settings.py" />
@@ -189,17 +188,25 @@
         <option value="$PROJECT_DIR$/PWEM_photonic_circle.py" />
         <option value="$PROJECT_DIR$/convolution_matrices/convmat2D.py" />
         <option value="$PROJECT_DIR$/convolution_matrices/convmat1D.py" />
-        <option value="$PROJECT_DIR$/PWEM_functions/K_matrix.py" />
         <option value="$PROJECT_DIR$/PWEM_functions/PWEM_eigen_problem.py" />
         <option value="$PROJECT_DIR$/PWEM_2D_photonic_circle.py" />
-        <option value="$PROJECT_DIR$/RCWA_functions/K_matrix.py" />
+        <option value="$PROJECT_DIR$/RCWA_functions/scatter_matrices.py" />
+        <option value="$PROJECT_DIR$/TMM_functions/PQ_matrices.py" />
+        <option value="$PROJECT_DIR$/TMM_functions/eigen_modes.py" />
+        <option value="$PROJECT_DIR$/RCWA_functions/redheffer_star.py" />
+        <option value="$PROJECT_DIR$/RCWA_functions/homogeneous_layer.py" />
         <option value="$PROJECT_DIR$/RCWA_functions/PQ_matrices.py" />
+        <option value="$PROJECT_DIR$/TMM_functions/scatter_matrices.py" />
+        <option value="$PROJECT_DIR$/RCWA_LHI.py" />
+        <option value="$PROJECT_DIR$/PWEM_functions/K_matrix.py" />
+        <option value="$PROJECT_DIR$/RCWA_functions/K_matrix.py" />
+        <option value="$PROJECT_DIR$/RCWA_functions/rcwa_initial_conditions.py" />
+        <option value="$PROJECT_DIR$/RCWA_photonic_circle.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-56" />
-    <option name="y" value="10" />
+    <option name="x" value="1813" />
     <option name="width" value="1945" />
     <option name="height" value="2074" />
   </component>
@@ -225,16 +232,6 @@
             <path>
               <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
               <item name="RCWA" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RCWA" type="462c0819:PsiDirectoryNode" />
-              <item name="PWEM_functions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RCWA" type="462c0819:PsiDirectoryNode" />
-              <item name="RCWA_functions" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -269,25 +266,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PWEM_2D_photonic_circle">
-    <configuration name="1D_squares" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/fourier_decomps" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RCWA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/fourier_decomps/1D_squares.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
+  <component name="RunManager" selected="Python.RCWA_photonic_circle">
     <configuration name="PWEM_2D_photonic_circle" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -306,7 +285,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="TMM_scattering_test_fabry_perot" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="RCWA_LHI" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -318,7 +297,25 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RCWA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TMM_scattering_test_fabry_perot.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_LHI.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="RCWA_photonic_circle" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RCWA" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_photonic_circle.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -361,19 +358,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.TMM_scattering_test_fabry_perot" />
-      <item index="1" class="java.lang.String" itemvalue="Python.1D_squares" />
-      <item index="2" class="java.lang.String" itemvalue="Python.convmat3D" />
-      <item index="3" class="java.lang.String" itemvalue="Python.test2D_convmat" />
-      <item index="4" class="java.lang.String" itemvalue="Python.PWEM_2D_photonic_circle" />
+      <item index="0" class="java.lang.String" itemvalue="Python.convmat3D" />
+      <item index="1" class="java.lang.String" itemvalue="Python.test2D_convmat" />
+      <item index="2" class="java.lang.String" itemvalue="Python.PWEM_2D_photonic_circle" />
+      <item index="3" class="java.lang.String" itemvalue="Python.RCWA_photonic_circle" />
+      <item index="4" class="java.lang.String" itemvalue="Python.RCWA_LHI" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.PWEM_2D_photonic_circle" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test2D_convmat" />
-        <item index="2" class="java.lang.String" itemvalue="Python.convmat3D" />
-        <item index="3" class="java.lang.String" itemvalue="Python.1D_squares" />
-        <item index="4" class="java.lang.String" itemvalue="Python.TMM_scattering_test_fabry_perot" />
+        <item index="0" class="java.lang.String" itemvalue="Python.RCWA_photonic_circle" />
+        <item index="1" class="java.lang.String" itemvalue="Python.RCWA_LHI" />
+        <item index="2" class="java.lang.String" itemvalue="Python.PWEM_2D_photonic_circle" />
+        <item index="3" class="java.lang.String" itemvalue="Python.test2D_convmat" />
+        <item index="4" class="java.lang.String" itemvalue="Python.convmat3D" />
       </list>
     </recent_temporary>
   </component>
@@ -395,17 +392,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17970401" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17970401" sideWeight="0.49668875" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2945824" sideWeight="0.512685" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2945824" sideWeight="0.487315" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2945824" sideWeight="0.52219874" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2945824" sideWeight="0.47780126" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40349886" sideWeight="0.487315" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40349886" sideWeight="0.47251585" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17970401" sideWeight="0.5033113" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -428,25 +426,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/TMM_functions/PQ_matrices.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="8" column="9" lean-forward="false" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TMM_functions/scatter_matrices.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Fabry_Perot_Analytic_Benchmark.py" />
-    <entry file="file://$PROJECT_DIR$/TMM_naive.py" />
-    <entry file="file://$PROJECT_DIR$/TMM_stable.py" />
-    <entry file="file://$PROJECT_DIR$/TMM_scattering_test_fabry_perot.py" />
-    <entry file="file://$PROJECT_DIR$/Fabry_Perot_Analytic_Benchmark.py" />
     <entry file="file://$PROJECT_DIR$/TMM_naive.py" />
     <entry file="file://$PROJECT_DIR$/TMM_stable.py" />
     <entry file="file://$PROJECT_DIR$/TMM_scattering_test_fabry_perot.py" />
@@ -486,45 +465,10 @@
     <entry file="file://$PROJECT_DIR$/TMM_naive.py" />
     <entry file="file://$PROJECT_DIR$/fourier_transforms/2D_test.py" />
     <entry file="file://$PROJECT_DIR$/TMM_simple.py" />
-    <entry file="file://$PROJECT_DIR$/TMM_functions/PQ_matrices.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="977">
-          <caret line="34" column="60" lean-forward="false" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TMM_functions/redheffer_star.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TMM_functions/generate_initial_conditions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1080">
           <caret line="27" column="9" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TMM_functions/scatter_matrices.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TMM_functions/eigen_modes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="18" column="32" lean-forward="false" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notebooks/TMM_example.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="0" />
         </state>
       </provider>
     </entry>
@@ -599,49 +543,150 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PWEM_functions/K_matrix.py">
+    <entry file="file://$PROJECT_DIR$/RCWA_functions/scatter_matrices.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding>
-            <element signature="e#70#88#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PWEM_functions/PWEM_eigen_problem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
-          <caret line="22" column="39" lean-forward="false" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
-          <folding>
-            <element signature="e#1#19#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="960">
+          <caret line="25" column="34" lean-forward="true" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PWEM_2D_photonic_circle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="27" column="10" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="337">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/TMM_functions/redheffer_star.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="5" column="23" lean-forward="true" selection-start-line="5" selection-start-column="23" selection-end-line="5" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TMM_functions/PQ_matrices.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="29" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_functions/redheffer_star.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-623">
+          <caret line="9" column="49" lean-forward="false" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/numpy/lib/function_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="1214" column="0" lean-forward="false" selection-start-line="1214" selection-start-column="0" selection-end-line="1214" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_functions/PQ_matrices.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        <state relative-caret-position="504">
+          <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PWEM_functions/PWEM_eigen_problem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="18" column="19" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/TMM_example.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_functions/homogeneous_layer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="560">
+          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PWEM_functions/K_matrix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_functions/K_matrix.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="2" column="39" lean-forward="false" selection-start-line="2" selection-start-column="39" selection-end-line="2" selection-end-column="39" />
+        <state relative-caret-position="680">
+          <caret line="18" column="60" lean-forward="false" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_LHI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="101" column="40" lean-forward="false" selection-start-line="101" selection-start-column="40" selection-end-line="101" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TMM_functions/eigen_modes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TMM_functions/scatter_matrices.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="54" column="70" lean-forward="false" selection-start-line="54" selection-start-column="70" selection-end-line="54" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_functions/rcwa_initial_conditions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="737">
+          <caret line="41" column="67" lean-forward="true" selection-start-line="41" selection-start-column="67" selection-end-line="41" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_photonic_circle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

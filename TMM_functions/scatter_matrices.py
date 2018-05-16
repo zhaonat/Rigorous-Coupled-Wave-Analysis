@@ -59,6 +59,8 @@ def S_layer(A,B, Li, k0, modes):
 
 
     X_i = LA.expm(modes * Li * k0);  # k and L are in Si Units
+    #X_i could be a problem in RCWA
+
     term1 = (A - X_i * B * A.I * X_i * B).I
     S11 = term1 * (X_i * B * A.I * X_i * A - B);
     S12 = term1 * (X_i) * (A - B * A.I * B);

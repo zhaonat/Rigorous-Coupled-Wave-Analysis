@@ -16,7 +16,7 @@ def K_matrix_cubic_2D(beta_x, beta_y, a_x, a_y, N_p, N_q):
     :return:
     '''
     k_x = beta_x - 2*np.pi*np.arange(-int(N_p/2), int(N_p/2)+1)/a_x;
-    k_y = beta_y - 2*np.pi*np.arange(-int(N_q/2), int(N_q/2)+1)/a_y;
+    k_y = beta_y - 2*np.pi*np.arange(-int(N_q/2), int(N_q/2))/a_y;
 
     kx, ky = np.meshgrid(k_x, k_y)
     # final matrix should be sparse...since it is diagonal at most

@@ -39,4 +39,4 @@ def mode_module(kx, ky, e_r, m_r):
     :param m_r:
     :return:
     '''
-
+    return None;
