@@ -1,0 +1,95 @@
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% illustration/comparison against dielectric grating with metal spacers
+% Note we do not modify the metal spacers, ONLY THE AIR SLITS
+% we want to minimize loss using the dielectric, which means the phenomenon
+% has to be 'dielectric', not 'plasmonic'
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+close all
+clear; 
+clc;
+tic
+time1=fix(clock);                   % start time, [sec]
+c0 = 299792458;                   % speed of light in vacuum, [m/s]
+e0=8.854187817e-12;         % vacuum permittivity 
+mu0=pi*4e-7;                        % vacuum permeability
+%w_scan = linspace(1e14, 3e15, 100);
+%lambda_scan = 1e6*2*pi*c0./w_scan;
+theta =(45)*pi/180;                % angle of incidence, [rad]
+lambda_scan = linspace(0.5,4, 300);
+
+figure()
+band_structure = [];
+theta = 0;
+slit_width = 0;
+% material structure specifications    
+air_width = slit_width;
+% some indication that smaller lattice constants work better...
+dielectric_width = 0.08;
+metal_width = 0.04;
+lattice_constant = 2*dielectric_width+metal_width;
+d = [2, 0.157, 2];                        % thickness of each layer [um] 
+N = length(d);                      % # of layers
+Period(1:N) = lattice_constant;                % Period [um]
+
+f{1} = [1];                     % normalized position for left-end of metal strip
+f{2} = [dielectric_width, metal_width+dielectric_width, ...
+    ]/lattice_constant;
+f{3} = [1];                           % normalized position for right-end of metal strip
+Num_ord = 15;                  % number for the highest diffraction order
+
+epsilon_tracker = [];
+for i =1:length(lambda_scan)
+    lambda = lambda_scan(i);
+
+    wn=1e4/lambda;                  % wavenumber, [cm-1]
+    w = 1e6*2*pi*c0./lambda; % angular frequency, [rad/s]
+    k0 = 2*pi/lambda;               %wavevector
+
+    epsilon = 16;
+    %% demonstration parameters: 1e15 and 5.5e12;
+
+    %typical plasma frequencies are: 10e15 in angular frequency units
+    omega_p = 0.72*pi*1e15; %units of inverse seconds;
+    %gamma range is roughtly 10^13
+    gamma = 5.5e12; %3e13;
+    lambda_p = 2*pi*c0/omega_p; 
+    %% NOTE THAT THERE IS AHUGE SENSITIVITY TO BROADBANDEDNESS...
+    % going to large omega_p or small omega_p does not work...
+
+    epsilon_metal =  1 - omega_p^2./(w^2+1i*gamma*w);
+    epsilon_tracker = [epsilon_tracker; epsilon_metal];
+    %==========================================
+         e(1) = 1;   % Usually is air or vacuum 
+         % Layered structure
+          e_m{1}(1) = 1+1i*1e-12;            % Ridge material (air)  
+
+          e_m{2}(1) = epsilon ;        % Ridge material (dielectric)  
+          e_m{2}(2) = epsilon_metal;                   % Groove material (metal)
+          e_m{2}(3) = epsilon ;            % Ridge material (mdielectric
+
+          e_m{3}(1) = 1+1i*1e-12;                        % Groove material (air)
+          %Substrate
+          e(2)= 1+1i*1e-12;         %  air or opaque substrate...does not help reflection
+          [Ref(i), Tran(i),W,V,Cnp,Cnn,E,Sigma,Kx] = RCWA_Multi_TM_field(N, e_m, f, Period, d, e, lambda, theta, Num_ord); 
+    %==========================================
+    %Ref(i)
+
+end
+band_structure = [band_structure; Ref];
+
+plot(lambda_scan,Ref);
+hold on;
+plot(lambda_scan, Tran);
+plot(lambda_scan, 1-Ref-Tran, '--');
+legend('reflection',  'transmission', 'absorption')
+drawnow();
+hold on;
+xlabel('wavelength (microns)')
+ylabel('reflectivity')
+title(strcat('spectra forhybrid grating_angle=', num2str(theta)))
+drawnow()
+
+
+

@@ -26,7 +26,7 @@ def convmat1D(A, P):
     for prow in range(P):
         # first term locates z plane, 2nd locates y column, prow locates x
         for pcol in range(P):
-            pfft = Af[prow] - Af[pcol];
+            pfft = Af[prow-pcol];
             C[prow, pcol] = pfft;
 
     return C;

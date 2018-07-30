@@ -2,7 +2,7 @@ import numpy as np
 import cmath
 
 '''
-need to modify these function so that each block can accept arbitrarily sized square matrices
+scattering matrix products for arbitrarily sized amtrices
 '''
 
 def dict_to_matrix(S_dict):
@@ -44,4 +44,18 @@ def RedhefferStar(SA,SB): #SA and SB are both 2x2 block matrices;
     SAB_dict = {'S11': SAB_11, 'S22': SAB_22,  'S12': SAB_12,  'S21': SAB_21};
 
     return SAB, SAB_dict;
+
+
+def construct_global_scatter(scatter_list):
+    '''
+    this function assumes an RCWA implementation where all the scatter matrices are stored in a list
+    and the global scatter matrix is constructed at the end
+    :param scatter_list: list of scatter matrices of the form [Sr, S1, S2, ... , SN, ST]
+    :return:
+    '''
+    Sr = scatter_list[0];
+    Sg = Sr;
+    for i in range(1, len(scatter_list)):
+        Sg = RedhefferStar(Sg, scatter_list[i]);
+    return Sg;
 

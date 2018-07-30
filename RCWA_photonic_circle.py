@@ -10,6 +10,7 @@ from RCWA_functions import rcwa_initial_conditions as ic
 from RCWA_functions import homogeneous_layer as hl
 import cmath
 
+
 '''
 solve RCWA for a simple circular structure in a square unit cell
 and generate band structure
@@ -39,9 +40,9 @@ T1 = 2*np.pi/a;
 T2 = 2*np.pi/a;
 
 ## Specify number of fourier orders to use:
-N = 10;
-M = 10;
-NM = N*M;
+N = 1;
+M = 1;
+NM = (2*N+1)*(2*M+1);
 
 # ============== build high resolution circle ==================
 Nx = 512; Ny = 512;
@@ -54,8 +55,8 @@ dist = np.sqrt((I-ci)**2 + (J-cj)**2);
 A[np.where(dist<cr)] = 1;
 
 #visualize structure
-plt.imshow(A);
-plt.show()
+# plt.imshow(A);
+# plt.show()
 
 ## =============== Convolution Matrices ==============
 E_r = cm.convmat2D(A, N,M)
@@ -69,12 +70,12 @@ plt.show()
 ## ================== GEOMETRY OF THE LAYERS AND CONVOLUTIONS ==================##
 thickness_slab = 0.76*L0; #100 nm;
 ER = [E_r];
-UR = [1];
+UR = [np.matrix(np.identity(NM))];
 layer_thicknesses = [thickness_slab]; #this retains SI unit convention
 
 ## =============== Simulation Parameters =========================
 ## set wavelength scanning range
-wavelengths = L0*np.linspace(1,2,20); #500 nm to 1000 nm
+wavelengths = L0*np.linspace(0.5,2,300); #500 nm to 1000 nm
 kmagnitude_scan = 2 * np.pi / wavelengths; #no
 omega = c0 * kmagnitude_scan; #using the dispersion wavelengths
 
@@ -106,14 +107,6 @@ for i in range(len(wavelengths)): #in SI units
     X_storage = list();
     ## ==============================================================##
 
-    ## Initialize global scattering matrix
-    Sg11 = np.matrix(np.zeros((2*NM,2*NM)));
-    Sg12 = np.matrix(np.eye(2*NM,2*NM));
-    Sg21 = np.matrix(np.eye(2*NM,2*NM));
-    Sg22 = np.matrix(np.zeros((2*NM,2*NM)));  # matrices
-    Sg = {'S11':Sg11, 'S12':Sg12, 'S21':Sg21,'S22': Sg22};  # initialization is equivelant as that for S_reflection side matrix
-    Sg0 = Sg;
-
     m_r = 1; e_r = 1;
     ## incident wave properties, at this point, everything is in units of k_0
     n_i =  np.sqrt(e_r*m_r);
@@ -126,34 +119,31 @@ for i in range(len(wavelengths)): #in SI units
 
     Kx, Ky = km.K_matrix_cubic_2D(kx_inc, ky_inc, k0, a, a, N, M);
     ## density Kx and Ky (for now)
-    Kx = Kx.todense();
-    Ky = Ky.todense();
+    Kx = Kx.todense();  Ky = Ky.todense();
 
     ## =============== K Matrices for gap medium =========================
     ## specify gap media (this is an LHI so no eigenvalue problem should be solved
-    e_h = 1;
-    m_h = 1;
+    e_h = 1; m_h = 1;
     Wg, Vg, Kzg = hl.homogeneous_module(Kx, Ky, e_h)
 
     ### ================= Working on the Reflection Side =========== ##
     Wr, Vr, kzr = hl.homogeneous_module(Kx, Ky, e_r); kz_storage.append(kzr)
-
 
     ## calculating A and B matrices for scattering matrix
     Ar, Br = sm.A_B_matrices(Wg, Wr, Vg, Vr);
 
     S_ref, Sr_dict = sm.S_R(Ar, Br); #scatter matrix for the reflection region
     S_matrices.append(S_ref);
-    Sg_matrix, Sg = rs.RedhefferStar(Sg, Sr_dict);
+    Sg = Sr_dict;
 
     Q_storage = list(); P_storage=  list();
     ## go through the layers
     for i in range(len(ER)):
         #ith layer material parameters
-        e_conv = ER[i]; m = UR[i];
+        e_conv = ER[i]; mu_conv = UR[i];
 
         #longitudinal k_vector
-        P, Q, kzl = pq.P_Q_kz(Kx, Ky, e_conv)
+        P, Q, kzl = pq.P_Q_kz(Kx, Ky, e_conv, mu_conv)
         kz_storage.append(kzl)
         Gamma_squared = P*Q;
 
@@ -162,7 +152,7 @@ for i in range(len(wavelengths)): #in SI units
         V_i = em.eigen_V(Q, W_i, lambda_matrix);
 
         #now defIne A and B
-        A,B = sm.A_B_matrices(Wg, W_i, Vg, V_i);
+        A,B = sm.A_B_matrices(W_i, Wg, V_i, Vg); #ORDER HERE MATTERS A LOT because W_i is not diagonal
 
         #calculate scattering matrix
         Li = layer_thicknesses[i];
@@ -197,8 +187,25 @@ for i in range(len(wavelengths)): #in SI units
     ## COMPUTE FIELDS: similar idea but more complex for RCWA since you have individual modes each contributing
     reflected = Wr*Sg['S11']*cinc;
     transmitted = Wt*Sg['S21']*cinc;
-    R = np.linalg.norm(reflected)**2;
-    ref.append(R);
+
+    rx = reflected[0:NM, :]; # rx is the Ex component.
+    ry = reflected[NM:, :];  #
+    tx = transmitted[0:NM,:];
+    ty = transmitted[NM:, :];
+
+    print(rx)
+
+    # longitudinal components; should be 0
+    rz = -kzr.I * (Kx * rx + Ky * ry);
+    tz = -kz_trans.I * (Kx * tx + Ky * ty)
+
+    ## apparently we're not done...now we need to compute 'diffraction efficiency'
+    r_sq = np.linalg.norm(reflected) ** 2 + np.linalg.norm(rz)**2;
+    t_sq = np.linalg.norm(transmitted) ** 2; + np.linalg.norm(tz)**2
+    R = np.real(kzr) * r_sq / np.real(kz_inc);
+
+    ref.append(np.sum(R));
+    trans.append(1 - np.sum(R))
 
 plt.figure();
 plt.plot(1e6*wavelengths, ref);

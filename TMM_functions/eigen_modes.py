@@ -3,6 +3,7 @@ functions which analyzes the eigenmodes of a medium
 '''
 
 import numpy as np
+import scipy.linalg as LA
 
 def eigen_W(Gamma_squared):
     '''
@@ -11,10 +12,11 @@ def eigen_W(Gamma_squared):
     :param Gamma: matrix for the scattering formalism
     :return:
     '''
+    #could be an issue with how eig sorts eigenvalues in the output
     Lambda, W = np.linalg.eig(Gamma_squared);  # LAMBDa is effectively refractive index
     lambda_squared_matrix = np.diag(Lambda);
-    lambda_matrix = np.sqrt(lambda_squared_matrix);
-    return W, lambda_matrix
+    lambda_matrix = np.sqrt(lambda_squared_matrix.astype('complex'));
+    return np.matrix(W), np.matrix(lambda_matrix)
 
 def eigen_V(Q, W, lambda_matrix):
     #V = Q*W*(lambda)^-1

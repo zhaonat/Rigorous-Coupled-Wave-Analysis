@@ -4,7 +4,7 @@ from scipy import linalg as LA
 
 ## NOTE: * operator does NOT PERFORM MATRIX MULTIPLICATION IN PYTHON UNLESS the matrices are np.matrix objects
 
-def A(W1, W2, V1, V2):
+def A(W1, W2, V1, V2): # PLUS SIGN
     '''
     :param W1: gap E-field modes
     :param W2: layer E-modes
@@ -22,7 +22,7 @@ def A(W1, W2, V1, V2):
     A = np.linalg.inv(W1) * W2 + np.linalg.inv(V1) * V2;
     return A;
 
-def B(W1, W2, V1, V2):
+def B(W1, W2, V1, V2): #MINUS SIGN
     assert type(W1) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
     assert type(W2) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
     assert type(V1) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
@@ -57,7 +57,7 @@ def S_layer(A,B, Li, k0, modes):
     assert type(A) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
     assert type(B) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
 
-
+    #sign convention. THIS HUGELY AFFECTS THE triangle benchmark, no effect on LHI
     X_i = LA.expm(modes * Li * k0);  # k and L are in Si Units
     #X_i could be a problem in RCWA
 
@@ -109,3 +109,4 @@ def S_T(At, Bt):
     S_dict = {'S11': S11, 'S22': S22,  'S12': S12,  'S21': S21};
     S = np.block([[S11, S12], [S21, S22]]);
     return S, S_dict;
+

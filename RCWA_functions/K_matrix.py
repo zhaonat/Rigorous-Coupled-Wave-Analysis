@@ -15,8 +15,10 @@ def K_matrix_cubic_2D(beta_x, beta_y, k0, a_x, a_y, N_p, N_q):
     :param T3:
     :return:
     '''
-    k_x = beta_x - 2*np.pi*np.arange(-int(N_p/2), int(N_p/2))/(k0*a_x);
-    k_y = beta_y - 2*np.pi*np.arange(-int(N_q/2), int(N_q/2))/(k0*a_y);
+    #(indexing follows (1,1), (1,2), ..., (1,N), (2,1),
+    # but in the cubic case, k_x only depends on p and k_y only depends on q
+    k_x = beta_x - 2*np.pi*np.arange(-N_p, N_p+1)/(k0*a_x);
+    k_y = beta_y - 2*np.pi*np.arange(-N_q, N_q+1)/(k0*a_y);
 
     kx, ky = np.meshgrid(k_x, k_y)
     # final matrix should be sparse...since it is diagonal at most
