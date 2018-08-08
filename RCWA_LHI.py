@@ -10,6 +10,7 @@ from RCWA_functions import rcwa_initial_conditions as ic
 from RCWA_functions import homogeneous_layer as hl
 import cmath
 from scipy.linalg import block_diag
+import cmath
 
 '''
 solve RCWA for a LHI
@@ -34,8 +35,7 @@ c0 = 1/(np.sqrt(mu0*eps0))
 
 ## lattice and material parameters
 a = 1*L0;
-e_layer= 2;
-import cmath
+e_layer= 9;
 #generate irreducible BZ sample
 T1 = 2*np.pi/a;
 T2 = 2*np.pi/a;
@@ -64,7 +64,7 @@ layer_thicknesses = [thickness_slab]; #this retains SI unit convention
 
 ## =============== Simulation Parameters =========================
 ## set wavelength scanning range
-wavelengths = L0*np.linspace(0.25,1,200); #500 nm to 1000 nm #LHI fails for small wavelengths?
+wavelengths = L0*np.linspace(0.25,1,1000); #500 nm to 1000 nm #LHI fails for small wavelengths?
 kmagnitude_scan = 2 * np.pi / wavelengths; #no
 omega = c0 * kmagnitude_scan; #using the dispersion wavelengths
 
@@ -90,7 +90,7 @@ for i in range(len(wavelengths)): #in SI units
     # define vacuum wavevector k0
     k0 = kmagnitude_scan[i]; #this is in SI units, it is the normalization constant for the k-vector
     lam0 = wavelengths[i]; #k0 and lam0 are related by 2*pi/lam0 = k0
-    print('wavelength: '+ str(1e6*lam0))
+    #print('wavelength: '+ str(1e6*lam0))
     ## ============== values to keep track of =======================##
     S_matrices = list();
     kz_storage = list();
@@ -143,14 +143,14 @@ for i in range(len(wavelengths)): #in SI units
         Gamma_squared = np.diag(np.diag(Gamma_squared)); #apparently the errors are strong enough that not doing this fucks it up
 
         #check that P*Q's diagonals are just kzl
-        print(np.linalg.norm(Gamma_squared - (-block_diag(kzl*kzl,kzl*kzl)))) #surprisingly, the error on this is small
+        #print(np.linalg.norm(Gamma_squared - (-block_diag(kzl*kzl,kzl*kzl)))) #surprisingly, the error on this is small
 
         ## E-field modes that can propagate in the medium
         eigenvalues, W_i = np.linalg.eig(Gamma_squared);
         lambda_matrix = np.matrix(np.diag(np.sqrt(eigenvalues.astype('complex'))));
         W_i = np.matrix(W_i);
         #check that W_i is the identity matrix
-        print(np.linalg.norm(W_i -np.matrix(np.identity(2*NM))))
+        #print(np.linalg.norm(W_i -np.matrix(np.identity(2*NM))))
         V_i = em.eigen_V(Q, W_i, lambda_matrix); #lambda_matrix is singular...
 
         #now defIne A and B; FOR INTERMEDIATE LAYERS, WG and VG come AFTER, but for LHI, the order actually doesn't matter
