@@ -11,9 +11,11 @@ from RCWA_functions import rcwa_initial_conditions as ic
 
 import matplotlib.pyplot as plt
 from convolution_matrices import convmat2D as cm
-
+import cmath
 '''
 used in conjunction with CEM EMLab triangle to check for correectness
+3x3 spatial harmonics
+Currently 2nd Homogeneous layer giving us some problems
 '''
 
 meters = 1;
@@ -92,8 +94,11 @@ for ny_ind  in np.arange(ny1, ny2+1):
 # plt.show()
 Af = np.fft.fftshift(np.fft.fft2(ER[:,:,0]));
 plt.figure();
+plt.subplot(121)
 plt.imshow(np.log(abs(Af))); #note that the fft HAS A HUGE RANGE OF VALUES, which can become a source of inaccuracy
 plt.colorbar()
+plt.subplot(122)
+plt.imshow(np.abs(ER[:,:,0]))
 plt.show();
 ## conv matrices of the 1st
 E_r = np.matrix(cm.convmat2D(ER[:,:,0], PQ[0], PQ[1]));#already has errors
@@ -102,8 +107,8 @@ print(E_r)
 mu_conv = np.matrix(np.identity(NH));
 
 ## Build the second layer (uniform)
-URC = np.matrix(np.identity(NH))
-ERC = 6*np.matrix(np.identity(NH));
+URC2 = np.matrix(np.identity(NH))
+ERC2= 6*np.matrix(np.identity(NH));
 
 
 ## BUILD THE K_MATRIX
@@ -182,16 +187,25 @@ S1, S1_dict = sm.S_layer(B,A, d1, k0, lambda_matrix)
 
 print(S1_dict['S11'])
 
+## =================================================================##
+##               SECOND LAYER (homogeneous)
+## =======================================================================##
 
-## second layer (homogeneous)
-## main loop Layer 1
-W2, V2, Kz2 = hl.homogeneous_module(Kx.todense(), Ky.todense(), 6);
-print(W2)
-print(V2)
+##check with PQ formalism, which is unnecessary
+P2, Q2, Kz2_check = pq.P_Q_kz(Kx.todense(), Ky.todense(), ERC2, URC2)
+omega_sq_2 =  P2*Q2;
+W2, lambda_matrix_2 = em.eigen_W(omega_sq_2) #somehow lambda_matrix is fine but W is full of errors
+V2 = em.eigen_V(Q2,W2,lambda_matrix_2);
+
+## simplified formalism
+#W2, V2, Kz2 = hl.homogeneous_module(Kx.todense(), Ky.todense(), 6);
+# print(W2)
+# print(V2)
+# j = cmath.sqrt(-1);
+# lambda_matrix_2 = LA.block_diag(Kz2, Kz2);
 
 A2, B2 = sm.A_B_matrices(W2, Wg, V2, Vg);
-lambda_matrix = LA.block_diag(Kz2, Kz2);
-S2, S2_dict = sm.S_layer(B2,A2, d2, k0, lambda_matrix)
+S2, S2_dict = sm.S_layer(B2,A2, d2, k0, lambda_matrix_2)
 
 ##global scatterming matrix
 Sg, Sg_dict = rs.RedhefferStar(S1_dict, S2_dict)
@@ -199,9 +213,8 @@ St, Stotal_dict = rs.RedhefferStar(Sr_dict, Sg_dict);
 St, Stotal_dict = rs.RedhefferStar(Stotal_dict, St_dict);
 print(Stotal_dict['S11'])
 
-
 ##
-K_inc_vector = n_i * k0 * np.matrix([np.sin(theta) * np.cos(phi), \
+K_inc_vector = n_i * np.matrix([np.sin(theta) * np.cos(phi), \
                                      np.sin(theta) * np.sin(phi), np.cos(theta)]);
 kz_inc = K_inc_vector[0,2];
 E_inc, cinc, Polarization = ic.initial_conditions(K_inc_vector, theta, normal_vector, pte, ptm, PQ[0], PQ[1])
@@ -230,9 +243,12 @@ print(ry)
 print('rz'); print(rz)
 
 ## apparently we're not done...now we need to compute 'diffraction efficiency'
-r_sq = np.linalg.norm(reflected) ** 2 +np.linalg.norm(rz)**2
-t_sq = np.linalg.norm(transmitted) ** 2 +np.linalg.norm(tz)**2;
-R = np.real(Kzr) * r_sq / np.real(kz_inc/k0);
+r_sq = np.square(np.abs(rx)) + np.square(np.abs(ry)) + np.square(np.abs(rz));
+t_sq = np.square(np.abs(tx)) + np.square(np.abs(ty)) + np.square(np.abs(tz));
+R = np.real(Kzr) * r_sq / np.real(kz_inc);
+T = np.real(Kzt) * t_sq / (np.real(kz_inc));
+
+print('final R vector')
 print(R); #should be 3x3
 
 print('final reflection: '+str(np.sum(R)))

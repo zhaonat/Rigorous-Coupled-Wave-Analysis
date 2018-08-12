@@ -5,6 +5,7 @@ from numpy.linalg import cond
 import cmath;
 from scipy.fftpack import fft, fftfreq, fftshift, rfft
 from scipy.fftpack import dst, idst
+from scipy.linalg import expm
 from TMM_functions import eigen_modes as em
 from TMM_functions import scatter_matrices as sm
 from RCWA_functions import redheffer_star as rs
@@ -19,7 +20,6 @@ plt.close("all")
 only: sign convention is exp(-ikr) (is the positive propagating wave), so loss is +  not - 
 source for fourier decomps is from the paper: Formulation for stable and efficient implementation of
 the rigorous coupled-wave analysis of binary gratings by Moharam et. al
-The algo itself is from CEM EMLab 
 '''
 
 def grating_fourier_harmonics(order, fill_factor, n_ridge, n_groove):
@@ -76,8 +76,6 @@ def grating_fft(eps_r):
     #ortho norm in fft will do a 1/sqrt(n) scaling
     return np.squeeze(fourier_comp);
 
-x = np.linspace(0,1,1000);
-period = 1;
 # plt.plot(x, np.real(fourier_reconstruction(x, period, 1000, 1,np.sqrt(12), fill_factor = 0.1)));
 # plt.title('check that the analytic fourier series works')
 # #'note that the lattice constant tells you the length of the ridge'
@@ -86,22 +84,30 @@ period = 1;
 L0 = 1e-6;
 e0 = 8.854e-12;
 mu0 = 4*np.pi*1e-8;
-fill_factor = 0.8 # 50% of the unit cell is the ridge material
+fill_factor = 0.3; # 50% of the unit cell is the ridge material
 
-num_ord = 100; #INCREASING NUMBER OF ORDERS SEEMS TO CAUSE THIS THING TO FAIL, to many orders induce evanescence...particularly
+
+num_ord = 10; #INCREASING NUMBER OF ORDERS SEEMS TO CAUSE THIS THING TO FAIL, to many orders induce evanescence...particularly
                # when there is a small fill factor
+PQ = 2*num_ord+1;
 indices = np.arange(-num_ord, num_ord+1)
 
 n_ridge = 3.48; #3.48;              # ridge
-n_groove = 1;                # groove
-lattice_constant = 0.7* L0;  # SI units
-d = 0.46 * L0;  # thickness
+n_groove = 1;                # groove (unit-less)
+lattice_constant = 0.7;  # SI units
+# we need to be careful about what lattice constant means
+# in the gaylord paper, lattice constant exactly means (0, L) is one unit cell
+
+
+d = 0.46;               # thickness, SI units
 
 Nx = 2*256;
 eps_r = n_groove**2*np.ones((2*Nx, 1)); #put in a lot of points in eps_r
 border = int(2*Nx*fill_factor);
 eps_r[0:border] = n_ridge**2;
 fft_fourier_array = grating_fft(eps_r);
+x = np.linspace(-lattice_constant,lattice_constant,1000);
+period = lattice_constant;
 fft_reconstruct = fourier_reconstruction_general(x, period, num_ord, fft_fourier_array);
 
 fourier_array_analytic = grating_fourier_array(Nx, fill_factor, n_ridge, n_groove);
@@ -109,8 +115,9 @@ analytic_reconstruct = fourier_reconstruction(x, period, num_ord, n_ridge, n_gro
 
 
 plt.figure();
-plt.plot(abs(fft_fourier_array), linewidth=2)
-plt.plot(fourier_array_analytic);
+plt.plot(np.real(fft_fourier_array[Nx-20:Nx+20]), linewidth=2)
+plt.plot(np.real(fourier_array_analytic[Nx-20:Nx+20]));
+plt.legend(('fft', 'analytic'))
 plt.show()
 
 plt.figure();
@@ -120,93 +127,123 @@ plt.legend(['fft', 'analytic'])
 plt.show()
 
 ## simulation parameters
-theta_inc = 0;
+theta = (0)*np.pi/180;
 spectra = list();
 spectra_T = list();
 
-wavelength_scan = np.linspace(0.6,3,1)
+wavelength_scan = np.linspace(0.5,2.3,300)
 ## construct permittivity harmonic components E
 #fill factor = 0 is complete dielectric, 1 is air
 
 ##construct convolution matrix
-E = np.zeros((2 * num_ord + 1, 2 * num_ord + 1))
+E = np.zeros((2 * num_ord + 1, 2 * num_ord + 1)); E = E.astype('complex')
 p0 = Nx; #int(Nx/2);
 p_index = np.arange(-num_ord, num_ord + 1);
 q_index = np.arange(-num_ord, num_ord + 1);
-fourier_array = fourier_array_analytic; #fft_fourier_array;
+fourier_array = fft_fourier_array;#fourier_array_analytic;
+detected_pffts = np.zeros_like(E);
 for prow in range(2 * num_ord + 1):
     # first term locates z plane, 2nd locates y coumn, prow locates x
+    row_index = p_index[prow];
     for pcol in range(2 * num_ord + 1):
         pfft = p_index[prow] - p_index[pcol];
+        detected_pffts[prow, pcol] = pfft;
         E[prow, pcol] = fourier_array[p0 + pfft];  # fill conv matrix from top left to top right
 
 ## IMPORTANT TO NOTE: the indices for everything beyond this points are indexed from -num_ord to num_ord+1
 
+## alternate construction of 1D convolution matrix
+
 I = np.eye(2 * num_ord + 1)
 
 # E is now the convolution of fourier amplitudes
-for wave in wavelength_scan:
+for wvlen in wavelength_scan:
     j = cmath.sqrt(-1);
-    lam0 = wave*L0;     k0 = 2*np.pi/lam0; #free space wavelength in SI units
-    print('wavelength: '+str(wave));
+    lam0 = wvlen;     k0 = 2 * np.pi / lam0; #free space wavelength in SI units
+    print('wavelength: ' + str(wvlen));
     ## =====================STRUCTURE======================##
 
     ## Region I: reflected region (half space)
     n1 = 1;#cmath.sqrt(-1)*1e-12; #apparently small complex perturbations are bad in Region 1, these shouldn't be necessary
 
     ## Region 2; transmitted region
-    n2 = 1+cmath.sqrt(-1)*1e-12;
+    n2 = 1;
 
     #from the kx_components given the indices and wvln
-    kx_array = k0*(n1*np.sin(theta_inc)- indices*(lam0 / lattice_constant)); #0 is one of them, k0*lam0 = 2*pi
+    kx_array = k0*(n1*np.sin(theta) + indices*(lam0 / lattice_constant)); #0 is one of them, k0*lam0 = 2*pi
     k_xi = kx_array;
     ## IMPLEMENT SCALING: these are the fourier orders of the x-direction decomposition.
-    KX = np.diag(kx_array/k0); #singular since we have a n=0, m= 0 order and incidence is normal
+    KX2 = np.diag(np.power((k_xi/k0),2)); #singular since we have a n=0, m= 0 order and incidence is normal
 
     ## construct matrix of Gamma^2 ('constant' term in ODE):
-    A = KX ** 2 - E; #conditioning of this matrix is not bad, A SHOULD BE SYMMETRIC
+    A = KX2 - E; #conditioning of this matrix is not bad, A SHOULD BE SYMMETRIC
     #sum of a symmetric matrix and a diagonal matrix should be symmetric;
 
     ##
     # when we calculate eigenvals, how do we know the eigenvals correspond to each particular fourier order?
-    eigenvals, W = LA.eig(A); #A is negative symmetric...but eigh only works on positive symmetric
-    ##
+    eigenvals, W = LA.eigh(A); #A should be symmetric or hermitian
+    #we should be gauranteed that all eigenvals are REAL
+    eigenvals = eigenvals.astype('complex');
+    Q = np.diag(np.sqrt(eigenvals)); #Q should only be positive square root of eigenvals
+    V = np.matmul(W,Q); #H modes
 
-    Q = np.diag(np.sqrt(eigenvals))
-    V = np.matmul(W,Q);
-    X = np.exp(-k0*Q*d);
-    k_I = k0*np.sqrt(n1**2 - (k_xi/k0)**2);                 #k_z in reflected region
-    k_II = k0*np.sqrt(n2**2 - (k_xi/k0)**2);   #k_z in transmitted region
-    Y_I = k_I/k0;
-    Y_II = k_II/k0;
+    ## this is the great typo which has killed us all this time
+    X = np.diag(np.exp(-k0*np.diag(Q)*d)); #this is poorly conditioned because exponentiation
+    ## pointwise exponentiation vs exponentiating a matrix
+
+    ## observation: almost everything beyond this point is worse conditioned
+    k_I = k0**2*(n1**2 - (k_xi/k0)**2);                 #k_z in reflected region k_I,zi
+    k_II = k0**2*(n2**2 - (k_xi/k0)**2);   #k_z in transmitted region
+    k_I = k_I.astype('complex'); k_I = np.sqrt(k_I);
+    k_II = k_II.astype('complex'); k_II = np.sqrt(k_II);
+    Y_I = np.diag(k_I/k0);
+    Y_II = np.diag(k_II/k0);
     delta_i0 = np.zeros((len(kx_array),1));
+    delta_i0[num_ord] = 1;
+    n_delta_i0 = delta_i0*j*n1*np.cos(theta);
 
     ## design auxiliary variables: SEE derivation in notebooks: RCWA_note.ipynb
-    Wi = np.linalg.inv(W)
-    F = np.matmul(np.matmul(V, I+Wi),X);
-    temp_term = cmath.sqrt(-1)*Y_II +np.matmul(V, Wi);
-    G = np.matmul(Wi, I-np.matmul(X,np.matmul(np.linalg.inv(F),(temp_term))));
+    # we want to design the computation to avoid operating with X, particularly with inverses
+    # since X is the worst conditioned thing
 
-    ## A and B auxilliary terms
-    temp_term_2 = np.matmul(np.linalg.inv(F), temp_term);
-    A = np.matmul(W, temp_term_2+np.matmul(X,G));
-    B = np.matmul(V, temp_term_2-np.matmul(X,G));
 
-    ## calculate R
-    #R = np.linalg.inv()*()
+    # #Bo's solution
+    O = np.block([
+        [W, W],
+        [V,-V]
+    ]); #this is much better conditioned than S..
+    f = I;
+    g = j*Y_II; #all matrices
+    fg = np.concatenate((f,g),axis = 0)
+    ab = np.matmul(np.linalg.inv(O),fg);
+    a = ab[0:PQ,:];
+    b = ab[PQ:,:];
 
-    # print(R);
-    # spectra.append(R); #spectra_T.append(T);
-    # spectra_T.append(1-R)
+    term = np.matmul(np.matmul(X,a),np.matmul(np.linalg.inv(b),X));
+    f = np.matmul(W, I+term);
+    g = np.matmul(V,-I+term);
+    T = np.linalg.inv(j*np.matmul(Y_I,f)+g);
+    T = np.dot(T,(np.dot(j*Y_I,delta_i0)+n_delta_i0));
+    R = np.dot(f,T)-delta_i0;
+    T = np.dot(np.matmul(np.linalg.inv(b),X),T)
 
-# plt.figure();
-# plt.plot(wavelength_scan, spectra);
-# plt.plot(wavelength_scan, spectra_T)
+    ## calculate diffraction efficiencies
+    #I would expect this number to be real...
+    DE_ri = R*np.conj(R)*np.real(np.expand_dims(k_I,1))/(k0*n1*np.cos(theta));
+    DE_ti = T*np.conj(T)*np.real(np.expand_dims(k_II,1))/(k0*n1*np.cos(theta));
+
+    #print(np.sum(DE_ri))
+    spectra.append(np.sum(DE_ri)); #spectra_T.append(T);
+    spectra_T.append(np.sum(DE_ti))
+
+plt.figure();
+plt.plot(wavelength_scan, spectra);
+plt.plot(wavelength_scan, spectra_T)
 # plt.legend(['reflection', 'transmission'])
 # plt.axhline(((3.48-1)/(3.48+1))**2,xmin=0, xmax = max(wavelength_scan))
 # plt.axhline(((3.48-1)/(3.48+1)),xmin=0, xmax = max(wavelength_scan), color='r')
 #
-# plt.show()
+plt.show()
 
 
 

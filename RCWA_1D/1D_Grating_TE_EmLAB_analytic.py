@@ -29,7 +29,7 @@ def grating_fourier_harmonics(order, fill_factor, n_ridge, n_groove):
         return n_ridge**2*fill_factor + n_groove**2*(1-fill_factor);
     else:
         #should it be 1-fill_factor or fill_factor?
-        return(n_ridge**2 - n_groove**2)*np.sin(np.pi*order*(1-fill_factor))/(np.pi*order);
+        return(n_ridge**2 - n_groove**2)*np.sin(np.pi*order*fill_factor)/(np.pi*order);
 
 def grating_fourier_array(num_ord, fill_factor, n_ridge, n_groove):
     """ what is a convolution in 1D """
@@ -43,8 +43,9 @@ def fourier_reconstruction(x, period, num_ord, n_ridge, n_groove, fill_factor = 
     f = 0;
     for n in index:
         coef = grating_fourier_harmonics(n, fill_factor, n_ridge, n_groove);
-        f+= coef*np.exp(cmath.sqrt(-1)*np.pi*n*x/period);
+        f+= coef*np.exp(cmath.sqrt(-1)*2*np.pi*n*x/period); #scaling ifoff
     return f;
+
 
 def grating_fft(eps_r):
     assert len(eps_r.shape) == 2
@@ -55,23 +56,23 @@ def grating_fft(eps_r):
     #ortho norm in fft will do a 1/sqrt(n) scaling
     return np.squeeze(fourier_comp);
 
-x = np.linspace(0,1,1000);
-period = 1;
-# plt.plot(x, np.real(fourier_reconstruction(x, period, 1000, 1,np.sqrt(12), fill_factor = 0.1)));
-# plt.title('check that the analytic fourier series works')
-# #'note that the lattice constant tells you the length of the ridge'
-# plt.show()
+period = 0.7;
+x = np.linspace(-period,period,1000);
+plt.plot(x, np.real(fourier_reconstruction(x, period, 100, 3.48,1, fill_factor = 0.3)));
+plt.title('check that the analytic fourier series works')
+#'note that the lattice constant tells you the length of the ridge'
+plt.show()
 
 L0 = 1e-6;
 e0 = 8.854e-12;
 mu0 = 4*np.pi*1e-8;
-fill_factor = 0.75
+fill_factor = 0.3
 
-num_ord = 5;
+num_ord = 20;
 indices = np.arange(-num_ord, num_ord+1)
 
-n_ridge = 1; #3.48;              # ridge
-n_groove = 3.48;                # groove
+n_ridge = 3.48;              # ridge
+n_groove = 1; #3.48;                # groove
 lattice_constant = 0.7* L0;  # SI units
 d = 0.46 * L0;  # thickness
 
@@ -85,7 +86,7 @@ theta_inc = 0;
 spectra = list();
 spectra_T = list();
 
-wavelength_scan = np.linspace(0.6,2,300)
+wavelength_scan = np.linspace(0.6,2.4,300)
 ## construct permittivity harmonic components E
 #fill factor = 0 is complete dielectric, 1 is air
 fourer_orders = 2 * Nx + 1;
@@ -94,11 +95,12 @@ f = fourier_reconstruction(x, period, num_ord, n_ridge, n_groove, fill_factor)
 
 
 ##construct convolution matrix
-E = np.zeros((2 * num_ord + 1, 2 * num_ord + 1))
+E = np.zeros((2 * num_ord + 1, 2 * num_ord + 1));
+E = E.astype('complex')
 p0 = Nx; #int(Nx/2);
 p_index = np.arange(-num_ord, num_ord + 1);
 q_index = np.arange(-num_ord, num_ord + 1);
-fourier_array = fourier_array_analytic;
+fourier_array = fft_fourier_array; #_analytic;
 for prow in range(2 * num_ord + 1):
     # first term locates z plane, 2nd locates y coumn, prow locates x
     for pcol in range(2 * num_ord + 1):
@@ -140,6 +142,7 @@ for wave in wavelength_scan:
 
     ## ================================================================================================##
     #exp(iQr), negative sign for negative sign convention
+    #here, there is no np.exp()...hmmmm
     Q = np.diag(-q); #SIGN OF THE EIGENVALUES IS HUGELY IMPORTANT, but why is it negative for this?
     ## ================================================================================================##
 
@@ -197,6 +200,7 @@ for wave in wavelength_scan:
 
     # print(cinc.shape)
     # print(cinc)
+    #cinc is the incidence vector
     cinc = np.zeros((2*num_ord+1, ));
     cinc[num_ord] = 1;
     cinc = np.matrix(cinc).T
@@ -207,18 +211,22 @@ for wave in wavelength_scan:
 
     ## reflected is already ry or Ey
     rsq = np.power(abs(reflected),2);
+    tsq = np.power(abs(transmitted),2);
 
     ## compute final reflectivity
-    Rdiff = Kzr*rsq/kz_inc; #reshape this?
+    Rdiff = np.real(Kzr)*rsq/np.real(kz_inc); #real because we only want propagating components
+    Tdiff = np.real(Kzt)*tsq/np.real(kz_inc)
     R = np.sum(Rdiff);
+    T = np.sum(Tdiff);
 
     print(R);
     spectra.append(R); #spectra_T.append(T);
-    spectra_T.append(1-R)
+    spectra_T.append(T)
 
 plt.figure();
 plt.plot(wavelength_scan, spectra);
 plt.plot(wavelength_scan, spectra_T)
+plt.plot(wavelength_scan, np.array(spectra)+np.array(spectra_T))
 plt.legend(['reflection', 'transmission'])
 plt.show()
 

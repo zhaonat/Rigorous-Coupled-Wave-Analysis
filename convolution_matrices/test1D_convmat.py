@@ -34,7 +34,7 @@ n_groove = 12; # groove
 
 theta_inc = 0;
 
-lam0 = 1*L0; #free space wavelength
+lam0 = 2.3*L0; #free space wavelength
 k0 = 2*np.pi/lam0;
 
 ## =====================STRUCTURE======================##
@@ -85,6 +85,16 @@ for prow in range(2*num_ord+1):
         E[prow, pcol] = fourier_array[p0+pfft];
     plt.plot(E[prow, :])
 plt.show();
+
+## Bo's formalism; which is just to say that every row of the convmat
+# is the fourier array shifted by some value
+ordMax = num_ord; ordMin = -num_ord
+E_check = np.zeros_like(E);
+fourier_restriction = fourier_array[p0-2*num_ord:p0+2*num_ord+1]
+for i in range(ordMax-ordMin+1):
+    ind_start = ordMax-ordMin-i;
+    ind_end = ordMax-ordMin-i+1+2*num_ord;
+    E_check[i,:] = fourier_restriction[ind_start:ind_end];
 
 #FROM EMLAB, a 1D convolution is always toeplitz
 plt.figure();

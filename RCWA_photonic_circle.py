@@ -9,39 +9,38 @@ from RCWA_functions import redheffer_star as rs
 from RCWA_functions import rcwa_initial_conditions as ic
 from RCWA_functions import homogeneous_layer as hl
 import cmath
-
+from numpy.linalg import cond
 
 '''
 solve RCWA for a simple circular structure in a square unit cell
-and generate band structure
-compare with CEM EMLab
 
 In essence, there is almost nothing new that needs to be done
 We do have to modify scatter_matrices and redheffer star
 ## normalized units
 #z' = k0*z;
 #k = k/k0;
+
+FINALLY WORKS 8/11/2018
 '''
 
 #% General Units
 degrees = np.pi/180;
 L0 = 1e-6; #units of microns;
-eps0 = 8.854e-12;
-mu0 = 4*np.pi*10**-7;
+eps0 = 8.854e-12*L0;
+mu0 = 4*np.pi*10**-7*L0;
 c0 = 1/(np.sqrt(mu0*eps0))
 
 ## lattice and material parameters
 a = 1;
-radius = 0.35;
-e_r = 9;
+radius = 0.2; #0.4;
+e_r = 12;
 
 #generate irreducible BZ sample
 T1 = 2*np.pi/a;
 T2 = 2*np.pi/a;
 
 ## Specify number of fourier orders to use:
-N = 1;
-M = 1;
+N = 1; M = 1;
 NM = (2*N+1)*(2*M+1);
 
 # ============== build high resolution circle ==================
@@ -68,14 +67,14 @@ plt.colorbar()
 plt.show()
 
 ## ================== GEOMETRY OF THE LAYERS AND CONVOLUTIONS ==================##
-thickness_slab = 0.76*L0; #100 nm;
+thickness_slab = 0.76; # in units of L0;
 ER = [E_r];
 UR = [np.matrix(np.identity(NM))];
 layer_thicknesses = [thickness_slab]; #this retains SI unit convention
 
 ## =============== Simulation Parameters =========================
 ## set wavelength scanning range
-wavelengths = L0*np.linspace(0.5,2,300); #500 nm to 1000 nm
+wavelengths = np.linspace(0.5,2,401); #500 nm to 1000 nm #be aware of Wood's Anomalies
 kmagnitude_scan = 2 * np.pi / wavelengths; #no
 omega = c0 * kmagnitude_scan; #using the dispersion wavelengths
 
@@ -100,7 +99,7 @@ for i in range(len(wavelengths)): #in SI units
     # define vacuum wavevector k0
     k0 = kmagnitude_scan[i]; #this is in SI units, it is the normalization constant for the k-vector
     lam0 = wavelengths[i]; #k0 and lam0 are related by 2*pi/lam0 = k0
-    print('wavelength: '+ str(1e6*lam0))
+    print('wavelength: '+ str(lam0))
     ## ============== values to keep track of =======================##
     S_matrices = list();
     kz_storage = list();
@@ -112,12 +111,12 @@ for i in range(len(wavelengths)): #in SI units
     n_i =  np.sqrt(e_r*m_r);
 
     # actually, in the definitions here, kx = k0*sin(theta)*cos(phi), so kx, ky here are normalized
-    kx_inc = n_i * np.sin(theta) * np.cos(
-        phi);  # actually, in the definitions here, kx = k0*sin(theta)*cos(phi), so kx, ky here are normalized
+    kx_inc = n_i * np.sin(theta) * np.cos(phi);
     ky_inc = n_i * np.sin(theta) * np.sin(phi);  # constant in ALL LAYERS; ky = 0 for normal incidence
     kz_inc = cmath.sqrt(e_r * 1 - kx_inc ** 2 - ky_inc ** 2);
 
-    Kx, Ky = km.K_matrix_cubic_2D(kx_inc, ky_inc, k0, a, a, N, M);
+    #remember, these Kx and Ky come out already normalized
+    Kx, Ky = km.K_matrix_cubic_2D(kx_inc, ky_inc, k0, a, a, N, M); #Kx and Ky are diagonal but have a 0 on it
     ## density Kx and Ky (for now)
     Kx = Kx.todense();  Ky = Ky.todense();
 
@@ -147,11 +146,11 @@ for i in range(len(wavelengths)): #in SI units
         kz_storage.append(kzl)
         Gamma_squared = P*Q;
 
-        ## E-field modes that can propagate in the medium
+        ## E-field modes that can propagate in the medium, these are well-conditioned
         W_i, lambda_matrix = em.eigen_W(Gamma_squared);
         V_i = em.eigen_V(Q, W_i, lambda_matrix);
 
-        #now defIne A and B
+        #now defIne A and B, slightly worse conditoined than W and V
         A,B = sm.A_B_matrices(W_i, Wg, V_i, Vg); #ORDER HERE MATTERS A LOT because W_i is not diagonal
 
         #calculate scattering matrix
@@ -176,7 +175,7 @@ for i in range(len(wavelengths)): #in SI units
 
     ## finally CONVERT THE GLOBAL SCATTERING MATRIX BACK TO A MATRIX
 
-    K_inc_vector = n_i * k0*np.matrix([np.sin(theta) * np.cos(phi), \
+    K_inc_vector = n_i *np.matrix([np.sin(theta) * np.cos(phi), \
                                     np.sin(theta) * np.sin(phi), np.cos(theta)]);
 
     E_inc, cinc, Polarization = ic.initial_conditions(K_inc_vector, theta,  normal_vector, pte, ptm, N,M)
@@ -193,20 +192,24 @@ for i in range(len(wavelengths)): #in SI units
     tx = transmitted[0:NM,:];
     ty = transmitted[NM:, :];
 
-    print(rx)
-
     # longitudinal components; should be 0
-    rz = -kzr.I * (Kx * rx + Ky * ry);
-    tz = -kz_trans.I * (Kx * tx + Ky * ty)
+    rz = kzr.I * (Kx * rx + Ky * ry);
+    tz = kz_trans.I * (Kx * tx + Ky * ty)
+
+    ## we need to do some reshaping at some point
 
     ## apparently we're not done...now we need to compute 'diffraction efficiency'
-    r_sq = np.linalg.norm(reflected) ** 2 + np.linalg.norm(rz)**2;
-    t_sq = np.linalg.norm(transmitted) ** 2; + np.linalg.norm(tz)**2
+    r_sq = np.square(np.abs(rx)) +  np.square(np.abs(ry))+ np.square(np.abs(rz));
+    t_sq = np.square(np.abs(tx)) +  np.square(np.abs(ty))+ np.square(np.abs(tz));
     R = np.real(kzr) * r_sq / np.real(kz_inc);
-
+    T = np.real(kz_trans)*t_sq/(np.real(kz_inc));
     ref.append(np.sum(R));
-    trans.append(1 - np.sum(R))
+    trans.append(np.sum(T))
 
+ref = np.array(ref);
+trans = np.array(trans);
 plt.figure();
-plt.plot(1e6*wavelengths, ref);
+plt.plot(wavelengths, ref);
+plt.plot(wavelengths, trans);
+
 plt.show()
