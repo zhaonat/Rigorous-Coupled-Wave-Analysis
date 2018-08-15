@@ -7,6 +7,9 @@ def homogeneous_module(Kx, Ky, e_r, m_r = 1):
     homogeneous layer is much simpler to do, so we will create an isolated module to deal with it
     :return:
     '''
+    assert type(Kx) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(Ky) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+
     j = cmath.sqrt(-1);
     N = len(Kx);
     I = np.matrix(np.identity(N));

@@ -129,8 +129,10 @@ for i in range(len(wavelengths)): #in SI units
     Wr, Vr, kzr = hl.homogeneous_module(Kx, Ky, e_r); kz_storage.append(kzr)
 
     ## calculating A and B matrices for scattering matrix
+    # since gap medium and reflection media are the same, this doesn't affect anything
     Ar, Br = sm.A_B_matrices(Wg, Wr, Vg, Vr);
 
+    ## s_ref is a matrix, Sr_dict is a dictionary
     S_ref, Sr_dict = sm.S_R(Ar, Br); #scatter matrix for the reflection region
     S_matrices.append(S_ref);
     Sg = Sr_dict;
@@ -166,6 +168,7 @@ for i in range(len(wavelengths)): #in SI units
     Wt, Vt, kz_trans = hl.homogeneous_module(Kx, Ky, e_t)
 
     #get At, Bt
+    # since transmission is the same as gap, order does not matter
     At, Bt = sm.A_B_matrices(Wg, Wt, Vg, Vt)
 
     ST, ST_dict = sm.S_T(At, Bt)
@@ -206,10 +209,16 @@ for i in range(len(wavelengths)): #in SI units
     ref.append(np.sum(R));
     trans.append(np.sum(T))
 
+    print('final R vector-> matrix')
+    print(np.reshape(R,(3,3))); #should be 3x3
+    print('final T vector/matrix')
+    print(np.reshape(T,(3,3)))
+
 ref = np.array(ref);
 trans = np.array(trans);
 plt.figure();
 plt.plot(wavelengths, ref);
 plt.plot(wavelengths, trans);
+plt.plot(wavelengths, ref+trans)
 
 plt.show()

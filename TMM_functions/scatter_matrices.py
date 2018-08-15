@@ -4,44 +4,64 @@ from scipy import linalg as LA
 
 ## NOTE: * operator does NOT PERFORM MATRIX MULTIPLICATION IN PYTHON UNLESS the matrices are np.matrix objects
 
-def A(W1, W2, V1, V2): # PLUS SIGN
+def A(W_layer, Wg, V_layer, Vg): # PLUS SIGN
     '''
-    :param W1: gap E-field modes
-    :param W2: layer E-modes
-    :param V1: gap H-field modes
-    :param V2: gap H-modes
+    OFFICIAL EMLAB prescription
+    inv(W_layer)*W_gap
+    :param W_layer: layer E-modes
+    :param Wg: gap E-field modes
+    :param V_layer: layer H_modes
+    :param Vg: gap H-field modes
     # the numbering is just 1 and 2 because the order differs if we're in the structure
     # or outsid eof it
     :return:
     '''
-    assert type(W1) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(W2) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(V1) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(V2) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(W_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(Wg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(V_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(Vg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
 
-    A = np.linalg.inv(W1) * W2 + np.linalg.inv(V1) * V2;
+    A = np.linalg.inv(W_layer) * Wg + np.linalg.inv(V_layer) * Vg;
     return A;
 
-def B(W1, W2, V1, V2): #MINUS SIGN
-    assert type(W1) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(W2) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(V1) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(V2) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-
-    B = np.linalg.inv(W1)*W2 - np.linalg.inv(V1)*V2;
-    return B;
-
-def A_B_matrices(W1,W2, V1, V2):
+def B(W_layer, Wg, V_layer, Vg): #MINUS SIGN
     '''
-    single function to output the a and b matrices needed for the scatter matrices
-    :param W1:
-    :param W2:
-    :param V1:
-    :param V2:
+    :param W_layer: layer E-modes
+    :param Wg: gap E-field modes
+    :param V_layer: layer H_modes
+    :param Vg: gap H-field modes
+    # the numbering is just 1 and 2 because the order differs if we're in the structure
+    # or outsid eof it
     :return:
     '''
-    a = A(W1, W2, V1, V2);
-    b = B(W1, W2, V1, V2);
+    assert type(W_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(Wg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(V_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    assert type(Vg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+
+    B = np.linalg.inv(W_layer) * Wg - np.linalg.inv(V_layer) * Vg;
+    return B;
+
+
+def A_B_matrices_half_space(W_layer, Wg, V_layer, Vg):
+    ## this function is needed because for the half-spaces (reflection and transmission
+    # spaces, the convention for calculating A and B is DIFFERENT than inside the main layers
+    a = A(Wg, W_layer, Vg, V_layer);
+    b = B(Wg, W_layer, Vg, V_layer);
+    return a, b;
+
+
+def A_B_matrices(W_layer, Wg, V_layer, Vg):
+    '''
+    single function to output the a and b matrices needed for the scatter matrices
+    :param W_layer: gap
+    :param Wg:
+    :param V_layer: gap
+    :param Vg:
+    :return:
+    '''
+    a = A(W_layer, Wg, V_layer, Vg);
+    b = B(W_layer, Wg, V_layer, Vg);
     return a, b;
 
 def S_layer(A,B, Li, k0, modes):
@@ -57,8 +77,8 @@ def S_layer(A,B, Li, k0, modes):
     assert type(A) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
     assert type(B) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
 
-    #sign convention. THIS HUGELY AFFECTS THE triangle benchmark, no effect on LHI
-    X_i = LA.expm(modes * Li * k0);  # k and L are in Si Units
+    #sign convention (EMLAB is exp(-1i*k\dot r))
+    X_i = LA.expm(-modes * Li * k0);  # k and L are in Si Units
     #X_i could be a problem in RCWA
 
     term1 = (A - X_i * B * A.I * X_i * B).I

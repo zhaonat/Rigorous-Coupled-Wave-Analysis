@@ -62,7 +62,7 @@ def initial_conditions(K_inc_vector, theta, normal_vector, pte, ptm, P, Q):
     delta = delta_vector(2*P+1,2*Q+1);
 
     #cinc
-    cinc = np.hstack((Polarization[0]*delta, Polarization[1]*delta));
-    cinc = np.matrix(cinc).T; #mode amplitudes of Ex, and Ey
+    esrc = np.hstack((Polarization[0]*delta, Polarization[1]*delta));
+    esrc = np.matrix(esrc).T; #mode amplitudes of Ex, and Ey
 
-    return E_inc, cinc, Polarization
+    return E_inc, esrc, Polarization

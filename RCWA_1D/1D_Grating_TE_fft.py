@@ -130,7 +130,7 @@ wavelength_scan = np.linspace(0.5,2.4,300)
 
 ##construct convolution matrix
 E = np.zeros((2 * num_ord + 1, 2 * num_ord + 1));
-E = E.astype('complex')
+E
 p0 = Nx; #int(Nx/2);
 p_index = np.arange(-num_ord, num_ord + 1);
 q_index = np.arange(-num_ord, num_ord + 1);
@@ -180,7 +180,7 @@ for wave in wavelength_scan:
     Q = np.diag(-q); #SIGN OF THE EIGENVALUES IS HUGELY IMPORTANT, but why is it negative for this?
     ## ================================================================================================##
 
-
+    #this is not strictly correct I think in the context of combining gaylord's formalism with scattering matrices
     V = np.matmul(W,Q); #H field modes
     #V = np.matmul()
     # print('conditioning analysis');
