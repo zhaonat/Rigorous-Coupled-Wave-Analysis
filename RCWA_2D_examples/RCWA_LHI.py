@@ -23,7 +23,6 @@ solve RCWA for a LHI
 'it appears there are pathological cases where bad conditioning is unavoidable'
 'EMPy seems to avoid it by injecting noise into the K matrices...
 
-
 '''
 
 #% General Units

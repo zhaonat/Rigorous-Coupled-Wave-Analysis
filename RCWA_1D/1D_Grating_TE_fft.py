@@ -94,8 +94,8 @@ indices = np.arange(-num_ord, num_ord+1)
 
 n_ridge = 3.48; #3.48;              # ridge
 n_groove = 1;                # groove
-lattice_constant = 0.7* L0;  # SI units
-d = 0.46 * L0;  # thickness
+lattice_constant = 0.7;  # SI units
+d = 0.46;  # thickness
 
 Nx = 2*256;
 eps_r = n_groove**2*np.ones((2*Nx, 1)); #put in a lot of points in eps_r
@@ -143,7 +143,7 @@ for prow in range(2 * num_ord + 1):
 
 # E is now the convolution of fourier amplitudes
 for wave in wavelength_scan:
-    lam0 = wave*L0;     k0 = 2*np.pi/lam0; #free space wavelength in SI units
+    lam0 = wave;     k0 = 2*np.pi/lam0; #free space wavelength in SI units
     print('wavelength: '+str(wave));
     ## =====================STRUCTURE======================##
 
@@ -161,13 +161,13 @@ for wave in wavelength_scan:
 
     ## construct matrix of Gamma^2 ('constant' term in ODE):
     PQ = KX**2 - E; #conditioning of this matrix is not bad, A SHOULD BE SYMMETRIC
-    #Q =
+    PQ = E - KX**2
     #sum of a symmetric matrix and a diagonal matrix should be symmetric;
 
     eigenvals, W = LA.eig(PQ); #A is negative symmetric...but eigh only works on positive symmetric
 
     #conditioning of q is not good
-    q = np.conj(np.sqrt((eigenvals.astype('complex')))); #in the paper, it says 'positive square root', as if it expects the numbers to be real > 0
+    q = (np.sqrt((eigenvals.astype('complex')))); #in the paper, it says 'positive square root', as if it expects the numbers to be real > 0
                                  # typically, it is this array which has a huge range of values, which makes life shitty
 
     # plt.figure()
@@ -177,17 +177,11 @@ for wave in wavelength_scan:
 
     ## ================================================================================================##
     #exp(iQr), negative sign for negative sign convention
-    Q = np.diag(-q); #SIGN OF THE EIGENVALUES IS HUGELY IMPORTANT, but why is it negative for this?
+    Q = np.diag(q); #SIGN OF THE EIGENVALUES IS HUGELY IMPORTANT, but why is it negative for this?
     ## ================================================================================================##
 
     #this is not strictly correct I think in the context of combining gaylord's formalism with scattering matrices
     V = np.matmul(W,Q); #H field modes
-    #V = np.matmul()
-    # print('conditioning analysis');
-    # print(lam0)
-    # print(cond(W))
-    # print(cond(V)) #bad conditioning
-    # print(cond(Q)) #bad
 
     # plt.figure();
     # for i in range(len(W)):
@@ -227,13 +221,13 @@ for wave in wavelength_scan:
     ## construct global scattering matrices
     Sg = Sr_dict;
     Sg_matrix, Sg = rs.RedhefferStar(Sg, S_dict);
-    Sg_m, Sg = rs.RedhefferStar(Sg, St_dict)
+    Sg_matrix, Sg = rs.RedhefferStar(Sg, St_dict)
 
     #check scattering matrix is unitary
-    print(np.linalg.norm(Sg_m*Sg_m.I - np.matrix(np.eye(2*(2*num_ord+1)))))
+    print(np.linalg.norm(Sg_matrix*Sg_matrix.I - np.matrix(np.eye(2*(2*num_ord+1)))))
 
     ## ======================== CALCULATE R AND T ===============================##
-    K_inc_vector = k0 * np.matrix([np.sin(theta_inc), \
+    K_inc_vector = n1 * np.matrix([np.sin(theta_inc), \
                                          0, np.cos(theta_inc)]);
 
     # print(cinc.shape)

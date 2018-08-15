@@ -34,7 +34,7 @@ def homogeneous_1D(Kx, e_r, m_r = 1):
     :param m_r:
     :return:
     '''
-    i = cmath.sqrt(-1);
+    j = cmath.sqrt(-1);
 
     I = np.identity(len(Kx));
     P = e_r*I - Kx**2;
@@ -43,7 +43,7 @@ def homogeneous_1D(Kx, e_r, m_r = 1):
     arg = arg.astype('complex');
 
     Kz = np.conj(np.sqrt(arg)); #conjugate enforces the negative sign convention (we also have to conjugate er and mur if they are complex)
-    eigenvalues = i*Kz #determining the modes of ex, ey... so it appears eigenvalue order MATTERS...
+    eigenvalues = j*Kz #determining the modes of ex, ey... so it appears eigenvalue order MATTERS...
     V = np.matmul(Q,eigenvalues); #eigenvalue order is arbitrary (hard to compare with matlab
     return np.matrix(I),np.matrix(V), np.matrix(Kz)
 

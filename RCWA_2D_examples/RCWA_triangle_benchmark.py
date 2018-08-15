@@ -6,6 +6,7 @@ from TMM_functions import scatter_matrices as sm
 from RCWA_functions import redheffer_star as rs
 from scipy import linalg as LA
 from numpy.linalg import cond
+import time
 import numpy as np;
 from RCWA_functions import rcwa_initial_conditions as ic
 
@@ -17,6 +18,7 @@ used in conjunction with CEM EMLab triangle to check for correctness
 3x3 spatial harmonics
 Currently 2nd Homogeneous layer giving us some problems
 '''
+t0 = time.time()
 
 meters = 1;
 centimeters= 1e-2*meters;
@@ -93,14 +95,14 @@ for ny_ind  in np.arange(ny1, ny2+1):
 # plt.imshow(ER[:,:,0])
 # plt.colorbar()
 # plt.show()
-Af = np.fft.fftshift(np.fft.fft2(ER[:,:,0]));
-plt.figure();
-plt.subplot(121)
-plt.imshow(np.log(abs(Af))); #note that the fft HAS A HUGE RANGE OF VALUES, which can become a source of inaccuracy
-plt.colorbar()
-plt.subplot(122)
-plt.imshow(np.abs(ER[:,:,0]))
-plt.show();
+# Af = np.fft.fftshift(np.fft.fft2(ER[:,:,0]));
+# plt.figure();
+# plt.subplot(121)
+# plt.imshow(np.log(abs(Af))); #note that the fft HAS A HUGE RANGE OF VALUES, which can become a source of inaccuracy
+# plt.colorbar()
+# plt.subplot(122)
+# plt.imshow(np.abs(ER[:,:,0]))
+# plt.show();
 ## conv matrices of the 1st
 E_conv = np.matrix(cm.convmat2D(ER[:, :, 0], PQ[0], PQ[1]));
 np.set_printoptions(precision = 4)
@@ -208,3 +210,9 @@ print('final transmission: '+str(np.sum(T)))
 print('sum of R and T: '+str(np.sum(R)+np.sum(T)))
 
 ## if the sum isn't 1, that's a PROBLEM
+t1 = time.time()
+
+print('time: '+str(abs(t1-t0)))
+
+## times
+# 08/15/2018: 0.3 down to 0.19

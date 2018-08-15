@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import linalg as LA
-
+from numpy.linalg import solve as bslash
 
 ## NOTE: * operator does NOT PERFORM MATRIX MULTIPLICATION IN PYTHON UNLESS the matrices are np.matrix objects
 
@@ -21,7 +21,9 @@ def A(W_layer, Wg, V_layer, Vg): # PLUS SIGN
     assert type(V_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
     assert type(Vg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
 
-    A = np.linalg.inv(W_layer) * Wg + np.linalg.inv(V_layer) * Vg;
+    #A = np.linalg.inv(W_layer) * Wg + np.linalg.inv(V_layer) * Vg;
+    A = bslash(W_layer, Wg) + bslash(V_layer, Vg);
+
     return A;
 
 def B(W_layer, Wg, V_layer, Vg): #MINUS SIGN
@@ -39,7 +41,9 @@ def B(W_layer, Wg, V_layer, Vg): #MINUS SIGN
     assert type(V_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
     assert type(Vg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
 
-    B = np.linalg.inv(W_layer) * Wg - np.linalg.inv(V_layer) * Vg;
+    #B = np.linalg.inv(W_layer) * Wg - np.linalg.inv(V_layer) * Vg;
+    B = bslash(W_layer,Wg) - bslash(V_layer, Vg);
+
     return B;
 
 
@@ -72,20 +76,26 @@ def S_layer(A,B, Li, k0, modes):
     :param B: function B
     :param k0 #free -space wavevector magnitude (normalization constant) in Si Units
     :param Li #length of ith layer (in Si units)
+    :param modes, eigenvalue matrix
     :return: S (4x4 scatter matrix) and Sdict, which contains the 2x2 block matrix as a dictionary
     '''
     assert type(A) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
     assert type(B) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
 
     #sign convention (EMLAB is exp(-1i*k\dot r))
-    X_i = LA.expm(-modes * Li * k0);  # k and L are in Si Units
-    #X_i could be a problem in RCWA
+    X_i = np.diag(np.exp(-np.diag(modes)*Li*k0)); #never use expm
 
-    term1 = (A - X_i * B * A.I * X_i * B).I
-    S11 = term1 * (X_i * B * A.I * X_i * A - B);
-    S12 = term1 * (X_i) * (A - B * A.I * B);
+    #term1 = (A - X_i * B * A.I * X_i * B).I
+    # S11 = term1 * (X_i * B * A.I * X_i * A - B);
+    # S12 = term1 * (X_i) * (A - B * A.I * B);
+    # S22 = S11;
+    # S21 = S12;
+    term1 = (A - X_i * B * bslash(A, X_i) * B)
+    S11 = bslash(term1, (X_i * B * A.I * X_i * A - B));
+    S12 = bslash(term1, (X_i) * (A - B * bslash(A, B)));
     S22 = S11;
     S21 = S12;
+
     S_dict = {'S11': S11, 'S22': S22,  'S12': S12,  'S21': S21};
     S = np.block([[S11, S12], [S21, S22]]);
     return S, S_dict;
@@ -102,10 +112,15 @@ def S_R(Ar, Br):
     assert type(Ar) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
     assert type(Br) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
 
+    #
+    # S11 = -np.linalg.inv(Ar) * Br;
+    # S12 = 2*np.linalg.inv(Ar);
+    # S21 = 0.5*(Ar - Br * np.linalg.inv(Ar) * Br);
+    # S22 = Br * np.linalg.inv(Ar)
 
-    S11 = -np.linalg.inv(Ar) * Br;
+    S11 = -bslash(Ar,Br);
     S12 = 2*np.linalg.inv(Ar);
-    S21 = 0.5*(Ar - Br * np.linalg.inv(Ar) * Br);
+    S21 = 0.5*(Ar - Br * bslash(Ar,Br));
     S22 = Br * np.linalg.inv(Ar)
     S_dict = {'S11': S11, 'S22': S22,  'S12': S12,  'S21': S21};
     S = np.block([[S11, S12], [S21, S22]]);
@@ -122,10 +137,14 @@ def S_T(At, Bt):
     assert type(At) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
     assert type(Bt) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
 
+    # S11 = (Bt) * np.linalg.inv(At);
+    # S21 = 2*np.linalg.inv(At);
+    # S12 = 0.5*(At - Bt * np.linalg.inv(At) * Bt);
+    # S22 = - np.linalg.inv(At)*Bt
     S11 = (Bt) * np.linalg.inv(At);
     S21 = 2*np.linalg.inv(At);
-    S12 = 0.5*(At - Bt * np.linalg.inv(At) * Bt);
-    S22 = - np.linalg.inv(At)*Bt
+    S12 = 0.5*(At - Bt * bslash(At,Bt));
+    S22 = - bslash(At,Bt)
     S_dict = {'S11': S11, 'S22': S22,  'S12': S12,  'S21': S21};
     S = np.block([[S11, S12], [S21, S22]]);
     return S, S_dict;

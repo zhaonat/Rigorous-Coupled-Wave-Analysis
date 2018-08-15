@@ -72,7 +72,7 @@ def P_Q_kz(Kx, Ky, e_conv, mu_conv):
     '''
     argument = e_conv - Kx ** 2 - Ky ** 2
     Kz = np.conj(np.sqrt(argument.astype('complex')));
-    q = Q_matrix(Kx, Ky, e_conv, mu_conv)
+    q = Q_matrix_2(Kx, Ky, e_conv, mu_conv)
     p = P_matrix_2(Kx, Ky, e_conv, mu_conv)
 
     return p, q, Kz;
