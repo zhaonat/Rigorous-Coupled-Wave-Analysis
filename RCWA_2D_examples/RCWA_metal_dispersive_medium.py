@@ -88,10 +88,12 @@ for wvlen in wavelengths:
 
 ref = np.array(ref);
 tran = np.array(tran);
+absorption = 1-(ref+tran);
 plt.figure();
 plt.plot(wavelengths, ref);
 plt.plot(wavelengths, tran);
 plt.plot(wavelengths, 1-(ref+tran))
+plt.plot(wavelengths, ref+tran+absorption);
 plt.legend(('ref', 'tran', 'abs'))
 
 plt.show()

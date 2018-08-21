@@ -225,7 +225,8 @@ for i in range(len(wavelengths)): #in SI units
     t_sq = np.square(np.abs(tx)) + np.square(np.abs(ty)) + np.square(np.abs(tz));
     R = np.real(kzr) * r_sq / np.real(kz_inc);
     T = np.real(kz_trans) * t_sq / (np.real(kz_inc));
-
+    ref.append(np.sum(R));
+    trans.append(np.sum(T))
 
 
 ref = np.array(ref);
