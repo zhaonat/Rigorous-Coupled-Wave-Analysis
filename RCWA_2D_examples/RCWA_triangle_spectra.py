@@ -218,7 +218,7 @@ for i in range(len(wavelengths)): #in SI units
     rz = kzr.I * (Kx * rx + Ky * ry);
     tz = kz_trans.I * (Kx * tx + Ky * ty)
 
-    ## we need to do some reshaping at some point
+    ## we need to do some reshaping at some point                         nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn
 
     ## apparently we're not done...now we need to compute 'diffraction efficiency'
     r_sq = np.square(np.abs(rx)) + np.square(np.abs(ry)) + np.square(np.abs(rz));

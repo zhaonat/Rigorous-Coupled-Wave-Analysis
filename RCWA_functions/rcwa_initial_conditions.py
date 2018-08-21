@@ -3,13 +3,16 @@ import numpy as np
 def delta_vector(P, Q):
     '''
         create a vector with a 1 corresponding to the 0th order
+        #input P = 2*(num_ord_specified)+1
     '''
-    vector = np.zeros((P*Q,));
-
-    #the index of the (0,0) element requires a conversion using sub2ind
-    index = int(P/2)*P + int(Q/2);
-    vector[index] = 1
-    return vector;
+    fourier_grid = np.zeros((P,Q))
+    fourier_grid[int(P/2), int(Q/2)] = 1;
+    # vector = np.zeros((P*Q,));
+    #
+    # #the index of the (0,0) element requires a conversion using sub2ind
+    # index = int(P/2)*P + int(Q/2);
+    vector = fourier_grid.flatten();
+    return np.matrix(np.reshape(vector, (1,len(vector))));
 
 def delta_vector_1D(P):
     '''
