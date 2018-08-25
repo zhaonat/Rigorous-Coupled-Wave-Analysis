@@ -104,14 +104,14 @@ for ny_ind  in np.arange(ny1, ny2+1):
 # plt.imshow(np.abs(ER[:,:,0]))
 # plt.show();
 ## conv matrices of the 1st
-E_conv = np.matrix(cm.convmat2D(ER[:, :, 0], PQ[0], PQ[1]));
+E_conv = (cm.convmat2D(ER[:, :, 0], PQ[0], PQ[1]));
 np.set_printoptions(precision = 4)
 print(E_conv)
-mu_conv = np.matrix(np.identity(NH));
+mu_conv = (np.identity(NH));
 
 ## Build the second layer (uniform)
-URC2 = np.matrix(np.identity(NH))
-ERC2= erd*np.matrix(np.identity(NH));
+URC2 =  (np.identity(NH))
+ERC2= erd*(np.identity(NH));
 
 
 ## BUILD THE K_MATRIX
@@ -120,8 +120,7 @@ ky_inc = n_i * np.sin(theta) * np.sin(phi);  # constant in ALL LAYERS; ky = 0 fo
 kz_inc = cmath.sqrt(n_i**2 - kx_inc ** 2 - ky_inc ** 2);
 
 Kx, Ky = km.K_matrix_cubic_2D(kx_inc, ky_inc, k0, Lx, Ly,  PQ[0], PQ[1]);
-Kx = Kx.todense();
-Ky = Ky.todense();
+
 
 #gap media
 Wg, Vg, Kzg = hl.homogeneous_module(Kx, Ky, 1);

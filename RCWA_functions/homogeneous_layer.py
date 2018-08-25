@@ -7,9 +7,8 @@ def homogeneous_module(Kx, Ky, e_r, m_r = 1):
     homogeneous layer is much simpler to do, so we will create an isolated module to deal with it
     :return:
     '''
-    assert type(Kx) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(Ky) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-
+    assert type(Kx) == np.ndarray, 'not np.array'
+    assert type(Ky) == np.ndarray, 'not np.array'
     j = cmath.sqrt(-1);
     N = len(Kx);
     I = np.matrix(np.identity(N));
@@ -45,7 +44,7 @@ def homogeneous_1D(Kx, e_r, m_r = 1):
     Kz = np.conj(np.sqrt(arg)); #conjugate enforces the negative sign convention (we also have to conjugate er and mur if they are complex)
     eigenvalues = j*Kz #determining the modes of ex, ey... so it appears eigenvalue order MATTERS...
     V = np.matmul(Q,eigenvalues); #eigenvalue order is arbitrary (hard to compare with matlab
-    return np.matrix(I),np.matrix(V), np.matrix(Kz)
+    return I,V, Kz
 
 
 

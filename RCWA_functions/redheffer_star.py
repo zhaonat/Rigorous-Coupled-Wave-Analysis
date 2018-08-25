@@ -40,13 +40,13 @@ def RedhefferStar(SA,SB): #SA and SB are both 2x2 block matrices;
     # SAB_21 = SB_21*F*SA_21;
     # SAB_22 = SB_22 + SB_21*F*SA_22*SB_12;
 
-    D = (I-SB_11*SA_22);
-    F = (I-SA_22*SB_11);
+    D = (I-SB_11@SA_22);
+    F = (I-SA_22@SB_11);
 
-    SAB_11 = SA_11 + SA_12*bslash(D,SB_11)*SA_21;
-    SAB_12 = SA_12*bslash(D,SB_12);
-    SAB_21 = SB_21*bslash(F,SA_21);
-    SAB_22 = SB_22 + SB_21*bslash(F,SA_22)*SB_12;
+    SAB_11 = SA_11 + SA_12@bslash(D,SB_11)@SA_21;
+    SAB_12 = SA_12@bslash(D,SB_12);
+    SAB_21 = SB_21@bslash(F,SA_21);
+    SAB_22 = SB_22 + SB_21@bslash(F,SA_22)@SB_12;
 
     SAB = np.block([[SAB_11, SAB_12],[SAB_21, SAB_22]])
     SAB_dict = {'S11': SAB_11, 'S22': SAB_22,  'S12': SAB_12,  'S21': SAB_21};

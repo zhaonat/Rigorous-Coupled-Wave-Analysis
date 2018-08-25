@@ -26,8 +26,8 @@ def K_matrix_cubic_2D(beta_x, beta_y, k0, a_x, a_y, N_p, N_q):
     kx, ky = np.meshgrid(k_x, k_y); #this is the N_p x N_q grid
     # final matrix should be sparse...since it is diagonal at most
     #order in flatten actually doesn't matter in the end
-    Kx = sparse.diags(kx.flatten(order = 'C')); #default is C or column major
-    Ky = sparse.diags(ky.flatten(order = 'C'))
+    Kx = np.diag(kx.flatten(order = 'C')); #default is C or column major
+    Ky = np.diag(ky.flatten(order = 'C'))
 
     return Kx, Ky
 

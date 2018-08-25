@@ -54,9 +54,6 @@ def run_RCWA_2D(lam0, theta, phi, ER, UR, layer_thicknesses, lattice_constants, 
 
     # remember, these Kx and Ky come out already normalized
     Kx, Ky = km.K_matrix_cubic_2D(kx_inc, ky_inc, k0, Lx,Ly, N, M);  # Kx and Ky are diagonal but have a 0 on it
-    ## density Kx and Ky (for now)
-    Kx = Kx.todense();
-    Ky = Ky.todense();
 
     ## =============== K Matrices for gap medium =========================
     ## specify gap media (this is an LHI so no eigenvalue problem should be solved
