@@ -6,7 +6,7 @@ import cmath
 from numpy.linalg import cond
 plt.close("all")
 '''
-RCWA testing with a metal, which should match the spectra we showed in the RCWA_1D code.
+RCWA testing with an IMI (ins, metal ins) grating, which should match the spectra we showed in the RCWA_1D code.
 as in, if you make a 1D metallic strip and work in the TE polarization, you should notice a band-gap or a reflection
  stop band
 '''
@@ -24,12 +24,12 @@ e_r = 16;
 
 ## Specify number of fourier orders to use:
 #scalign with number of orders is pretty poor
-N = 12; M = 12;
+N = 1; M = 21;
 
 ## =============== Simulation Parameters =========================
 ## set wavelength scanning range
 #never want lattice constant and wavelength to match
-wavelengths = np.linspace(0.5, 3,313); #500 nm to 1000 nm #be aware of Wood's Anomalies
+wavelengths = np.linspace(0.8, 3, 250); #500 nm to 1000 nm #be aware of Wood's Anomalies
 
 ## drude parameters
 ## simulating a metal suffers errors ... even with loss added
@@ -47,16 +47,11 @@ for wvlen in wavelengths:
     # ============== build high resolution circle ==================
     Nx = 512;
     Ny = 512;
-    A = eps_drude*np.ones((Nx, Ny)); A = A.astype('complex')
+    A = e_r* np.ones((Nx, Ny)); A = A.astype('complex')
     x1 = int(Nx/2)-50; x2 = int(Nx/2)+50;
     y1 = int(Ny/2)-50; y2 = int(Ny/2)+50;
-    x1 = int(Nx/2)-150; x2 = int(Nx/2)+150;
-    y1 = int(Ny/2)-150; y2 = int(Ny/2)+150;
-    x1 = int(Nx/2)-220; x2 = int(Nx/2)+220;
-    y1 = int(Ny/2)-210; y2 = int(Ny/2)+210;
-    #A[x1:x2, :] = eps_drude;  ## A METALLIC HOLE...the fact that we have to recalculate the convolution
-                                         ## for every frequency is pretty sucky...
-    A[x1:x2, y1:y2] = e_r;   ## A METALLIC HOLE...the fact that we have to recalculate the convolution
+
+    A[:, y1:y2] = eps_drude;  ## A METALLIC HOLE...the fact that we have to recalculate the convolution
 
     # plt.imshow(np.abs(A));
     # plt.show();
@@ -80,8 +75,8 @@ for wvlen in wavelengths:
     normal_vector = np.array([0, 0, -1]) #positive z points down;
     ate_vector = np.matrix([0, 1, 0]); #vector for the out of plane E-field
     #ampltidue of the te vs tm modes (which are decoupled)
-    pte = 1/np.sqrt(2);
-    ptm = cmath.sqrt(-1)/np.sqrt(2);
+    pte = 1;#1/np.sqrt(2);    ; #TE which is Hz, Ex, Ey
+    ptm = 0; #cmath.sqrt(-1)/1; #TM mode, which is Ez, Hx, Hy
 
     lattice_constants = [a, a];
     e_half = [1,1];
@@ -97,7 +92,7 @@ absorption = 1-(ref+tran);
 
 plt.figure();
 plt.plot(wavelengths, np.real(epsilon_tracker));
-plt.plot(wavelengths, np.imag(epsilon_tracker));
+plt.plot(wavelengths, np.imag(epsilon_tracker))
 plt.title('drude metal epsilon')
 
 plt.figure();
@@ -105,8 +100,6 @@ plt.subplot(121);
 plt.imshow(np.abs(A))
 plt.subplot(122);
 plt.imshow(np.abs(E_r));
-plt.colorbar();
-
 
 plt.figure();
 plt.plot(wavelengths, ref);
