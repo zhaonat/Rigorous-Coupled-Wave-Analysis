@@ -215,3 +215,4 @@ print('time: '+str(abs(t1-t0)))
 
 ## times
 # 08/15/2018: 0.3 down to 0.19
+# 8/25/2018: conversion to array doesn't seem to help

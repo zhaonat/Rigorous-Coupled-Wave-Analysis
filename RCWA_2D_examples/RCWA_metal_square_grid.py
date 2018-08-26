@@ -24,7 +24,7 @@ e_r = 16;
 
 ## Specify number of fourier orders to use:
 #scalign with number of orders is pretty poor
-N = 12; M = 12;
+N = 10; M = 10;
 
 ## =============== Simulation Parameters =========================
 ## set wavelength scanning range

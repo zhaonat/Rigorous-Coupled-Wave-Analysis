@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3156230-ee27-4ac5-8769-122dc6654d3f" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/notebooks/speed_ups and enhancements.ipynb" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TE.py" afterPath="$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TE.py" />
       <change beforePath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_metal_square_grid.py" afterPath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_metal_square_grid.py" />
       <change beforePath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_benchmark.py" afterPath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_benchmark.py" />
-      <change beforePath="$PROJECT_DIR$/RCWA_functions/K_matrix.py" afterPath="$PROJECT_DIR$/RCWA_functions/K_matrix.py" />
-      <change beforePath="$PROJECT_DIR$/RCWA_functions/PQ_matrices.py" afterPath="$PROJECT_DIR$/RCWA_functions/PQ_matrices.py" />
-      <change beforePath="$PROJECT_DIR$/RCWA_functions/homogeneous_layer.py" afterPath="$PROJECT_DIR$/RCWA_functions/homogeneous_layer.py" />
-      <change beforePath="$PROJECT_DIR$/RCWA_functions/redheffer_star.py" afterPath="$PROJECT_DIR$/RCWA_functions/redheffer_star.py" />
-      <change beforePath="$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py" afterPath="$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,11 +20,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="750">
-      <file leaf-file-name="1D_Grating_Gaylord_TE.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="1D_Grating_Gaylord_TE.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TE.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="217" column="24" lean-forward="false" selection-start-line="217" selection-start-column="24" selection-end-line="217" selection-end-column="24" />
+            <state relative-caret-position="579">
+              <caret line="244" column="49" lean-forward="false" selection-start-line="244" selection-start-column="49" selection-end-line="244" selection-end-column="49" />
               <folding />
             </state>
           </provider>
@@ -58,9 +55,11 @@
       <file leaf-file-name="RCWA_triangle_benchmark.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_benchmark.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="10" column="56" lean-forward="true" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
-              <folding />
+            <state relative-caret-position="739">
+              <caret line="214" column="0" lean-forward="true" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RCWA_metal_square_grid.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RCWA_metal_square_grid.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_metal_square_grid.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="760">
-              <caret line="41" column="32" lean-forward="true" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
+            <state relative-caret-position="520">
+              <caret line="13" column="16" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -112,8 +111,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jupyter Notebook" />
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -157,7 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/TMM_functions/PQ_matrices.py" />
         <option value="$PROJECT_DIR$/convolution_matrices/test2D_convmat.py" />
         <option value="$PROJECT_DIR$/PWEM_2D_photonic_circle.py" />
         <option value="$PROJECT_DIR$/convolution_matrices/convmat2D.py" />
@@ -187,7 +185,6 @@
         <option value="$PROJECT_DIR$/RCWA_1D/1D_Grating_TE_EmLAB_analytic.py" />
         <option value="$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord.py" />
         <option value="$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TM.py" />
-        <option value="$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TE.py" />
         <option value="$PROJECT_DIR$/RCWA_photonic_circle.py" />
         <option value="$PROJECT_DIR$/RCWA_triangle_benchmark.py" />
         <option value="$PROJECT_DIR$/RCWA_triangle.py" />
@@ -203,11 +200,13 @@
         <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_hybrid_grating_2D.py" />
         <option value="$PROJECT_DIR$/RCWA_functions/redheffer_star.py" />
         <option value="$PROJECT_DIR$/RCWA_functions/K_matrix.py" />
-        <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_benchmark.py" />
         <option value="$PROJECT_DIR$/RCWA_functions/homogeneous_layer.py" />
         <option value="$PROJECT_DIR$/RCWA_functions/PQ_matrices.py" />
         <option value="$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py" />
+        <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_benchmark.py" />
         <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_metal_square_grid.py" />
+        <option value="$PROJECT_DIR$/notebooks/speed_ups and enhancements.ipynb" />
+        <option value="$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TE.py" />
       </list>
     </option>
   </component>
@@ -242,12 +241,7 @@
             <path>
               <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
               <item name="RCWA" type="462c0819:PsiDirectoryNode" />
-              <item name="RCWA_2D_examples" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RCWA" type="462c0819:PsiDirectoryNode" />
-              <item name="RCWA_functions" type="462c0819:PsiDirectoryNode" />
+              <item name="RCWA_1D" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -287,7 +281,25 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.RCWA_metal_square_grid">
+  <component name="RunManager" selected="Python.1D_Grating_Gaylord_TE">
+    <configuration name="1D_Grating_Gaylord_TE" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RCWA_1D" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RCWA" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TE.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="RCWA_hybrid_grating_2D" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -301,24 +313,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RCWA" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_hybrid_grating_2D.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="RCWA_metal_dispersive_medium" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RCWA_2D_examples" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RCWA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_metal_dispersive_medium.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -396,19 +390,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Jupyter Notebook.RCWA" />
-      <item index="1" class="java.lang.String" itemvalue="Python.RCWA_metal_dispersive_medium" />
-      <item index="2" class="java.lang.String" itemvalue="Python.RCWA_triangle_benchmark" />
-      <item index="3" class="java.lang.String" itemvalue="Python.RCWA_metal_square_grid" />
-      <item index="4" class="java.lang.String" itemvalue="Python.run_RCWA_simulation" />
-      <item index="5" class="java.lang.String" itemvalue="Python.RCWA_hybrid_grating_2D" />
+      <item index="1" class="java.lang.String" itemvalue="Python.RCWA_triangle_benchmark" />
+      <item index="2" class="java.lang.String" itemvalue="Python.RCWA_metal_square_grid" />
+      <item index="3" class="java.lang.String" itemvalue="Python.run_RCWA_simulation" />
+      <item index="4" class="java.lang.String" itemvalue="Python.RCWA_hybrid_grating_2D" />
+      <item index="5" class="java.lang.String" itemvalue="Python.1D_Grating_Gaylord_TE" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.RCWA_metal_square_grid" />
-        <item index="1" class="java.lang.String" itemvalue="Python.RCWA_triangle_benchmark" />
-        <item index="2" class="java.lang.String" itemvalue="Python.RCWA_hybrid_grating_2D" />
-        <item index="3" class="java.lang.String" itemvalue="Python.run_RCWA_simulation" />
-        <item index="4" class="java.lang.String" itemvalue="Python.RCWA_metal_dispersive_medium" />
+        <item index="0" class="java.lang.String" itemvalue="Python.1D_Grating_Gaylord_TE" />
+        <item index="1" class="java.lang.String" itemvalue="Python.RCWA_metal_square_grid" />
+        <item index="2" class="java.lang.String" itemvalue="Python.RCWA_triangle_benchmark" />
+        <item index="3" class="java.lang.String" itemvalue="Python.RCWA_hybrid_grating_2D" />
+        <item index="4" class="java.lang.String" itemvalue="Python.run_RCWA_simulation" />
       </list>
     </recent_temporary>
   </component>
@@ -430,9 +424,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20031713" sideWeight="0.49668875" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20031713" sideWeight="0.49668875" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40307868" sideWeight="0.52956986" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -483,7 +476,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/RCWA_functions/scatter_matrices.py" />
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/numpy/lib/function_base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
@@ -546,13 +538,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2440">
           <caret line="61" column="56" lean-forward="true" selection-start-line="61" selection-start-column="56" selection-end-line="61" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/notebooks/TMM_example.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="2" />
         </state>
       </provider>
     </entry>
@@ -685,14 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TE.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="217" column="24" lean-forward="false" selection-start-line="217" selection-start-column="24" selection-end-line="217" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -793,7 +770,7 @@
         <state relative-caret-position="520">
           <caret line="73" column="33" lean-forward="false" selection-start-line="73" selection-start-column="33" selection-end-line="73" selection-end-column="33" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -822,14 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_benchmark.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="10" column="56" lean-forward="true" selection-start-line="10" selection-start-column="56" selection-end-line="10" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="800">
@@ -838,13 +807,45 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_benchmark.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="739">
+          <caret line="214" column="0" lean-forward="true" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/TMM_example.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notebooks/speed_ups and enhancements.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="0" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_metal_square_grid.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="41" column="32" lean-forward="true" selection-start-line="41" selection-start-column="32" selection-end-line="41" selection-end-column="32" />
+        <state relative-caret-position="520">
+          <caret line="13" column="16" lean-forward="true" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TE.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="579">
+          <caret line="244" column="49" lean-forward="false" selection-start-line="244" selection-start-column="49" selection-end-line="244" selection-end-column="49" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -239,6 +239,10 @@ for wvlen in wavelength_scan:
 plt.figure();
 plt.plot(wavelength_scan, spectra);
 plt.plot(wavelength_scan, spectra_T)
+plt.xlabel('wavelength (microns)')
+plt.ylabel('R/T')
+plt.title('sample RCWA spectra for a 1D grating')
+plt.savefig('../img/sample_1D_grating_spectra.png')
 # plt.legend(['reflection', 'transmission'])
 # plt.axhline(((3.48-1)/(3.48+1))**2,xmin=0, xmax = max(wavelength_scan))
 # plt.axhline(((3.48-1)/(3.48+1)),xmin=0, xmax = max(wavelength_scan), color='r')
