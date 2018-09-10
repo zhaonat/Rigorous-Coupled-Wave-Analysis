@@ -60,7 +60,6 @@ A[np.where(dist<cr)] = 1;
 ## =============== Convolution Matrices ==============
 E_r = cm.convmat2D(A, N,M)
 print(type(E_r))
-E_r = np.matrix(E_r)
 plt.figure();
 plt.imshow(abs(E_r), cmap = 'jet');
 plt.colorbar()
@@ -69,7 +68,7 @@ plt.show()
 ## ================== GEOMETRY OF THE LAYERS AND CONVOLUTIONS ==================##
 thickness_slab = 0.76; # in units of L0;
 ER = [E_r];
-UR = [np.matrix(np.identity(NM))];
+UR = [np.identity(NM)];
 layer_thicknesses = [thickness_slab]; #this retains SI unit convention
 
 ## =============== Simulation Parameters =========================
@@ -84,7 +83,7 @@ phi = 0 * degrees; #%azimuthal angle
 
 ## incident wave polarization
 normal_vector = np.array([0, 0, -1]) #positive z points down;
-ate_vector = np.matrix([0, 1, 0]); #vector for the out of plane E-field
+ate_vector = np.array([0, 1, 0]); #vector for the out of plane E-field
 #ampltidue of the te vs tm modes (which are decoupled)
 pte = 1/np.sqrt(2);
 ptm = cmath.sqrt(-1)/np.sqrt(2);
@@ -118,7 +117,6 @@ for i in range(len(wavelengths)): #in SI units
     #remember, these Kx and Ky come out already normalized
     Kx, Ky = km.K_matrix_cubic_2D(kx_inc, ky_inc, k0, a, a, N, M); #Kx and Ky are diagonal but have a 0 on it
     ## density Kx and Ky (for now)
-    Kx = Kx.todense();  Ky = Ky.todense();
 
     ## =============== K Matrices for gap medium =========================
     ## specify gap media (this is an LHI so no eigenvalue problem should be solved
@@ -146,7 +144,7 @@ for i in range(len(wavelengths)): #in SI units
         #longitudinal k_vector
         P, Q, kzl = pq.P_Q_kz(Kx, Ky, e_conv, mu_conv)
         kz_storage.append(kzl)
-        Gamma_squared = P*Q;
+        Gamma_squared = P@Q;
 
         ## E-field modes that can propagate in the medium, these are well-conditioned
         W_i, lambda_matrix = em.eigen_W(Gamma_squared);
@@ -178,17 +176,17 @@ for i in range(len(wavelengths)): #in SI units
 
     ## finally CONVERT THE GLOBAL SCATTERING MATRIX BACK TO A MATRIX
 
-    K_inc_vector = n_i *np.matrix([np.sin(theta) * np.cos(phi), \
+    K_inc_vector = n_i *np.array([np.sin(theta) * np.cos(phi), \
                                     np.sin(theta) * np.sin(phi), np.cos(theta)]);
 
     E_inc, cinc, Polarization = ic.initial_conditions(K_inc_vector, theta,  normal_vector, pte, ptm, N,M)
     # print(cinc.shape)
     # print(cinc)
 
-    cinc = Wr.I*cinc;
+    cinc = np.linalg.inv(Wr)@cinc;
     ## COMPUTE FIELDS: similar idea but more complex for RCWA since you have individual modes each contributing
-    reflected = Wr*Sg['S11']*cinc;
-    transmitted = Wt*Sg['S21']*cinc;
+    reflected = Wr@Sg['S11']@cinc;
+    transmitted = Wt@Sg['S21']@cinc;
 
     rx = reflected[0:NM, :]; # rx is the Ex component.
     ry = reflected[NM:, :];  #
@@ -196,16 +194,16 @@ for i in range(len(wavelengths)): #in SI units
     ty = transmitted[NM:, :];
 
     # longitudinal components; should be 0
-    rz = kzr.I * (Kx * rx + Ky * ry);
-    tz = kz_trans.I * (Kx * tx + Ky * ty)
+    rz = np.linalg.inv(kzr) @ (Kx @ rx + Ky @ ry);
+    tz = np.linalg.inv(kz_trans) @ (Kx @ tx + Ky @ ty)
 
     ## we need to do some reshaping at some point
 
     ## apparently we're not done...now we need to compute 'diffraction efficiency'
     r_sq = np.square(np.abs(rx)) +  np.square(np.abs(ry))+ np.square(np.abs(rz));
     t_sq = np.square(np.abs(tx)) +  np.square(np.abs(ty))+ np.square(np.abs(tz));
-    R = np.real(kzr) * r_sq / np.real(kz_inc);
-    T = np.real(kz_trans)*t_sq/(np.real(kz_inc));
+    R = np.real(kzr) @ r_sq / np.real(kz_inc); #division by a scalar
+    T = np.real(kz_trans)@t_sq/(np.real(kz_inc));
     ref.append(np.sum(R));
     trans.append(np.sum(T))
 

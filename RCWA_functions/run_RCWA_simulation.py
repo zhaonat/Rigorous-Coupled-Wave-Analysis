@@ -28,7 +28,7 @@ def run_RCWA_2D(lam0, theta, phi, ER, UR, layer_thicknesses, lattice_constants, 
     '''
     ## convention specifications
     normal_vector = np.array([0, 0, -1])  # positive z points down;
-    ate_vector = np.matrix([0, 1, 0]);  # vector for the out of plane E-field
+    ate_vector = np.array([0, 1, 0]);  # vector for the out of plane E-field
     ## ===========================
 
     Lx = lattice_constants[0];
@@ -82,7 +82,7 @@ def run_RCWA_2D(lam0, theta, phi, ER, UR, layer_thicknesses, lattice_constants, 
         # longitudinal k_vector
         P, Q, kzl = pq.P_Q_kz(Kx, Ky, e_conv, mu_conv)
         kz_storage.append(kzl)
-        Gamma_squared = P * Q;
+        Gamma_squared = P @ Q;
 
         ## E-field modes that can propagate in the medium, these are well-conditioned
         W_i, lambda_matrix = em.eigen_W(Gamma_squared);
@@ -115,17 +115,17 @@ def run_RCWA_2D(lam0, theta, phi, ER, UR, layer_thicknesses, lattice_constants, 
 
     ## finally CONVERT THE GLOBAL SCATTERING MATRIX BACK TO A MATRIX
 
-    K_inc_vector = n_i * np.matrix([np.sin(theta) * np.cos(phi), \
+    K_inc_vector = n_i * np.array([np.sin(theta) * np.cos(phi), \
                                     np.sin(theta) * np.sin(phi), np.cos(theta)]);
 
     E_inc, cinc, Polarization = ic.initial_conditions(K_inc_vector, theta, normal_vector, pte, ptm, N, M)
     # print(cinc.shape)
     # print(cinc)
 
-    cinc = Wr.I * cinc;
+    cinc = np.linalg.inv(Wr) @ cinc;
     ## COMPUTE FIELDS: similar idea but more complex for RCWA since you have individual modes each contributing
-    reflected = Wr * Sg['S11'] * cinc;
-    transmitted = Wt * Sg['S21'] * cinc;
+    reflected = Wr @ Sg['S11'] @ cinc;
+    transmitted = Wt @ Sg['S21'] @ cinc;
 
     rx = reflected[0:NM, :];  # rx is the Ex component.
     ry = reflected[NM:, :];  #
@@ -133,8 +133,8 @@ def run_RCWA_2D(lam0, theta, phi, ER, UR, layer_thicknesses, lattice_constants, 
     ty = transmitted[NM:, :];
 
     # longitudinal components; should be 0
-    rz = kzr.I * (Kx * rx + Ky * ry);
-    tz = kz_trans.I * (Kx * tx + Ky * ty)
+    rz = np.linalg.inv(kzr) @ (Kx @ rx + Ky @ ry);
+    tz = np.linalg.inv(kz_trans) @ (Kx @ tx + Ky @ ty)
 
     ## we need to do some reshaping at some point
 

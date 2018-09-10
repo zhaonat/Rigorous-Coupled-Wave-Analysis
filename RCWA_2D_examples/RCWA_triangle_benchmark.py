@@ -31,8 +31,7 @@ phi = 0
 pte = 1; #te polarized
 ptm = 0;
 normal_vector = np.array([0, 0, -1]) #positive z points down;
-ate_vector = np.matrix([0, 1, 0]); #vector for the out of plane E-field
-
+ate_vector = np.array([0, 1, 0]); #vector for the out of plane E-field
 k0 = 2*np.pi/lam0;
 print('k0: '+str(k0))
 # structure parameters
@@ -136,7 +135,7 @@ Sg = Sr_dict;
 ##               First LAYER (homogeneous)
 ## =======================================================================##
 P, Q, Kzl = pq.P_Q_kz(Kx, Ky, E_conv, mu_conv)
-omega_sq =  P * Q; ## no gaurantees this is hermitian or symmetric
+omega_sq =  P @ Q; ## no gaurantees this is hermitian or symmetric
 W1, lambda_matrix = em.eigen_W(omega_sq)
 V1 = em.eigen_V(Q, W1, lambda_matrix)
 A1, B1 = sm.A_B_matrices(W1, Wg, V1, Vg);
@@ -149,7 +148,7 @@ Sg_matrix, Sg = rs.RedhefferStar(Sg, S1_dict)
 
 ##check with PQ formalism, which is unnecessary
 P2, Q2, Kz2_check = pq.P_Q_kz(Kx, Ky, ERC2, URC2)
-omega_sq_2 =  P2 * Q2;
+omega_sq_2 =  P2 @ Q2;
 W2, lambda_matrix_2 = em.eigen_W(omega_sq_2) #somehow lambda_matrix is fine but W is full of errors
 V2 = em.eigen_V(Q2,W2,lambda_matrix_2);
 A2, B2 = sm.A_B_matrices(W2, Wg,V2, Vg);
@@ -169,14 +168,14 @@ print(Sg['S11'])
 
 ## ================START THE SSCATTERING CALCULATION ==========================##
 
-K_inc_vector = n_i * np.matrix([np.sin(theta) * np.cos(phi), \
+K_inc_vector = n_i * np.array([np.sin(theta) * np.cos(phi), \
                                      np.sin(theta) * np.sin(phi), np.cos(theta)]);
 E_inc, cinc, Polarization = ic.initial_conditions(K_inc_vector, theta, normal_vector, pte, ptm, PQ[0], PQ[1])
 
 
 ## COMPUTE FIELDS: similar idea but more complex for RCWA since you have individual modes each contributing
-reflected = Wr * Sg['S11'] * cinc;  # reflection coefficients for every mode...
-transmitted = Wt * Sg['S21'] * cinc;
+reflected = Wr @ Sg['S11'] @ cinc;  # reflection coefficients for every mode...
+transmitted = Wt @ Sg['S21'] @ cinc;
 
 ## these include only (rx, ry), (tx, ty), which is okay as these are the only components for normal incidence in LHI
 rx = reflected[0:NH, :];
@@ -185,8 +184,8 @@ tx = transmitted[0:NH, :];
 ty = transmitted[NH:, :];
 
 # longitudinal components; should be 0
-rz = Kzr.I * (Kx * rx + Ky * ry);
-tz = Kzt.I * (Kx * tx + Ky * ty)
+rz = np.linalg.inv(Kzr) @ (Kx @ rx + Ky @ ry);
+tz = np.linalg.inv(Kzt) @ (Kx @ tx + Ky @ ty)
 
 print('rx')
 print(rx)

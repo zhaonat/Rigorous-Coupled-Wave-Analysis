@@ -97,7 +97,7 @@ f = fourier_reconstruction(x, period, num_ord, n_ridge, n_groove, fill_factor)
 ##construct convolution matrix
 E = np.zeros((2 * num_ord + 1, 2 * num_ord + 1));
 E = E.astype('complex')
-p0 = Nx; #int(Nx/2);
+p0 = num_ord;
 p_index = np.arange(-num_ord, num_ord + 1);
 q_index = np.arange(-num_ord, num_ord + 1);
 fourier_array = fft_fourier_array; #_analytic;
@@ -135,19 +135,18 @@ for wave in wavelength_scan:
     q = np.conj(np.sqrt((eigenvals.astype('complex')))); #in the paper, it says 'positive square root', as if it expects the numbers to be real > 0
                                  # typically, it is this array which has a huge range of values, which makes life shitty
 
+    lambda_matrix = np.diag(q);
     # plt.figure()
     # plt.plot(q);
     # plt.title('eigenvalues')
     # plt.show()
 
     ## ================================================================================================##
-    #exp(iQr), negative sign for negative sign convention
-    #here, there is no np.exp()...hmmmm
-    Q = np.diag(-q); #SIGN OF THE EIGENVALUES IS HUGELY IMPORTANT, but why is it negative for this?
+    Q = E;
     ## ================================================================================================##
 
 
-    V = np.matmul(W,Q); #H field modes
+    V = np.matrix(np.matmul(Q,W)@np.diag(1/q)); #H field modes
 
     # print('conditioning analysis');
     # print(lam0)
@@ -192,22 +191,21 @@ for wave in wavelength_scan:
     Sg_m, Sg = rs.RedhefferStar(Sg, St_dict)
 
     #check scattering matrix is unitary
-    print(np.linalg.norm(Sg_m*Sg_m.I - np.matrix(np.eye(2*(2*num_ord+1)))))
+    #print(np.linalg.norm(Sg_m*Sg_m.I - np.matrix(np.eye(2*(2*num_ord+1)))))
 
     ## ======================== CALCULATE R AND T ===============================##
     K_inc_vector = k0 * np.matrix([np.sin(theta_inc), \
                                          0, np.cos(theta_inc)]);
-
     # print(cinc.shape)
     # print(cinc)
     #cinc is the incidence vector
     cinc = np.zeros((2*num_ord+1, ));
     cinc[num_ord] = 1;
     cinc = np.matrix(cinc).T
-    cinc = Wr.I * cinc;
+    cinc = np.linalg.inv(Wr) @ cinc;
     ## COMPUTE FIELDS: similar idea but more complex for RCWA since you have individual modes each contributing
-    reflected = Wr * Sg['S11'] * cinc;
-    transmitted = Wt * Sg['S21'] * cinc;
+    reflected = Wr @ Sg['S11'] * cinc;
+    transmitted = Wt @ Sg['S21'] * cinc;
 
     ## reflected is already ry or Ey
     rsq = np.power(abs(reflected),2);

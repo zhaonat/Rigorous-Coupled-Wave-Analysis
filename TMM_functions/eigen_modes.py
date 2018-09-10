@@ -16,7 +16,7 @@ def eigen_W(Gamma_squared):
     Lambda, W = np.linalg.eig(Gamma_squared);  # LAMBDa is effectively refractive index
     lambda_squared_matrix = np.diag(Lambda);
     lambda_matrix = np.sqrt(lambda_squared_matrix.astype('complex'));
-    return np.matrix(W), np.matrix(lambda_matrix)
+    return W, lambda_matrix
 
 def eigen_V(Q, W, lambda_matrix):
     #V = Q*W*(lambda)^-1
@@ -27,4 +27,4 @@ def eigen_V(Q, W, lambda_matrix):
     :param lambda_matrix: eigen values from W
     :return:
     '''
-    return Q*W*np.linalg.inv(lambda_matrix);
+    return Q@W@np.linalg.inv(lambda_matrix);

@@ -16,10 +16,10 @@ def A(W_layer, Wg, V_layer, Vg): # PLUS SIGN
     # or outsid eof it
     :return:
     '''
-    assert type(W_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(Wg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(V_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(Vg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    # assert type(W_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    # assert type(Wg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    # assert type(V_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    # assert type(Vg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
 
     #A = np.linalg.inv(W_layer) * Wg + np.linalg.inv(V_layer) * Vg;
     A = bslash(W_layer, Wg) + bslash(V_layer, Vg);
@@ -36,10 +36,11 @@ def B(W_layer, Wg, V_layer, Vg): #MINUS SIGN
     # or outsid eof it
     :return:
     '''
-    assert type(W_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(Wg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(V_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(Vg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+
+    # assert type(W_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    # assert type(Wg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    # assert type(V_layer) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    # assert type(Vg) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
 
     #B = np.linalg.inv(W_layer) * Wg - np.linalg.inv(V_layer) * Vg;
     B = bslash(W_layer,Wg) - bslash(V_layer, Vg);
@@ -79,8 +80,8 @@ def S_layer(A,B, Li, k0, modes):
     :param modes, eigenvalue matrix
     :return: S (4x4 scatter matrix) and Sdict, which contains the 2x2 block matrix as a dictionary
     '''
-    assert type(A) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(B) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    # assert type(A) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    # assert type(B) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
 
     #sign convention (EMLAB is exp(-1i*k\dot r))
     X_i = np.diag(np.exp(-np.diag(modes)*Li*k0)); #never use expm
@@ -90,9 +91,9 @@ def S_layer(A,B, Li, k0, modes):
     # S12 = term1 * (X_i) * (A - B * A.I * B);
     # S22 = S11;
     # S21 = S12;
-    term1 = (A - X_i * B * bslash(A, X_i) * B)
-    S11 = bslash(term1, (X_i * B * A.I * X_i * A - B));
-    S12 = bslash(term1, (X_i) * (A - B * bslash(A, B)));
+    term1 = (A - X_i @ B @ bslash(A, X_i) @ B)
+    S11 = bslash(term1, (X_i @ B @ bslash(A,X_i) @ A - B));
+    S12 = bslash(term1, (X_i) @ (A - B @ bslash(A, B)));
     S22 = S11;
     S21 = S12;
 
@@ -109,8 +110,8 @@ def S_R(Ar, Br):
     :param Br:
     :return:
     '''
-    assert type(Ar) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(Br) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    # assert type(Ar) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    # assert type(Br) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
 
     #
     # S11 = -np.linalg.inv(Ar) * Br;
@@ -120,8 +121,8 @@ def S_R(Ar, Br):
 
     S11 = -bslash(Ar,Br);
     S12 = 2*np.linalg.inv(Ar);
-    S21 = 0.5*(Ar - Br * bslash(Ar,Br));
-    S22 = Br * np.linalg.inv(Ar)
+    S21 = 0.5*(Ar - Br @ bslash(Ar,Br));
+    S22 = Br @ np.linalg.inv(Ar)
     S_dict = {'S11': S11, 'S22': S22,  'S12': S12,  'S21': S21};
     S = np.block([[S11, S12], [S21, S22]]);
     return S, S_dict;
@@ -134,16 +135,16 @@ def S_T(At, Bt):
     :param Bt:
     :return:
     '''
-    assert type(At) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
-    assert type(Bt) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    # assert type(At) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
+    # assert type(Bt) == np.matrixlib.defmatrix.matrix, 'not np.matrix'
 
     # S11 = (Bt) * np.linalg.inv(At);
     # S21 = 2*np.linalg.inv(At);
     # S12 = 0.5*(At - Bt * np.linalg.inv(At) * Bt);
     # S22 = - np.linalg.inv(At)*Bt
-    S11 = (Bt) * np.linalg.inv(At);
+    S11 = (Bt) @ np.linalg.inv(At);
     S21 = 2*np.linalg.inv(At);
-    S12 = 0.5*(At - Bt * bslash(At,Bt));
+    S12 = 0.5*(At - Bt @ bslash(At,Bt));
     S22 = - bslash(At,Bt)
     S_dict = {'S11': S11, 'S22': S22,  'S12': S12,  'S21': S21};
     S = np.block([[S11, S12], [S21, S22]]);

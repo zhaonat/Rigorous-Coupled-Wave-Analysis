@@ -57,14 +57,13 @@ for wvlen in wavelengths:
     # plt.show();
     ## =============== Convolution Matrices ==============
     E_r = cm.convmat2D(A, N, M)
-    E_r = np.matrix(E_r)
 
     NM = (2 * N + 1) * (2 * M + 1);
 
     ## ================== GEOMETRY OF THE LAYERS AND CONVOLUTIONS ==================##
     thickness_slab = 0.2;  # in units of L0;
     ER = [E_r];
-    UR = [np.matrix(np.identity(NM))];
+    UR = [np.identity(NM)];
     layer_thicknesses = [thickness_slab];  # this retains SI unit convention
 
     #source parameters
@@ -73,7 +72,7 @@ for wvlen in wavelengths:
 
     ## incident wave polarization
     normal_vector = np.array([0, 0, -1]) #positive z points down;
-    ate_vector = np.matrix([0, 1, 0]); #vector for the out of plane E-field
+    ate_vector = np.array([0, 1, 0]); #vector for the out of plane E-field
     #ampltidue of the te vs tm modes (which are decoupled)
     pte = 1;#1/np.sqrt(2);    ; #TE which is Hz, Ex, Ey
     ptm = 0; #cmath.sqrt(-1)/1; #TM mode, which is Ez, Hx, Hy
