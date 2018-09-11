@@ -1,28 +1,18 @@
-## same as the analytic case but with the fft
 import numpy as np
 import matplotlib.pyplot as plt
 from numpy.linalg import cond
 import cmath;
-from scipy.fftpack import fft, fftfreq, fftshift, rfft
-from scipy.fftpack import dst, idst
-from scipy.linalg import expm
+from numpy.linalg import solve as bslash
+from scipy.fftpack import fft, fftfreq, fftshift
 from TMM_functions import eigen_modes as em
 from TMM_functions import scatter_matrices as sm
 from RCWA_functions import redheffer_star as rs
 from RCWA_functions import rcwa_initial_conditions as ic
 from RCWA_functions import homogeneous_layer as hl
 from scipy import linalg as LA
-from numpy.linalg import solve as bslash
-
 # Moharam et. al Formulation for stable and efficient implementation for RCWA
 plt.close("all")
-'''
-1D TM implementation of PLANAR DIFFRACTiON
-only: sign convention is exp(-ikr) (is the positive propagating wave), so loss is +  not - 
-source for fourier decomps is from the paper: Formulation for stable and efficient implementation of
-the rigorous coupled-wave analysis of binary gratings by Moharam et. al
-'''
-
+np.set_printoptions(precision = 4)
 def grating_fourier_harmonics(order, fill_factor, n_ridge, n_groove):
     """ function comes from analytic solution of a step function in a finite unit cell"""
     #n_ridge = index of refraction of ridge (should be dielectric)
@@ -126,9 +116,7 @@ plt.plot(x,fft_reconstruct)
 plt.plot(x,analytic_reconstruct);
 plt.legend(['fft', 'analytic'])
 plt.show()
-
-## simulation parameters
-theta = (0)*np.pi/180;
+theta_inc = 0;
 spectra = list();
 spectra_T = list();
 
@@ -136,20 +124,18 @@ wavelength_scan = np.linspace(0.5,2.3,300)
 ## construct permittivity harmonic components E
 #fill factor = 0 is complete dielectric, 1 is air
 
+
 ##construct convolution matrix
-E = np.zeros((2 * num_ord + 1, 2 * num_ord + 1)); E = E.astype('complex')
-p0 = Nx; #int(Nx/2);
+E_conv = np.zeros((2 * num_ord + 1, 2 * num_ord + 1));
+E_conv = E_conv.astype('complex')
+p0 = Nx;
 p_index = np.arange(-num_ord, num_ord + 1);
-q_index = np.arange(-num_ord, num_ord + 1);
-fourier_array = fft_fourier_array;#fourier_array_analytic;
-detected_pffts = np.zeros_like(E);
+fourier_array = fft_fourier_array; #_analytic;
 for prow in range(2 * num_ord + 1):
     # first term locates z plane, 2nd locates y coumn, prow locates x
-    row_index = p_index[prow];
     for pcol in range(2 * num_ord + 1):
         pfft = p_index[prow] - p_index[pcol];
-        detected_pffts[prow, pcol] = pfft;
-        E[prow, pcol] = fourier_array[p0 + pfft];  # fill conv matrix from top left to top right
+        E_conv[prow, pcol] = fourier_array[p0 + pfft];  # fill conv matrix from top left to top right
 
 ## FFT of 1/e;
 inv_fft_fourier_array = grating_fft(1/eps_r);
@@ -164,106 +150,120 @@ for prow in range(2 * num_ord + 1):
         pfft = p_index[prow] - p_index[pcol];
         E_conv_inv[prow, pcol] = inv_fft_fourier_array[p0 + pfft];  # fill conv matrix from top left to top right
 
-## IMPORTANT TO NOTE: the indices for everything beyond this points are indexed from -num_ord to num_ord+1
-
-## alternate construction of 1D convolution matrix
-
-I = np.eye(2 * num_ord + 1)
-
+I = np.identity(2*num_ord+1);
 # E is now the convolution of fourier amplitudes
-for wvlen in wavelength_scan:
-    j = cmath.sqrt(-1);
-    lam0 = wvlen;     k0 = 2 * np.pi / lam0; #free space wavelength in SI units
-    print('wavelength: ' + str(wvlen));
+for lam0 in wavelength_scan:
+    k0 = 2*np.pi/lam0; #free space wavelength in SI units
+    print('wavelength: ' + str(lam0));
     ## =====================STRUCTURE======================##
 
-    ## Region I: reflected region (half space)
+    ## Region I
     n1 = 1;#cmath.sqrt(-1)*1e-12; #apparently small complex perturbations are bad in Region 1, these shouldn't be necessary
-
-    ## Region 2; transmitted region
+    ## Region 2; transmission
     n2 = 1;
 
     #from the kx_components given the indices and wvln
-    kx_array = k0*(n1*np.sin(theta) + indices*(lam0 / lattice_constant)); #0 is one of them, k0*lam0 = 2*pi
-    k_xi = kx_array;
+    #2 * np.pi * np.arange(-N_p, N_p + 1) / (k0 * a_x)
+    indices = np.arange(-num_ord, num_ord + 1)
+
+    kx_array = (n1*np.sin(theta_inc) + indices*(lam0 / lattice_constant)); #0 is one of them, k0*lam0 = 2*pi
+
     ## IMPLEMENT SCALING: these are the fourier orders of the x-direction decomposition.
-    KX = np.diag((k_xi/k0)); #singular since we have a n=0, m= 0 order and incidence is normal
+    KX = np.diag(kx_array); #singular since we have a n=0, m= 0 order and incidence is normal
 
     ## construct matrix of Gamma^2 ('constant' term in ODE):
-    A = bslash(E_conv_inv,KX*bslash(E, KX) - I); #conditioning of this matrix is not bad, A SHOULD BE SYMMETRIC
-    A = bslash(E_conv_inv,KX*bslash(E, KX) - I); #conditioning of this matrix is not bad, A SHOULD BE SYMMETRIC
+    #use fast fourier factorization rules here...
+    Q = I- KX @ bslash(E_conv, KX);
+    PQ = -bslash(E_conv_inv, Q);
 
-    #sum of a symmetric matrix and a diagonal matrix should be symmetric;
-
-    ##
-    # when we calculate eigenvals, how do we know the eigenvals correspond to each particular fourier order?
-    eigenvals, W = LA.eigh(A); #A should be symmetric or hermitian
+    ## ================================================================================================##
+    eigenvals, W = LA.eigh(PQ); #A should be symmetric or hermitian
     #we should be gauranteed that all eigenvals are REAL
     eigenvals = eigenvals.astype('complex');
-    Q = np.diag(np.sqrt(eigenvals)); #Q should only be positive square root of eigenvals
-    V = bslash(E,W)@Q; #H modes
+    lambda_matrix = np.diag((np.sqrt((eigenvals))));
 
-    ## this is the great typo which has killed us all this time
-    X = np.diag(np.exp(-k0*np.diag(Q)*d)); #this is poorly conditioned because exponentiation
-    ## pointwise exponentiation vs exponentiating a matrix
+    ## THIS NEGATIVE SIGN IS CRUCIAL, but I'm not sure why
+    V = -em.eigen_V(Q, W, lambda_matrix)
+    kz_inc = n1;
+    ## ================================================================================================##
 
-    ## observation: almost everything beyond this point is worse conditioned
-    k_I = k0**2*(n1**2 - (k_xi/k0)**2);                 #k_z in reflected region k_I,zi
-    k_II = k0**2*(n2**2 - (k_xi/k0)**2);   #k_z in transmitted region
-    k_I = k_I.astype('complex'); k_I = np.sqrt(k_I);
-    k_II = k_II.astype('complex'); k_II = np.sqrt(k_II);
-    Y_I = np.diag(k_I/k0);
-    Y_II = np.diag(k_II/k0);
-    delta_i0 = np.zeros((len(kx_array),1));
-    delta_i0[num_ord] = 1;
-    n_delta_i0 = delta_i0*j*n1*np.cos(theta);
+    ## scattering matrix needed for 'gap medium'
+    #if calculations shift with changing selection of gap media, this is BAD; it should not shift with choice of gap
+    Wg,Vg, Kzg = hl.homogeneous_1D(KX, 1, m_r = 1)
+    ## reflection medium
+    Wr,Vr, Kzr = hl.homogeneous_1D(KX, 1, m_r = 1)
+    ## transmission medium;
+    Wt,Vt, Kzt = hl.homogeneous_1D(KX, 1, m_r = 1)
 
-    ## design auxiliary variables: SEE derivation in notebooks: RCWA_note.ipynb
-    # we want to design the computation to avoid operating with X, particularly with inverses
-    # since X is the worst conditioned thing
+    ## S matrices for the reflection region
+    #Ar, Br = sm.A_B_matrices(Wg, Wr, Vg, Vr);
+    Ar, Br = sm.A_B_matrices_half_space(Wr, Wg, Vr, Vg);  # make sure this order is right
 
-    O = np.block([
-        [W, W],
-        [V,-V]
-    ]); #this is much better conditioned than S..
-    f = I;
-    g = j*Y_II; #all matrices
-    fg = np.concatenate((f,g),axis = 0)
-    ab = np.matmul(np.linalg.inv(O),fg);
-    a = ab[0:PQ,:];
-    b = ab[PQ:,:];
+    S_ref, Sr_dict = sm.S_R(Ar, Br);  # scatter matrix for the reflection region    ## calculating A and B matrices for scattering matrix
+    Sg = Sr_dict;
 
-    term = X @ a @ np.linalg.inv(b) @ X;
-    f = W @ (I+term);
-    g = V@(-I+term);
-    T = np.linalg.inv(j*np.matmul(Y_I,f)+g);
-    T = np.dot(T,(np.dot(j*Y_I,delta_i0)+n_delta_i0));
-    R = np.dot(f,T)-delta_i0;
-    T = np.dot(np.matmul(np.linalg.inv(b),X),T)
+    ## define S matrix for the GRATING REGION
+    A, B = sm.A_B_matrices(W, Wg,  V, Vg);
+    S, S_dict = sm.S_layer(A, B, d, k0, lambda_matrix)
+    Sg_matrix, Sg = rs.RedhefferStar(Sg, S_dict)
 
-    ## calculate diffraction efficiencies
-    #I would expect this number to be real...
-    DE_ri = R*np.conj(R)*np.real(np.expand_dims(k_I,1))/(k0*n1*np.cos(theta));
-    DE_ti = T*np.conj(T)*np.real(np.expand_dims(k_II,1))/(k0*n1*np.cos(theta));
+    ## define S matrices for the Transmission region
+    At, Bt = sm.A_B_matrices_half_space(Wt, Wg, Vt, Vg);  # make sure this order is right
+    St, St_dict = sm.S_T(At, Bt); #scatter matrix for the reflection region
+    Sg_matrix, Sg = rs.RedhefferStar(Sg, St_dict)
 
-    #print(np.sum(DE_ri))
-    spectra.append(np.sum(DE_ri)); #spectra_T.append(T);
-    spectra_T.append(np.sum(DE_ti))
+    #check scattering matrix is unitary
+    #print(np.linalg.norm(np.linalg.inv(Sg_matrix)@Sg_matrix - np.matrix(np.eye(2*(2*num_ord+1)))))
 
-spectra = np.array(spectra);
-spectra_T = np.array(spectra_T)
+    ## ======================== CALCULATE R AND T ===============================##
+    K_inc_vector =  n1*np.matrix([np.sin(theta_inc), \
+                                         0, np.cos(theta_inc)]);
+    #K_inc isn't even used for anyting...
+
+    #cinc is the incidence vector
+    cinc = np.zeros((2*num_ord+1, )); #only need one set...
+    cinc[num_ord] = 1;
+    cinc = cinc.T;
+    cinc = np.linalg.inv(Wr) @ cinc;
+    ## COMPUTE FIELDS: similar idea but more complex for RCWA since you have individual modes each contributing
+    reflected = Wr @ Sg['S11'] @ cinc;
+    transmitted = Wt @ Sg['S21'] @ cinc;
+
+    ## reflected is already ry or Ey
+    rsq = np.square(np.abs(reflected));
+    tsq = np.square(np.abs(transmitted));
+
+    ## compute final reflectivity
+    Rdiff = np.real(Kzr)@rsq/np.real(kz_inc); #real because we only want propagating components
+    Tdiff = np.real(Kzt)@tsq/np.real(kz_inc)
+    R = np.sum(Rdiff);
+    T = np.sum(Tdiff);
+
+    print(R);
+    spectra.append(R); #spectra_T.append(T);
+    spectra_T.append(T)
+
 plt.figure();
 plt.plot(wavelength_scan, spectra);
 plt.plot(wavelength_scan, spectra_T)
-plt.plot(wavelength_scan, spectra+spectra_T)
-# plt.legend(['reflection', 'transmission'])
-# plt.axhline(((3.48-1)/(3.48+1))**2,xmin=0, xmax = max(wavelength_scan))
-# plt.axhline(((3.48-1)/(3.48+1)),xmin=0, xmax = max(wavelength_scan), color='r')
-#
+plt.plot(wavelength_scan, np.array(spectra)+np.array(spectra_T))
+plt.legend(['reflection', 'transmission'])
 plt.show()
 
 
 
-
+# ## now we can form the linear system to solve for the amplitude coeffs
+# WV1 = np.block([[W, np.matmul(W,X)],[V, -np.matmul(V,X)]]);
+#
+# WV2 = np.block([[np.matmul(W,X), W],[np.matmul(V,X), -V]])
+#
+# print(WV1.shape)
+# '''
+# the conditioning of WV1 and WV2 cannot suck because we're going to invert one of them.
+# '''
+# print('condition of WV1: '+str(np.linalg.cond(WV1))) #condition number of this is HUGE!!! caused by X
+# print('condition of WV2: '+str(np.linalg.cond(WV2))) #condition number of this is HUGE!!!
+#
+# F1 = np.linalg.inv(WV1);
 
 

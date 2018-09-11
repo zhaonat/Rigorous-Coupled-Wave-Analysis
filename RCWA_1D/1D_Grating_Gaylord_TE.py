@@ -21,6 +21,8 @@ only: sign convention is exp(-ikr) (is the positive propagating wave), so loss i
 source for fourier decomps is from the paper: Formulation for stable and efficient implementation of
 the rigorous coupled-wave analysis of binary gratings by Moharam et. al
 '''
+np.set_printoptions(precision = 4)
+
 
 def grating_fourier_harmonics(order, fill_factor, n_ridge, n_groove):
     """ function comes from analytic solution of a step function in a finite unit cell"""
@@ -154,7 +156,7 @@ for prow in range(2 * num_ord + 1):
 
 ## alternate construction of 1D convolution matrix
 
-I = np.eye(2 * num_ord + 1)
+I = np.identity(2 * num_ord + 1)
 
 # E is now the convolution of fourier amplitudes
 for wvlen in wavelength_scan:
@@ -173,6 +175,7 @@ for wvlen in wavelength_scan:
     kx_array = k0*(n1*np.sin(theta) + indices*(lam0 / lattice_constant)); #0 is one of them, k0*lam0 = 2*pi
     k_xi = kx_array;
     ## IMPLEMENT SCALING: these are the fourier orders of the x-direction decomposition.
+    KX = np.diag(kx_array/k0);
     KX2 = np.diag(np.power((k_xi/k0),2)); #singular since we have a n=0, m= 0 order and incidence is normal
 
     ## construct matrix of Gamma^2 ('constant' term in ODE):
@@ -185,7 +188,7 @@ for wvlen in wavelength_scan:
     #we should be gauranteed that all eigenvals are REAL
     eigenvals = eigenvals.astype('complex');
     Q = np.diag(np.sqrt(eigenvals)); #Q should only be positive square root of eigenvals
-    V = np.matmul(W,Q); #H modes
+    V = W@Q; #H modes
 
     ## this is the great typo which has killed us all this time
     X = np.diag(np.exp(-k0*np.diag(Q)*d)); #this is poorly conditioned because exponentiation
@@ -226,11 +229,11 @@ for wvlen in wavelength_scan:
     T = np.dot(T,(np.dot(j*Y_I,delta_i0)+n_delta_i0));
     R = np.dot(f,T)-delta_i0;
     T = np.dot(np.matmul(np.linalg.inv(b),X),T)
-
     ## calculate diffraction efficiencies
     #I would expect this number to be real...
     DE_ri = R*np.conj(R)*np.real(np.expand_dims(k_I,1))/(k0*n1*np.cos(theta));
     DE_ti = T*np.conj(T)*np.real(np.expand_dims(k_II,1))/(k0*n1*np.cos(theta));
+    print(np.sum(DE_ri))
 
     #print(np.sum(DE_ri))
     spectra.append(np.sum(DE_ri)); #spectra_T.append(T);

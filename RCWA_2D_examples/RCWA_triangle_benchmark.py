@@ -4,7 +4,6 @@ from RCWA_functions import homogeneous_layer as hl
 from TMM_functions import eigen_modes as em
 from TMM_functions import scatter_matrices as sm
 from RCWA_functions import redheffer_star as rs
-from scipy import linalg as LA
 from numpy.linalg import cond
 import time
 import numpy as np;
@@ -122,7 +121,7 @@ Kx, Ky = km.K_matrix_cubic_2D(kx_inc, ky_inc, k0, Lx, Ly,  PQ[0], PQ[1]);
 
 
 #gap media
-Wg, Vg, Kzg = hl.homogeneous_module(Kx, Ky, 1);
+Wg, Vg, Kzg = hl.homogeneous_module(Kx, Ky, 2);
 
 ## Get Kzr and Kztrans
 Wr, Vr, Kzr = hl.homogeneous_module(Kx, Ky, er1);
@@ -196,8 +195,8 @@ print('rz'); print(rz)
 ## apparently we're not done...now we need to compute 'diffraction efficiency'
 r_sq = np.square(np.abs(rx)) + np.square(np.abs(ry)) + np.square(np.abs(rz));
 t_sq = np.square(np.abs(tx)) + np.square(np.abs(ty)) + np.square(np.abs(tz));
-R = np.real(Kzr) * r_sq / np.real(kz_inc);
-T = np.real(Kzt) * t_sq / (np.real(kz_inc));
+R = np.real(Kzr) @ r_sq / np.real(kz_inc);
+T = np.real(Kzt) @ t_sq / (np.real(kz_inc));
 
 print('final R vector-> matrix')
 print(np.reshape(R,(3,3))); #should be 3x3
