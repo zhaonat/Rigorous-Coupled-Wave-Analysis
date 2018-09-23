@@ -28,17 +28,14 @@ PQ = (2*P+1)*(2*Q+1)
 # ============== build high resolution waveguide array, non-dispersive ==================
 Nx = 512;
 Ny = 512;
-A = 4*np.ones((Nx, Ny));
-halfy = int(Ny / 2);
-A[halfy - 100:halfy + 100, :] = -12;
 
-## =============== Convolution Matrices ==============
-E_r = cm.convmat2D(A, P, Q);
 
 ## ======================== run band structure calc ==========================##
 kx_scan = np.linspace(1e-1, np.pi, 200)/ax;
 eps_tracker = [];
 omega_eig_store = [];
+omega_p = 0.72*np.pi*1e15;
+gamma = 5.5e12;
 for beta_x in kx_scan:
     beta_y = 0;
     Kx, Ky = km.K_matrix_cubic_2D(beta_x, beta_y, ax, ay, P, Q);
@@ -48,9 +45,15 @@ for beta_x in kx_scan:
     #
     # ## we can do a determination of a dispersive medium from here
     # #drude for example
-    # eps_drude = 1-omega_p**2/(omega**2-cmath.sqrt(-1)*gamma*omega);
-    # print(eps_drude); eps_tracker.append(eps_drude);
+    #eps_drude = 1-omega_p**2/(omega**2-cmath.sqrt(-1)*gamma*omega);
+    #print(eps_drude); eps_tracker.append(eps_drude);
 
+    epsilon = np.ones((Nx, Ny));
+    halfy = int(Ny / 2);
+    epsilon[halfy - 100:halfy + 100, :] = -12;
+
+    ## =============== Convolution Matrices ==============
+    E_r = cm.convmat2D(epsilon, P, Q);
 
     ## ===========================================================
 

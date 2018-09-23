@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3156230-ee27-4ac5-8769-122dc6654d3f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/TMM_examples/anisotropic.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/TMM_functions/anisotropic.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/PWEM_examples/infinite_waveguide_array.py" afterPath="$PROJECT_DIR$/PWEM_examples/infinite_waveguide_array.py" />
+      <change beforePath="$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py" afterPath="$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -33,7 +33,7 @@
       <file leaf-file-name="1D_Grating_Gaylord_TM.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="320">
               <caret line="21" column="100" lean-forward="false" selection-start-line="21" selection-start-column="100" selection-end-line="21" selection-end-column="100" />
               <folding>
                 <element signature="e#46#64#0" expanded="true" />
@@ -45,8 +45,8 @@
       <file leaf-file-name="anisotropic.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TMM_examples/anisotropic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+            <state relative-caret-position="440">
+              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -54,14 +54,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="anisotropic.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="anisotropic.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TMM_functions/anisotropic.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="1080">
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
               <folding>
                 <element signature="e#191#209#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="infinite_waveguide_array.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PWEM_examples/infinite_waveguide_array.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="569">
+              <caret line="51" column="24" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TMM_bragg_multilayer.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2292">
+              <caret line="70" column="29" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -157,7 +177,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/RCWA_1D/1D_Grating_EmLAB.py" />
         <option value="$PROJECT_DIR$/notebooks/TMM_example.ipynb" />
         <option value="$PROJECT_DIR$/TMM_multilayer.py" />
         <option value="$PROJECT_DIR$/TMM_bragg_multilayer.py" />
@@ -169,7 +188,6 @@
         <option value="$PROJECT_DIR$/fourier_functions/my_fft.py" />
         <option value="$PROJECT_DIR$/fourier_functions/test_dft.py" />
         <option value="$PROJECT_DIR$/RCWA_1D/1D_Grating_TE_EmLAB.py" />
-        <option value="$PROJECT_DIR$/PWEM_examples/infinite_waveguide_array.py" />
         <option value="$PROJECT_DIR$/PWEM_functions/PWEM_eigen_problem.py" />
         <option value="$PROJECT_DIR$/PWEM_functions/K_matrix.py" />
         <option value="$PROJECT_DIR$/PWEM_examples/PWEM_2D_photonic_circle.py" />
@@ -208,10 +226,12 @@
         <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_hybrid_grating_T_stack.py" />
         <option value="$PROJECT_DIR$/TMM_functions/anisotropic.py" />
         <option value="$PROJECT_DIR$/TMM_examples/anisotropic.py" />
+        <option value="$PROJECT_DIR$/PWEM_examples/infinite_waveguide_array.py" />
+        <option value="$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-14" />
     <option name="width" value="1948" />
     <option name="height" value="2074" />
@@ -232,8 +252,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -241,15 +259,12 @@
               <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
               <item name="RCWA" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RCWA" type="462c0819:PsiDirectoryNode" />
-              <item name="TMM_functions" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -257,17 +272,17 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../cs231n_tfR2N2" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\StanfordYearTwo\RCWA\RCWA_1D" />
-      <recent name="D:\StanfordYearTwo\RCWA\RCWA_functions" />
-      <recent name="D:\StanfordYearTwo\RCWA\notebooks" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\StanfordYearTwo\RCWA\img" />
       <recent name="D:\StanfordYearTwo\RCWA\RCWA_examples" />
       <recent name="D:\StanfordYearTwo\RCWA\PWEM_examples" />
       <recent name="D:\StanfordYearTwo\RCWA\TMM_examples" />
       <recent name="D:\StanfordYearTwo\RCWA" />
-      <recent name="D:\StanfordYearTwo\RCWA\structure_convolution" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\StanfordYearTwo\RCWA\RCWA_1D" />
+      <recent name="D:\StanfordYearTwo\RCWA\RCWA_functions" />
+      <recent name="D:\StanfordYearTwo\RCWA\notebooks" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -282,7 +297,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.anisotropic">
+  <component name="RunManager" selected="Python.TMM_bragg_multilayer">
     <configuration name="1D_Grating_Gaylord_TM" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -296,42 +311,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RCWA" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TM.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="1D_Grating_TE_scattering" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RCWA_1D" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RCWA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_1D/1D_Grating_TE_scattering.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
-    <configuration name="1D_Grating_TM_scattering" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RCWA_1D" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RCWA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_1D/1D_Grating_TM_scattering.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -355,6 +334,24 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
+    <configuration name="TMM_bragg_multilayer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TMM_examples" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RCWA" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
     <configuration name="anisotropic" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -368,6 +365,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RCWA" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TMM_examples/anisotropic.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="infinite_waveguide_array" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PWEM_examples" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RCWA" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PWEM_examples/infinite_waveguide_array.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -391,19 +406,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Jupyter Notebook.RCWA" />
-      <item index="1" class="java.lang.String" itemvalue="Python.1D_Grating_TE_scattering" />
-      <item index="2" class="java.lang.String" itemvalue="Python.1D_Grating_TM_scattering" />
-      <item index="3" class="java.lang.String" itemvalue="Python.RCWA_hybrid_grating_T_stack" />
-      <item index="4" class="java.lang.String" itemvalue="Python.1D_Grating_Gaylord_TM" />
-      <item index="5" class="java.lang.String" itemvalue="Python.anisotropic" />
+      <item index="1" class="java.lang.String" itemvalue="Python.RCWA_hybrid_grating_T_stack" />
+      <item index="2" class="java.lang.String" itemvalue="Python.1D_Grating_Gaylord_TM" />
+      <item index="3" class="java.lang.String" itemvalue="Python.anisotropic" />
+      <item index="4" class="java.lang.String" itemvalue="Python.infinite_waveguide_array" />
+      <item index="5" class="java.lang.String" itemvalue="Python.TMM_bragg_multilayer" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.anisotropic" />
-        <item index="1" class="java.lang.String" itemvalue="Python.RCWA_hybrid_grating_T_stack" />
-        <item index="2" class="java.lang.String" itemvalue="Python.1D_Grating_Gaylord_TM" />
-        <item index="3" class="java.lang.String" itemvalue="Python.1D_Grating_TM_scattering" />
-        <item index="4" class="java.lang.String" itemvalue="Python.1D_Grating_TE_scattering" />
+        <item index="0" class="java.lang.String" itemvalue="Python.TMM_bragg_multilayer" />
+        <item index="1" class="java.lang.String" itemvalue="Python.infinite_waveguide_array" />
+        <item index="2" class="java.lang.String" itemvalue="Python.anisotropic" />
+        <item index="3" class="java.lang.String" itemvalue="Python.RCWA_hybrid_grating_T_stack" />
+        <item index="4" class="java.lang.String" itemvalue="Python.1D_Grating_Gaylord_TM" />
       </list>
     </recent_temporary>
   </component>
@@ -424,19 +439,19 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-14" y="0" width="1948" height="2074" extended-state="0" />
+    <frame x="-14" y="0" width="1948" height="2074" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.0" sideWeight="0.49668875" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3295699" sideWeight="0.49668875" order="2" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40307868" sideWeight="0.52956986" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29304448" sideWeight="0.4768817" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2873432" sideWeight="0.4704301" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2873432" sideWeight="0.4704301" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29304448" sideWeight="0.4768817" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17970401" sideWeight="0.5033113" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17970401" sideWeight="0.5033113" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -542,13 +557,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PWEM_examples/infinite_waveguide_array.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1253">
-          <caret line="41" column="22" lean-forward="true" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PWEM_functions/PWEM_eigen_3D.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -560,13 +568,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="343">
           <caret line="1050" column="4" lean-forward="false" selection-start-line="1050" selection-start-column="4" selection-end-line="1050" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PWEM_functions/PWEM_eigen_problem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="14" column="12" lean-forward="false" selection-start-line="14" selection-start-column="12" selection-end-line="14" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -595,13 +596,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="766">
-          <caret line="64" column="39" lean-forward="true" selection-start-line="64" selection-start-column="39" selection-end-line="64" selection-end-column="39" />
         </state>
       </provider>
     </entry>
@@ -813,13 +807,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="14" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="320">
           <caret line="21" column="100" lean-forward="false" selection-start-line="21" selection-start-column="100" selection-end-line="21" selection-end-column="100" />
           <folding>
             <element signature="e#46#64#0" expanded="true" />
@@ -829,21 +822,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/TMM_examples/anisotropic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="440">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PWEM_functions/PWEM_eigen_problem.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="760">
+          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/TMM_functions/anisotropic.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="1080">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
           <folding>
             <element signature="e#191#209#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PWEM_examples/infinite_waveguide_array.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="51" column="24" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2292">
+          <caret line="70" column="29" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

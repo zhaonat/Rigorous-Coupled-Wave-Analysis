@@ -77,4 +77,8 @@ Ref, Tran = rTMM.run_TMM_simulation(wavelengths, polarization_amplitudes, k_inc,
 plt.figure();
 plt.plot(wavelengths/L0, Ref);
 plt.plot(wavelengths/L0, Tran);
+plt.title('Spectrum of a Bragg Mirror')
+plt.xlabel('wavelength ($\mu m$)')
+plt.ylabel('R/T')
+plt.savefig('bragg_TMM.png');
 plt.show();
