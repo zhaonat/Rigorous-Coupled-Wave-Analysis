@@ -10,6 +10,8 @@ Right now, the package is partitioned by the type of numerical method used. Exam
 
 ## First TMM
 TMM is usually the 'intellectual' precursor to RCWA. It assumes different layers but each layer has no structure (could be anisotropic however)
+A simple demonstration of TMM can be done by reproducing the spectrum of a Bragg grating.
+![Alt Text](./img/bragg_mirror.png)
 
 ## PWEM
 Plane wave expansion method is simply the solution of Maxwell's equations in Fourier space.
