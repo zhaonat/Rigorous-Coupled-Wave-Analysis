@@ -17,6 +17,7 @@ Simply clone the package into your local directory and you should be ready to go
 Right now, the package is partitioned by the type of numerical method used. Examples for each method are in the folder "method_name"_examples. These examples should give you a sense of how to use the simulation functions
 
 # Examples
+We show a few exemplary examples from each method to illustrate its functionality
 ## First TMM
 TMM is usually the 'intellectual' precursor to RCWA. It assumes different layers but each layer has no structure (could be anisotropic however)
 A simple demonstration of TMM can be done by reproducing the spectrum of a Bragg grating.
