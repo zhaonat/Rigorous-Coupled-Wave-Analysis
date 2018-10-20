@@ -1,9 +1,9 @@
 # Python Rigorous-Coupled-Wave-Analysis PACKAGE
-A collection of semi-analytic fourier series solutions for Maxwell's equations written in python.
+A collection of extremely inter-related semi-analytic fourier series solutions for Maxwell's equations written in python.
 This package actually contains three different methods:
-1) TMM: classical transfer matrix method
-2) Plane Wave Expansion Method: essentially solves Maxwell's equations in fourier space.
-3) RCWA: a synthesis of TMM and PWEM.
+1) TMM: classical transfer matrix method applicable for analyzing the propagation of light through uniform, finite thickness layers
+2) Plane Wave Expansion Method: essentially solves Maxwell's equations in k-space.
+3) RCWA: a synthesis of TMM and PWEM to analyze the transmission of light through layered structures with periodic patterning
 
 The organization of the package is centered around modules which can run a simulation for each of the three methods, given the correct inputs from the user. 
 
