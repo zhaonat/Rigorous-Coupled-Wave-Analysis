@@ -31,8 +31,12 @@ Plane wave expansion method is simply the solution of Maxwell's equations in Fou
 
 ## Transitioning to RCWA
 RCWA is a synthesis of TMM and PWEM in that it targets layered structures whereby each layer contains some sort of periodic pattern
+In this package, we implement RCWA to handle layers with periodicity along one direction (perpendicular to the propagation direction) or both.
 
 ![Alt Text](./img/sample_1D_grating_spectra.png)
+
+References
+https://www.osapublishing.org/josa/abstract.cfm?uri=josa-71-7-811
 
 ## Authors
 Nathan Zhao
