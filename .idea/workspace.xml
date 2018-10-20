@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3156230-ee27-4ac5-8769-122dc6654d3f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/PWEM_examples/PWEM_2D_photonic_circle.py" afterPath="$PROJECT_DIR$/PWEM_examples/PWEM_2D_photonic_circle.py" />
-      <change beforePath="$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TE.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TM.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/RCWA_1D/1D_Grating_TE_scattering.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/RCWA_1D/1D_Grating_TM_scattering.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/RCWA_1D/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py" afterPath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py" />
-      <change beforePath="$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py" afterPath="$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py" />
-      <change beforePath="$PROJECT_DIR$/TMM_examples/TMM_Drude.py" afterPath="$PROJECT_DIR$/TMM_examples/TMM_Drude.py" />
-      <change beforePath="$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py" afterPath="$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py" />
-      <change beforePath="$PROJECT_DIR$/TMM_functions/run_TMM_simulation.py" afterPath="$PROJECT_DIR$/TMM_functions/run_TMM_simulation.py" />
-      <change beforePath="$PROJECT_DIR$/img/sample_1D_grating_spectra.png" afterPath="$PROJECT_DIR$/img/sample_1D_grating_spectra.png" />
+      <change beforePath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_hybrid_grating_2D.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_hybrid_grating_T_stack.py" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -265,6 +254,11 @@
             <path>
               <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
               <item name="RCWA" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RCWA" type="462c0819:PsiDirectoryNode" />
+              <item name="RCWA_2D_examples" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
