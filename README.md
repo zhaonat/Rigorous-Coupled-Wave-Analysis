@@ -1,4 +1,4 @@
-# Rigorous-Coupled-Wave-Analysis PACKAGE
+# Python Rigorous-Coupled-Wave-Analysis PACKAGE
 A collection of semi-analytic fourier series solutions for Maxwell's equations written in python.
 This package actually contains three different methods:
 1) TMM: classical transfer matrix method
