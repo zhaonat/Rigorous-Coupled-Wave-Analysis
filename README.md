@@ -7,8 +7,10 @@ This package actually contains three different methods:
 
 The organization of the package is centered around modules which can run a simulation for each of the three methods, given the correct inputs from the user. 
 
+Please refer to the wiki for detailed information about the status of various functionalities
+
 ## Prerequisites and Installation
-Make sure you have a functional version of python 3 with numpy, scipy, and matplotlib.
+Make sure you have a functional version of python 3 with numpy, scipy, and matplotlib. (Python 3 is required because we use the @ symbol for matrix multiplication)
 Simply clone the package into your local directory and you should be ready to go.
 
 ## USAGE
@@ -19,6 +21,9 @@ Right now, the package is partitioned by the type of numerical method used. Exam
 TMM is usually the 'intellectual' precursor to RCWA. It assumes different layers but each layer has no structure (could be anisotropic however)
 A simple demonstration of TMM can be done by reproducing the spectrum of a Bragg grating.
 ![Alt Text](./img/bragg_TMM.png)
+
+### run_TMM function
+
 
 ## PWEM
 Plane wave expansion method is simply the solution of Maxwell's equations in Fourier space.
