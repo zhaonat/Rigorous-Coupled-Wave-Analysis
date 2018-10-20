@@ -9,10 +9,10 @@ The organization of the package is centered around modules which can run a simul
 
 ## Prerequisites and Installation
 Make sure you have a functional version of python 3 with numpy, scipy, and matplotlib.
-Simply clone the package and the directory
+Simply clone the package into your local directory and you should be ready to go.
 
 ## USAGE
-Right now, the package is partitioned by the type of numerical method used. Examples for each method are in the folder "method_name"_examples
+Right now, the package is partitioned by the type of numerical method used. Examples for each method are in the folder "method_name"_examples. These examples should give you a sense of how to use the simulation functions
 
 # Examples
 ## First TMM
