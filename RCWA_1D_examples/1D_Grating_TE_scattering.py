@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy.linalg import cond
 import cmath;
-from numpy.linalg import solve as bslash
 from scipy.fftpack import fft, fftfreq, fftshift
 from TMM_functions import eigen_modes as em
 from TMM_functions import scatter_matrices as sm
@@ -10,6 +9,8 @@ from RCWA_functions import redheffer_star as rs
 from RCWA_functions import rcwa_initial_conditions as ic
 from RCWA_functions import homogeneous_layer as hl
 from scipy import linalg as LA
+
+
 # Moharam et. al Formulation for stable and efficient implementation for RCWA
 plt.close("all")
 np.set_printoptions(precision = 4)
@@ -137,19 +138,6 @@ for prow in range(2 * num_ord + 1):
         pfft = p_index[prow] - p_index[pcol];
         E_conv[prow, pcol] = fourier_array[p0 + pfft];  # fill conv matrix from top left to top right
 
-## FFT of 1/e;
-inv_fft_fourier_array = grating_fft(1/eps_r);
-##construct convolution matrix
-E_conv_inv = np.zeros((2 * num_ord + 1, 2 * num_ord + 1));
-E_conv_inv = E_conv_inv.astype('complex')
-p0 = Nx;
-p_index = np.arange(-num_ord, num_ord + 1);
-for prow in range(2 * num_ord + 1):
-    # first term locates z plane, 2nd locates y coumn, prow locates x
-    for pcol in range(2 * num_ord + 1):
-        pfft = p_index[prow] - p_index[pcol];
-        E_conv_inv[prow, pcol] = inv_fft_fourier_array[p0 + pfft];  # fill conv matrix from top left to top right
-
 I = np.identity(2*num_ord+1);
 # E is now the convolution of fourier amplitudes
 for lam0 in wavelength_scan:
@@ -172,9 +160,10 @@ for lam0 in wavelength_scan:
     KX = np.diag(kx_array); #singular since we have a n=0, m= 0 order and incidence is normal
 
     ## construct matrix of Gamma^2 ('constant' term in ODE):
-    #use fast fourier factorization rules here...
-    Q = I- KX @ bslash(E_conv, KX);
-    PQ = -bslash(E_conv_inv, Q);
+    P = -I; #conditioning of this matrix is not bad, this is the mode matrix for Hz
+    #sum of a symmetric matrix and a diagonal matrix should be symmetric;
+    Q = E_conv - KX @ KX;
+    PQ = P@Q;
 
     ## ================================================================================================##
     eigenvals, W = LA.eigh(PQ); #A should be symmetric or hermitian

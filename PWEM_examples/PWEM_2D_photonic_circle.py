@@ -19,7 +19,7 @@ T1 = 2*np.pi/a;
 T2 = 2*np.pi/a;
 
 # determine number of orders to use
-P = 5; #don't play with odd orders
+P = 5;
 Q = 5;
 PQ = (2*P+1)*(2*Q+1)
 # ============== build high resolution circle ==================

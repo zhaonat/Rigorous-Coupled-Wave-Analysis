@@ -40,7 +40,7 @@ T1 = 2*np.pi/a;
 T2 = 2*np.pi/a;
 
 ## Specify number of fourier orders to use:
-N = 1; M = 1;
+N = 3; M = 3;
 NM = (2*N+1)*(2*M+1);
 
 # ============== build high resolution circle ==================

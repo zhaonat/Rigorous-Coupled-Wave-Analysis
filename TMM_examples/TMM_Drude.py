@@ -69,7 +69,7 @@ ER = np.array([drude_eps]);
 UR = np.ones_like(ER);
 layer_thicknesses = [0.3*L0]
 ## run simulation
-Ref, Tran = rTMM.run_TMM_dispersive(wavelengths, polarization_amplitudes, k_inc, theta, phi, ER, UR, layer_thicknesses,\
+Ref, Tran = rTMM.run_TMM_dispersive(wavelengths, polarization_amplitudes, theta, phi, ER, UR, layer_thicknesses,\
                        transmission_medium, incident_medium)
 
 plt.figure();

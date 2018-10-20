@@ -15,8 +15,8 @@ def run_RCWA_2D(lam0, theta, phi, ER, UR, layer_thicknesses, lattice_constants, 
     :param lam0:
     :param theta:
     :param phi:
-    :param ER:
-    :param UR:
+    :param ER: list of convolution matrices for each layer
+    :param UR: list of convolution matrices for each layer
     :param layer_thicknesses:
     :param lattice_constants:
     :param pte:

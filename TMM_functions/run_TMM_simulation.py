@@ -6,22 +6,24 @@ from TMM_functions import redheffer_star as rs
 from TMM_functions import generate_initial_conditions as ic
 from scipy import linalg as LA
 
-def run_TMM_simulation(wavelengths, polarization_amplitudes, k_inc, theta, phi, ER, UR, layer_thicknesses,\
+def run_TMM_simulation(wavelengths, polarization_amplitudes, theta, phi, ER, UR, layer_thicknesses,\
                        transmission_medium, incident_medium):
     """
     :param wavelengths:
-    :param k_inc: holds kx, ky of the incident wave-vector (which is enough to specify kz since k0 is specified by wavelength
     :param theta:
     :param phi:
     :param ER: relative dielectric constants of each layer
     :param UR: relative permeability of each layer
     :param layer_thicknesses:
-    :param transmission_medium:
+    :param transmission_medium: [et, mt]
     :param incident_medium:
     :return:
     """
 
     assert len(layer_thicknesses) == len(ER) == len(UR); "number of layer parameters not the same"
+    ##
+    #remove the kx and ky constraints on theta and phi
+    ##
 
     ref = [];
     trans = [];
@@ -30,8 +32,8 @@ def run_TMM_simulation(wavelengths, polarization_amplitudes, k_inc, theta, phi, 
     [e_r, m_r] = incident_medium;
     [e_t, m_t] = transmission_medium;
     n_i = np.sqrt(e_r*m_r);
-    [kx, ky] = k_inc;
-
+    kx = n_i * np.sin(theta) * np.cos(phi);  # constant in ALL LAYERS; kx = 0 for normal incidence
+    ky = n_i * np.sin(theta) * np.sin(phi);  # constant in ALL LAYERS; ky = 0 for normal incidence
     normal_vector = np.array([0, 0, -1])  # positive z points down;
     ate_vector = np.matrix([0, 1, 0]);  # vector for the out of plane E-field
 
@@ -158,12 +160,11 @@ def run_TMM_simulation(wavelengths, polarization_amplitudes, k_inc, theta, phi, 
 
     return ref, trans
 
-def run_TMM_dispersive(wavelengths, polarization_amplitudes, k_inc, theta, phi, ER, UR, layer_thicknesses,\
+def run_TMM_dispersive(wavelengths, polarization_amplitudes, theta, phi, ER, UR, layer_thicknesses,\
                        transmission_medium, incident_medium):
     """
     ER and UR are matrices
     :param wavelengths:
-    :param k_inc: holds kx, ky of the incident wave-vector (which is enough to specify kz since k0 is specified by wavelength
     :param theta:
     :param phi:
     :param ER: relative dielectric constants of each layer
@@ -183,8 +184,8 @@ def run_TMM_dispersive(wavelengths, polarization_amplitudes, k_inc, theta, phi, 
     [e_r, m_r] = incident_medium;
     [e_t, m_t] = transmission_medium;
     n_i = np.sqrt(e_r*m_r);
-    [kx, ky] = k_inc;
-
+    kx = n_i * np.sin(theta) * np.cos(phi);  # constant in ALL LAYERS; kx = 0 for normal incidence
+    ky = n_i * np.sin(theta) * np.sin(phi);  # constant in ALL LAYERS; ky = 0 for normal incidence
     normal_vector = np.array([0, 0, -1])  # positive z points down;
     ate_vector = np.matrix([0, 1, 0]);  # vector for the out of plane E-field
 
