@@ -30,7 +30,7 @@ m_r = 1; e_r = 1; incident_medium = [e_r, m_r];
 m_t = 1; e_t = 1; transmission_medium = [e_t, m_t];
 
 ## set wavelength scanning range
-wavelengths = L0*np.linspace(0.5,1.6,500); #500 nm to 1000 nm
+wavelengths = np.linspace(0.5,1.6,500); #500 nm to 1000 nm
 kmagnitude_scan = 2 * np.pi / wavelengths; #no
 omega = c0 * kmagnitude_scan; #using the dispersion wavelengths
 
@@ -69,7 +69,7 @@ num_pairs = 5;
 ER = np.tile([12,2], num_pairs);
 UR = np.tile([1],num_pairs*2);
 bragg_wavelength = 1;
-layer_thicknesses = 0.25*L0*np.tile([bragg_wavelength /np.sqrt(12), bragg_wavelength /np.sqrt(2)], num_pairs); #this retains SI unit convention
+layer_thicknesses = 0.25*np.tile([bragg_wavelength /np.sqrt(12), bragg_wavelength /np.sqrt(2)], num_pairs); #this retains SI unit convention
 ref = list(); trans = list();
 
 ## run simulation

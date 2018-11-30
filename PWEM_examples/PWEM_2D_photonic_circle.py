@@ -90,5 +90,6 @@ eig_store = np.array(eig_store);
 plt.plot(kx_mat, eig_store/(2*np.pi), '.b');
 plt.plot(kx_scan, abs(kx_scan)/(2*np.pi));
 plt.ylim([0,0.8])
+plt.savefig('PWEM_photonic_crystal.png')
 plt.show()
 

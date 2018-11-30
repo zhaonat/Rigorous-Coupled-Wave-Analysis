@@ -9,14 +9,15 @@ from scipy import linalg as LA
 def run_TMM_simulation(wavelengths, polarization_amplitudes, theta, phi, ER, UR, layer_thicknesses,\
                        transmission_medium, incident_medium):
     """
-    :param wavelengths:
+    :param wavelengths: in units of L0
     :param theta:
+    :param polarization_amplitudes: [pte, ptm]
     :param phi:
     :param ER: relative dielectric constants of each layer
     :param UR: relative permeability of each layer
     :param layer_thicknesses:
     :param transmission_medium: [et, mt]
-    :param incident_medium:
+    :param incident_medium: [er, mr]
     :return:
     """
 
@@ -38,8 +39,7 @@ def run_TMM_simulation(wavelengths, polarization_amplitudes, theta, phi, ER, UR,
     ate_vector = np.matrix([0, 1, 0]);  # vector for the out of plane E-field
 
     ## =================  specify gap media ========================##
-    e_h = 1;
-    m_h = 1;
+    e_h = 1; m_h = 1;
     Pg, Qg, kzg = pq.P_Q_kz(kx, ky, e_h, m_h)
     Wg = I;  # Wg should be the eigenmodes of the E field, which paparently is the identity, yes for a homogeneous medium
     sqrt_lambda = cmath.sqrt(-1) * Wg;

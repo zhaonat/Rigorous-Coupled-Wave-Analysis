@@ -13,16 +13,16 @@ import cmath
 def run_RCWA_2D(lam0, theta, phi, ER, UR, layer_thicknesses, lattice_constants, pte, ptm, N,M, e_half):
     '''
     :param lam0:
-    :param theta:
-    :param phi:
+    :param theta: incident angle
+    :param phi:   incident angle (azimuthal)
     :param ER: list of convolution matrices for each layer
     :param UR: list of convolution matrices for each layer
-    :param layer_thicknesses:
-    :param lattice_constants:
-    :param pte:
-    :param ptm:
-    :param N:
-    :param M:
+    :param layer_thicknesses: list of thicknesses of each layer
+    :param lattice_constants: [Lx, Ly] 2 element array containing lattice constants of the 2D unit cell
+    :param pte: te mode amplitude
+    :param ptm: tm mode amplitude
+    :param N:    num orders for x direction
+    :param M:    num orders for y direction
     :param e_half: [e_r e_t], dielectric constants of the reflection and transmission spaces
     :return:
     '''

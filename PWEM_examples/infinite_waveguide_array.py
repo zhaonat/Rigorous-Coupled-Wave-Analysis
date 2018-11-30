@@ -25,10 +25,10 @@ T2 = 2*np.pi/ay;
 P = 1; #don't play with odd orders
 Q = 1;
 PQ = (2*P+1)*(2*Q+1)
+
 # ============== build high resolution waveguide array, non-dispersive ==================
 Nx = 512;
 Ny = 512;
-
 
 ## ======================== run band structure calc ==========================##
 kx_scan = np.linspace(1e-1, np.pi, 200)/ax;
@@ -50,17 +50,16 @@ for beta_x in kx_scan:
 
     epsilon = np.ones((Nx, Ny));
     halfy = int(Ny / 2);
-    epsilon[halfy - 100:halfy + 100, :] = -12;
+    epsilon[halfy - 100:halfy + 100, :] = 12;
 
     ## =============== Convolution Matrices ==============
     E_r = cm.convmat2D(epsilon, P, Q);
-
     ## ===========================================================
 
     eigenvalues, eigenvectors, A_matrix = eg.PWEM2D_TE(Kx, Ky, E_r); #what are the eigenvalue units
     omega_eig_store.append(np.sqrt(abs(np.real(eigenvalues))))
-    plt.plot(beta_x*np.ones((PQ,)), np.sort(np.sqrt(abs(np.real(eigenvalues)))), '.r')
-    plt.plot(beta_x*np.ones((PQ,)), np.sort(np.sqrt(abs(np.imag(eigenvalues)))), '.g')
+    plt.plot(beta_x*np.ones((PQ,)), np.sort(np.sqrt(abs(np.real(eigenvalues)))), '.b')
+    plt.plot(beta_x*np.ones((PQ,)), np.sort(np.sqrt(abs(np.imag(eigenvalues)))), '.r')
 
 ## plot the light line
 
