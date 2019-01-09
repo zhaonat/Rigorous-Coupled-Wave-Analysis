@@ -24,7 +24,7 @@ e_r = 16;
 
 ## Specify number of fourier orders to use:
 #scalign with number of orders is pretty poor
-N = 10; M = 10;
+N = 2; M = 2;
 
 ## =============== Simulation Parameters =========================
 ## set wavelength scanning range
@@ -82,7 +82,7 @@ for wvlen in wavelengths:
     pte = 1/np.sqrt(2);
     ptm = cmath.sqrt(-1)/np.sqrt(2);
 
-    lattice_constants = [a, a];
+    lattice_constants = [a, a]; #dimension of the unit cell
     e_half = [1,1];
     R,T = rrs.run_RCWA_2D(wvlen, theta, phi, ER, UR, layer_thicknesses, lattice_constants, pte, ptm, N,M, e_half)
     ref.append(R);
