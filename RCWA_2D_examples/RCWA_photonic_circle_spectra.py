@@ -16,11 +16,12 @@ solve RCWA for a simple circular structure in a square unit cell
 
 In essence, there is almost nothing new that needs to be done
 We do have to modify scatter_matrices and redheffer star
-## normalized units
-#z' = k0*z;
-#k = k/k0;
-
+# normalized units
+# z' = k0*z;
+# k = k/k0;
+# COMPARE WITH FAN JOSA B
 FINALLY WORKS 8/11/2018
+#parameters changed to JOSA B from Prof. Fan
 '''
 
 #% General Units
@@ -32,7 +33,7 @@ c0 = 1/(np.sqrt(mu0*eps0))
 
 ## lattice and material parameters
 a = 1;
-radius = 0.2; #0.4;
+radius = 0.2*a; #0.4;
 e_r = 12;
 
 #generate irreducible BZ sample
@@ -54,8 +55,9 @@ dist = np.sqrt((I-ci)**2 + (J-cj)**2);
 A[np.where(dist<cr)] = 1;
 
 #visualize structure
-# plt.imshow(A);
-# plt.show()
+plt.imshow(A);
+plt.colorbar();
+plt.show()
 
 ## =============== Convolution Matrices ==============
 E_r = cm.convmat2D(A, N,M)
@@ -66,14 +68,18 @@ plt.colorbar()
 plt.show()
 
 ## ================== GEOMETRY OF THE LAYERS AND CONVOLUTIONS ==================##
-thickness_slab = 0.76; # in units of L0;
+thickness_slab = 0.55*a; # in units of L0;
 ER = [E_r];
 UR = [np.identity(NM)];
 layer_thicknesses = [thickness_slab]; #this retains SI unit convention
 
 ## =============== Simulation Parameters =========================
 ## set wavelength scanning range
-wavelengths = np.linspace(0.5,2,401); #500 nm to 1000 nm #be aware of Wood's Anomalies
+
+frequencies = np.linspace(0.25, 0.45, 400)*c0/a;
+wavelengths = c0/frequencies;
+
+#wavelengths = np.linspace(0.86,1.001,401); #500 nm to 1000 nm #be aware of Wood's Anomalies
 kmagnitude_scan = 2 * np.pi / wavelengths; #no
 omega = c0 * kmagnitude_scan; #using the dispersion wavelengths
 
@@ -208,9 +214,9 @@ for i in range(len(wavelengths)): #in SI units
     trans.append(np.sum(T))
 
     print('final R vector-> matrix')
-    print(np.reshape(R,(3,3))); #should be 3x3
+    print(np.reshape(R,(2*N+1,2*M+1))); #should be 3x3
     print('final T vector/matrix')
-    print(np.reshape(T,(3,3)))
+    print(np.reshape(T,(2*N+1,2*M+1)))
 
 ref = np.array(ref);
 trans = np.array(trans);
@@ -218,5 +224,11 @@ plt.figure();
 plt.plot(wavelengths, ref);
 plt.plot(wavelengths, trans);
 plt.plot(wavelengths, ref+trans)
+
+plt.figure();
+plt.plot(frequencies*(a/c0), ref);
+plt.plot(frequencies*(a/c0), trans);
+plt.plot(frequencies*(a/c0), ref+trans)
+plt.legend(['ref', 'tran', 'ref+tran'])
 
 plt.show()

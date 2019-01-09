@@ -38,7 +38,7 @@ kmagnitude_scan = 2 * np.pi / wavelengths; #no
 omega = c0 * kmagnitude_scan; #using the dispersion wavelengths
 
 #source parameters
-theta = 60 * degrees; #%elevation angle
+theta = 60 * degrees; #%elevation angle; #off -normal incidence does not excite guided resonances...
 phi = 0 * degrees; #%azimuthal angle
 
 ## incident wave properties, at this point, everything is in units of k_0
@@ -77,7 +77,7 @@ Ref, Tran = rTMM.run_TMM_simulation(wavelengths, polarization_amplitudes, theta,
 
 plt.figure();
 plt.plot(wavelengths, Ref);
-#plt.plot(wavelengths, Tran);
+plt.plot(wavelengths, Tran);
 plt.title('Spectrum of a Bragg Mirror')
 plt.xlabel('wavelength ($\mu m$)')
 plt.ylabel('R/T')

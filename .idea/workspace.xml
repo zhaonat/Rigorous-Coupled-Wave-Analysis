@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3156230-ee27-4ac5-8769-122dc6654d3f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/tests/first_test.py" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/tests/second_test.py" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" afterPath="$PROJECT_DIR$/LICENSE" />
-      <change beforePath="$PROJECT_DIR$/PWEM_examples/PWEM_2D_photonic_circle.py" afterPath="$PROJECT_DIR$/PWEM_examples/PWEM_2D_photonic_circle.py" />
-      <change beforePath="$PROJECT_DIR$/PWEM_examples/infinite_waveguide_array.py" afterPath="$PROJECT_DIR$/PWEM_examples/infinite_waveguide_array.py" />
+      <change beforePath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_convergence_test.py" afterPath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_convergence_test.py" />
+      <change beforePath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py" afterPath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py" />
+      <change beforePath="$PROJECT_DIR$/RCWA_2D_examples/spectra_convergence.png" afterPath="$PROJECT_DIR$/RCWA_2D_examples/spectra_convergence.png" />
       <change beforePath="$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py" afterPath="$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py" />
-      <change beforePath="$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py" afterPath="$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py" />
       <change beforePath="$PROJECT_DIR$/TMM_examples/TMM_fabry_perot.py" afterPath="$PROJECT_DIR$/TMM_examples/TMM_fabry_perot.py" />
-      <change beforePath="$PROJECT_DIR$/TMM_functions/run_TMM_simulation.py" afterPath="$PROJECT_DIR$/TMM_functions/run_TMM_simulation.py" />
-      <change beforePath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/TMM_LHI_investigation-checkpoint.ipynb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/TMM_example-checkpoint.ipynb" afterPath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/TMM_example-checkpoint.ipynb" />
-      <change beforePath="$PROJECT_DIR$/notebooks/TMM_LHI_investigation.ipynb" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notebooks/TMM_example.ipynb" afterPath="$PROJECT_DIR$/notebooks/TMM_example.ipynb" />
-      <change beforePath="$PROJECT_DIR$/notebooks/fourier_functions.ipynb" afterPath="$PROJECT_DIR$/notebooks/fourier_functions.ipynb" />
-      <change beforePath="$PROJECT_DIR$/setup.py" afterPath="$PROJECT_DIR$/setup.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,9 +24,41 @@
       <file leaf-file-name="TMM_fabry_perot.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TMM_examples/TMM_fabry_perot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="70" column="9" lean-forward="false" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
+            <state relative-caret-position="1582">
+              <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RCWA_photonic_circle_spectra.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="79" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="run_RCWA_simulation.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RCWA_convergence_test.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_convergence_test.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2215">
+              <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+              <folding>
+                <element signature="e#220#238#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -44,18 +66,8 @@
       <file leaf-file-name="run_TMM_simulation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TMM_functions/run_TMM_simulation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2200">
+            <state relative-caret-position="1055">
               <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PWEM_2D_photonic_circle.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PWEM_examples/PWEM_2D_photonic_circle.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3480">
-              <caret line="91" column="17" lean-forward="false" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -71,11 +83,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="first_test.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="first_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/first_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="65" column="17" lean-forward="false" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+            <state relative-caret-position="2800">
+              <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -93,31 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TMM_bragg_multilayer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2800">
-              <caret line="71" column="24" lean-forward="false" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RCWA_triangle_benchmark.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_benchmark.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TMM_Drude.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TMM_examples/TMM_Drude.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2240">
-              <caret line="57" column="56" lean-forward="false" selection-start-line="57" selection-start-column="56" selection-end-line="57" selection-end-column="56" />
+            <state relative-caret-position="441">
+              <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -184,7 +176,6 @@
         <option value="$PROJECT_DIR$/RCWA_1D/1D_Grating_TE_fft.py" />
         <option value="$PROJECT_DIR$/RCWA_functions/run_RCWA_wvlen_scan.py" />
         <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_metal_dielectric_PC.py" />
-        <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_convergence_test.py" />
         <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_metal_dispersive_medium.py" />
         <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_spectra.py" />
         <option value="$PROJECT_DIR$/RCWA_functions/rcwa_initial_conditions.py" />
@@ -206,14 +197,11 @@
         <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_hybrid_grating_T_stack.py" />
         <option value="$PROJECT_DIR$/TMM_functions/anisotropic.py" />
         <option value="$PROJECT_DIR$/TMM_examples/anisotropic.py" />
-        <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py" />
         <option value="$PROJECT_DIR$/TMM_examples/TMM_Drude.py" />
         <option value="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TM.py" />
         <option value="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_TE_scattering.py" />
         <option value="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_TM_scattering.py" />
-        <option value="$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py" />
         <option value="$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py" />
-        <option value="$PROJECT_DIR$/TMM_examples/TMM_fabry_perot.py" />
         <option value="$PROJECT_DIR$/TMM_functions/run_TMM_simulation.py" />
         <option value="$PROJECT_DIR$/PWEM_examples/PWEM_2D_photonic_circle.py" />
         <option value="$PROJECT_DIR$/PWEM_examples/setup.py" />
@@ -223,13 +211,17 @@
         <option value="$PROJECT_DIR$/PWEM_examples/infinite_waveguide_array.py" />
         <option value="$PROJECT_DIR$/tests/second_test.py" />
         <option value="$PROJECT_DIR$/tests/first_test.py" />
+        <option value="$PROJECT_DIR$/TMM_examples/TMM_fabry_perot.py" />
+        <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py" />
+        <option value="$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py" />
+        <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_convergence_test.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="121" />
-    <option name="width" value="2583" />
-    <option name="height" value="2074" />
+    <option name="width" value="1948" />
+    <option name="height" value="2060" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -254,12 +246,17 @@
               <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
               <item name="RCWA" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RCWA" type="462c0819:PsiDirectoryNode" />
+              <item name="RCWA_2D_examples" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -292,56 +289,92 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for first_test.MyTest.test">
-    <configuration name="1D_squares" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.RCWA_convergence_test">
+    <configuration name="RCWA_convergence_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/fourier_functions" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RCWA_2D_examples" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RCWA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/fourier_functions/1D_squares.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_convergence_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="PWEM_2D_photonic_circle" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="RCWA_photonic_circle_spectra" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PWEM_examples" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RCWA_2D_examples" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RCWA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PWEM_examples/PWEM_2D_photonic_circle.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="infinite_waveguide_array" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="RCWA_triangle_benchmark" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/PWEM_examples" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RCWA_2D_examples" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RCWA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/PWEM_examples/infinite_waveguide_array.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_benchmark.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="TMM_bragg_multilayer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TMM_examples" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RCWA" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="TMM_fabry_perot" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TMM_examples" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RCWA" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TMM_examples/TMM_fabry_perot.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -363,49 +396,21 @@
       <option name="ipnbHost" value="127.0.0.1" />
       <option name="ipnbPort" value="8888" />
     </configuration>
-    <configuration name="Unittests for first_test.MyTest.test" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RCWA" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;first_test.MyTest.test&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-    </configuration>
-    <configuration name="Unittests in first_test.py" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RCWA" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/first_test.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-    </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Jupyter Notebook.RCWA" />
-      <item index="1" class="java.lang.String" itemvalue="Python.PWEM_2D_photonic_circle" />
-      <item index="2" class="java.lang.String" itemvalue="Python.infinite_waveguide_array" />
-      <item index="3" class="java.lang.String" itemvalue="Python.1D_squares" />
-      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests for first_test.MyTest.test" />
-      <item index="5" class="java.lang.String" itemvalue="Python tests.Unittests in first_test.py" />
+      <item index="1" class="java.lang.String" itemvalue="Python.TMM_bragg_multilayer" />
+      <item index="2" class="java.lang.String" itemvalue="Python.TMM_fabry_perot" />
+      <item index="3" class="java.lang.String" itemvalue="Python.RCWA_photonic_circle_spectra" />
+      <item index="4" class="java.lang.String" itemvalue="Python.RCWA_triangle_benchmark" />
+      <item index="5" class="java.lang.String" itemvalue="Python.RCWA_convergence_test" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests for first_test.MyTest.test" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in first_test.py" />
-        <item index="2" class="java.lang.String" itemvalue="Python.1D_squares" />
-        <item index="3" class="java.lang.String" itemvalue="Python.infinite_waveguide_array" />
-        <item index="4" class="java.lang.String" itemvalue="Python.PWEM_2D_photonic_circle" />
+        <item index="0" class="java.lang.String" itemvalue="Python.RCWA_convergence_test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.RCWA_photonic_circle_spectra" />
+        <item index="2" class="java.lang.String" itemvalue="Python.RCWA_triangle_benchmark" />
+        <item index="3" class="java.lang.String" itemvalue="Python.TMM_fabry_perot" />
+        <item index="4" class="java.lang.String" itemvalue="Python.TMM_bragg_multilayer" />
       </list>
     </recent_temporary>
   </component>
@@ -450,13 +455,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21326639" sideWeight="0.49668875" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21326639" sideWeight="0.49668875" order="2" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40307868" sideWeight="0.52956986" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2928894" sideWeight="0.4768817" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29571107" sideWeight="0.4768817" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2873432" sideWeight="0.4704301" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28724605" sideWeight="0.4704301" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -624,13 +630,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="111" column="99" lean-forward="true" selection-start-line="111" selection-start-column="99" selection-end-line="111" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_hybrid_grating_2D.py" />
     <entry file="file://$PROJECT_DIR$/TMM_examples/bragg_TMM.png" />
     <entry file="file://$PROJECT_DIR$/RCWA_1D/1D_Grating_TM_scattering.py" />
@@ -656,13 +655,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="21" column="2" lean-forward="false" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TMM_examples/anisotropic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -677,14 +669,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2800">
-          <caret line="71" column="24" lean-forward="false" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TMM_examples/TMM_Drude.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2240">
@@ -693,34 +677,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TMM_examples/TMM_fabry_perot.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="70" column="9" lean-forward="false" selection-start-line="70" selection-start-column="9" selection-end-line="70" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/notebooks/TMM_example.ipynb">
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TMM_functions/run_TMM_simulation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2200">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PWEM_examples/PWEM_2D_photonic_circle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3480">
-          <caret line="91" column="17" lean-forward="false" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -764,25 +724,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_benchmark.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="216" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_convergence_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-200">
-          <caret line="42" column="41" lean-forward="true" selection-start-line="42" selection-start-column="41" selection-end-line="42" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_metal_dispersive_medium.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="21" column="0" lean-forward="true" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_metal_square_grid.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/first_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2800">
+          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TMM_examples/TMM_bragg_multilayer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1960">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TMM_examples/TMM_fabry_perot.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1582">
+          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -791,20 +769,52 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_metal_square_grid.py">
+    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_benchmark.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state relative-caret-position="441">
+          <caret line="47" column="0" lean-forward="true" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/first_test.py">
+    <entry file="file://$PROJECT_DIR$/PWEM_examples/PWEM_2D_photonic_circle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="65" column="17" lean-forward="false" selection-start-line="65" selection-start-column="17" selection-end-line="65" selection-end-column="17" />
+        <state relative-caret-position="1055">
+          <caret line="91" column="17" lean-forward="false" selection-start-line="91" selection-start-column="17" selection-end-line="91" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TMM_functions/run_TMM_simulation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1055">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="78" column="0" lean-forward="false" selection-start-line="78" selection-start-column="0" selection-end-line="79" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_convergence_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2215">
+          <caret line="97" column="0" lean-forward="true" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#220#238#0" expanded="true" />
           </folding>
         </state>
       </provider>

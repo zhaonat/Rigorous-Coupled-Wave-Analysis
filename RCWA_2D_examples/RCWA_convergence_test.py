@@ -11,6 +11,7 @@ from RCWA_functions import run_RCWA_simulation as rrs
 import cmath
 from numpy.linalg import cond
 
+## run convergence test using FAN JOSA B
 
 #% General Units
 degrees = np.pi/180;
@@ -20,9 +21,9 @@ mu0 = 4*np.pi*10**-7*L0;
 c0 = 1/(np.sqrt(mu0*eps0))
 
 ## lattice and material parameters
-a = 1-1e-3;
-radius = 0.4;
-e_r = 9;
+a = 1;
+radius = 0.2*a;
+e_r = 12;
 
 # ============== build high resolution circle ==================
 Nx = 512;
@@ -40,7 +41,7 @@ A[np.where(dist < cr)] = 1;  # eps_drude;  ## A METALLIC HOLE...the fact that we
 # plt.show();
 
 ## ================== GEOMETRY OF THE LAYERS AND CONVOLUTIONS ==================##
-thickness_slab = 0.76;  # in units of L0;
+thickness_slab = 0.55*a;  # in units of L0;
 layer_thicknesses = [thickness_slab];  # this retains SI unit convention
 
 ## Specify number of fourier orders to use:
@@ -49,18 +50,20 @@ layer_thicknesses = [thickness_slab];  # this retains SI unit convention
 ## =============== Simulation Parameters =========================
 ## set wavelength scanning range
 #never want lattice constant and wavelength to match
-wavelengths = np.linspace(0.8,1.2,113); #500 nm to 1000 nm #be aware of Wood's Anomalies
+#wavelengths = np.linspace(0.8,1.2,113); #500 nm to 1000 nm #be aware of Wood's Anomalies
+frequencies = np.linspace(0.36, 0.42, 40)*c0/a;
+wavelengths = c0/frequencies;
+
 plt.figure();
 
-for ind in range(9,10):
+for ind in range(4,8):
     N = ind; M = ind;
     NM = (2 * N + 1) * (2 * M + 1);
 
     ## =============== Convolution Matrices ==============
     E_r = cm.convmat2D(A, N, M)
-    E_r = np.matrix(E_r)
     ER = [E_r];
-    UR = [np.matrix(np.identity(NM))];
+    UR = [np.identity(NM)];
 
     ref = list(); tran = list();
     for wvlen in wavelengths:
@@ -79,7 +82,7 @@ for ind in range(9,10):
         ptm = cmath.sqrt(-1)/np.sqrt(2);
 
         lattice_constants = [a, a];
-        e_half = [1,12];
+        e_half = [1,1];
         R,T = rrs.run_RCWA_2D(wvlen, theta, phi, ER, UR, layer_thicknesses, lattice_constants, pte, ptm, N,M, e_half)
         ref.append(R);
         tran.append(T)
@@ -88,11 +91,10 @@ for ind in range(9,10):
 
     ref = np.array(ref);
     tran = np.array(tran);
-    plt.plot(wavelengths, ref);
-    plt.plot(wavelengths, tran);
-    plt.plot(wavelengths, 1-(ref+tran))
+    plt.plot(frequencies*c0/a, ref);
+    plt.plot(frequencies*c0/a, tran);
+    plt.plot(frequencies*c0/a, 1-(ref+tran))
     plt.legend(('ref', 'tran', 'abs'))
-    plt.pause(0.01);
 
 plt.savefig('spectra_convergence.png')
 plt.show()

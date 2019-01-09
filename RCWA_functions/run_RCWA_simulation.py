@@ -40,7 +40,6 @@ def run_RCWA_2D(lam0, theta, phi, ER, UR, layer_thicknesses, lattice_constants, 
     ## ============== values to keep track of =======================##
     S_matrices = list();
     kz_storage = list();
-    X_storage = list();
     ## ==============================================================##
 
     m_r = 1; e_r = e_half[0];
@@ -141,8 +140,8 @@ def run_RCWA_2D(lam0, theta, phi, ER, UR, layer_thicknesses, lattice_constants, 
     ## apparently we're not done...now we need to compute 'diffraction efficiency'
     r_sq = np.square(np.abs(rx)) + np.square(np.abs(ry)) + np.square(np.abs(rz));
     t_sq = np.square(np.abs(tx)) + np.square(np.abs(ty)) + np.square(np.abs(tz));
-    R = np.real(kzr) * r_sq / np.real(kz_inc);
-    T = np.real(kz_trans) * t_sq / (np.real(kz_inc));
+    R = np.real(kzr) @ r_sq / np.real(kz_inc); #division by a scalar
+    T = np.real(kz_trans)@t_sq/(np.real(kz_inc));
 
     return np.sum(R), np.sum(T);
 
