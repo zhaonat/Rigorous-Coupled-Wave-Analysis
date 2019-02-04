@@ -34,7 +34,7 @@ c0 = 1/(np.sqrt(mu0*eps0))
 ## lattice and material parameters
 a = 1;
 radius = 0.2*a; #0.4;
-e_r_back = 12;
+e_r = 12;
 
 #generate irreducible BZ sample
 T1 = 2*np.pi/a;
@@ -46,7 +46,7 @@ NM = (2*N+1)*(2*M+1);
 
 # ============== build high resolution circle ==================
 Nx = 512; Ny = 512;
-A = e_r_back*np.ones((Nx,Ny));
+A = e_r*np.ones((Nx,Ny));
 ci = int(Nx/2); cj= int(Ny/2);
 cr = (radius/a)*Nx;
 I,J=np.meshgrid(np.arange(A.shape[0]),np.arange(A.shape[1]));
@@ -76,7 +76,7 @@ layer_thicknesses = [thickness_slab]; #this retains SI unit convention
 ## =============== Simulation Parameters =========================
 ## set wavelength scanning range
 
-frequencies = np.linspace(0.25, 0.45, 400)*c0/a;
+frequencies = np.linspace(0.25, 0.45, 40)*c0/a;
 wavelengths = c0/frequencies;
 
 #wavelengths = np.linspace(0.86,1.001,401); #500 nm to 1000 nm #be aware of Wood's Anomalies
@@ -84,14 +84,14 @@ kmagnitude_scan = 2 * np.pi / wavelengths; #no
 omega = c0 * kmagnitude_scan; #using the dispersion wavelengths
 
 #source parameters
-theta = 0 * degrees; #%elevation angle
+theta =45 * degrees; #%elevation angle
 phi = 0 * degrees; #%azimuthal angle
 
 ## incident wave polarization
 normal_vector = np.array([0, 0, -1]) #positive z points down;
 #ampltidue of the te vs tm modes (which are decoupled)
-pte = 1/np.sqrt(2);
-ptm = cmath.sqrt(-1)/np.sqrt(2);
+pte = 0;
+ptm = 1;
 
 
 ## ======================= RUN SIMULATION =========================
@@ -229,8 +229,13 @@ plt.plot(frequencies*(a/c0), ref);
 plt.plot(frequencies*(a/c0), trans);
 plt.plot(frequencies*(a/c0), ref+trans)
 plt.legend(['ref', 'tran', 'ref+tran'])
-plt.xlabel('frequencies ($a/c_0$')
-plt.ylabel('R,T')
-plt.savefig('photonic_circle_rcwa_spectra.png')
 
+## check unitarity of the global scattering matrix...
+I_test = Sg_matrix.conj().T@Sg_matrix
+plt.figure();
+#plt.imshow(np.abs(I_test));
+#plt.colorbar();
+plt.plot(abs(I_test))
 plt.show()
+
+print(Sg_matrix)

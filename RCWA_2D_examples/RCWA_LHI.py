@@ -9,61 +9,71 @@ from RCWA_functions import redheffer_star as rs
 from RCWA_functions import rcwa_initial_conditions as ic
 from RCWA_functions import homogeneous_layer as hl
 import cmath
-from scipy.linalg import block_diag
-import cmath
+from numpy.linalg import cond
 
 '''
-solve RCWA for a LHI
-#FINALLY WORKS: problem occurs at the eigendecomposition of Gamma_squared, probably the same issue
+solve RCWA for a simple circular structure in a square unit cell
 
-#k = k/k0;
-# SIGN CONVENTION IS NEGATIVE
-# exp(-1i*k*x) is forward prop in x
-
-'it appears there are pathological cases where bad conditioning is unavoidable'
-'EMPy seems to avoid it by injecting noise into the K matrices...
-
+In essence, there is almost nothing new that needs to be done
+We do have to modify scatter_matrices and redheffer star
+# normalized units
+# z' = k0*z;
+# k = k/k0;
+# COMPARE WITH FAN JOSA B
+FINALLY WORKS 8/11/2018
+#parameters changed to JOSA B from Prof. Fan
 '''
 
 #% General Units
 degrees = np.pi/180;
 L0 = 1e-6; #units of microns;
-eps0 = 8.854e-12;
-mu0 = 4*np.pi*10**-7;
+eps0 = 8.854e-12*L0;
+mu0 = 4*np.pi*10**-7*L0;
 c0 = 1/(np.sqrt(mu0*eps0))
 
 ## lattice and material parameters
-a = 1*L0;
-e_layer= 9;
+a = 1;
+radius = 0.2*a; #0.4;
+e_r = 12;
+
 #generate irreducible BZ sample
 T1 = 2*np.pi/a;
 T2 = 2*np.pi/a;
 
 ## Specify number of fourier orders to use:
-#sometimes can get orders which make the system singular
-
-N = 2; M = 2;
+N = 1; M = 1;
 NM = (2*N+1)*(2*M+1);
 
 # ============== build high resolution circle ==================
+Nx = 512; Ny = 512;
+A = e_r*np.ones((Nx,Ny));
 
-E_r = e_layer*np.matrix(np.identity(NM))
-U_r = np.matrix(np.identity(NM))
+#visualize structure
+plt.imshow(A);
+plt.colorbar();
+plt.show()
 
-#check that the convmat returns an identity matrix
-eps_grid = np.ones((512, 512))
-er_check = e_layer*cm.convmat2D(eps_grid, N,M)
-er_fft = np.fft.fftshift(np.fft.fft(np.ones((3,3))))/(9)
+## =============== Convolution Matrices ==============
+E_r = cm.convmat2D(A, N,M)
+print(type(E_r))
+plt.figure();
+plt.imshow(abs(E_r), cmap = 'jet');
+plt.colorbar()
+plt.show()
 
 ## ================== GEOMETRY OF THE LAYERS AND CONVOLUTIONS ==================##
-thickness_slab = 0.76*L0; #100 nm;
+thickness_slab = 0.55*a; # in units of L0;
 ER = [E_r];
-UR = [U_r];
+UR = [np.identity(NM)];
 layer_thicknesses = [thickness_slab]; #this retains SI unit convention
 
 ## =============== Simulation Parameters =========================
 ## set wavelength scanning range
-wavelengths = L0*np.linspace(0.25,1,1000); #500 nm to 1000 nm #LHI fails for small wavelengths?
+
+frequencies = np.linspace(0.1, 1.2, 100)*c0/a;
+wavelengths = c0/frequencies;
+
+#wavelengths = np.linspace(0.86,1.001,401); #500 nm to 1000 nm #be aware of Wood's Anomalies
 kmagnitude_scan = 2 * np.pi / wavelengths; #no
 omega = c0 * kmagnitude_scan; #using the dispersion wavelengths
 
@@ -73,9 +83,7 @@ phi = 0 * degrees; #%azimuthal angle
 
 ## incident wave polarization
 normal_vector = np.array([0, 0, -1]) #positive z points down;
-ate_vector = np.matrix([0, 1, 0]); #vector for the out of plane E-field
-
-#ampltidue of the te vs tm modes (shouldn't affect spectrum for a fabry perot stack)
+#ampltidue of the te vs tm modes (which are decoupled)
 pte = 1/np.sqrt(2);
 ptm = cmath.sqrt(-1)/np.sqrt(2);
 
@@ -89,71 +97,60 @@ for i in range(len(wavelengths)): #in SI units
     # define vacuum wavevector k0
     k0 = kmagnitude_scan[i]; #this is in SI units, it is the normalization constant for the k-vector
     lam0 = wavelengths[i]; #k0 and lam0 are related by 2*pi/lam0 = k0
-    #print('wavelength: '+ str(1e6*lam0))
+    print('wavelength: '+ str(lam0))
     ## ============== values to keep track of =======================##
     S_matrices = list();
     kz_storage = list();
     X_storage = list();
     ## ==============================================================##
 
-
-    m_r = 1; e_r = 1+cmath.sqrt(-1)*1e-12;
+    m_r = 1; e_r = 1;
     ## incident wave properties, at this point, everything is in units of k_0
     n_i =  np.sqrt(e_r*m_r);
 
     # actually, in the definitions here, kx = k0*sin(theta)*cos(phi), so kx, ky here are normalized
-    kx_inc = n_i * np.sin(theta) * np.cos(phi);  # actually, in the definitions here, kx = k0*sin(theta)*cos(phi), so kx, ky here are normalized
+    kx_inc = n_i * np.sin(theta) * np.cos(phi);
     ky_inc = n_i * np.sin(theta) * np.sin(phi);  # constant in ALL LAYERS; ky = 0 for normal incidence
     kz_inc = cmath.sqrt(e_r * 1 - kx_inc ** 2 - ky_inc ** 2);
 
-    Kx, Ky = km.K_matrix_cubic_2D(kx_inc, ky_inc, k0, a, a, N, M); # a and k0 must be in SI units!!!!
+    #remember, these Kx and Ky come out already normalized
+    Kx, Ky = km.K_matrix_cubic_2D(kx_inc, ky_inc, k0, a, a, N, M); #Kx and Ky are diagonal but have a 0 on it
     ## density Kx and Ky (for now)
-    Kx = Kx.todense();  Ky = Ky.todense();
 
     ## =============== K Matrices for gap medium =========================
     ## specify gap media (this is an LHI so no eigenvalue problem should be solved
-    e_h = 1+cmath.sqrt(-1)*1e-12; m_h = 1;
+    e_h = 1; m_h = 1;
     Wg, Vg, Kzg = hl.homogeneous_module(Kx, Ky, e_h)
 
     ### ================= Working on the Reflection Side =========== ##
     Wr, Vr, kzr = hl.homogeneous_module(Kx, Ky, e_r); kz_storage.append(kzr)
 
     ## calculating A and B matrices for scattering matrix
+    # since gap medium and reflection media are the same, this doesn't affect anything
     Ar, Br = sm.A_B_matrices(Wg, Wr, Vg, Vr);
 
+    ## s_ref is a matrix, Sr_dict is a dictionary
     S_ref, Sr_dict = sm.S_R(Ar, Br); #scatter matrix for the reflection region
     S_matrices.append(S_ref);
     Sg = Sr_dict;
 
     Q_storage = list(); P_storage=  list();
-
     ## go through the layers
     for i in range(len(ER)):
         #ith layer material parameters
-        e_conv = ER[i]; mu_conv = UR[i]; #should be identity matrices
+        e_conv = ER[i]; mu_conv = UR[i];
 
         #longitudinal k_vector
         P, Q, kzl = pq.P_Q_kz(Kx, Ky, e_conv, mu_conv)
-        #there appear to be pathological cases where kz is imaginary, which from a physical standpoint, makes sense...
-        # there are inevitably kx and ky orders that are totally internally reflected
         kz_storage.append(kzl)
-        Gamma_squared = P*Q; #condition number starts getting bad at high frequency?,
-        #zero out non diagonal elements intentionally!!
-        Gamma_squared = np.diag(np.diag(Gamma_squared)); #apparently the errors are strong enough that not doing this fucks it up
+        Gamma_squared = P@Q;
 
-        #check that P*Q's diagonals are just kzl
-        #print(np.linalg.norm(Gamma_squared - (-block_diag(kzl*kzl,kzl*kzl)))) #surprisingly, the error on this is small
+        ## E-field modes that can propagate in the medium, these are well-conditioned
+        W_i, lambda_matrix = em.eigen_W(Gamma_squared);
+        V_i = em.eigen_V(Q, W_i, lambda_matrix);
 
-        ## E-field modes that can propagate in the medium
-        eigenvalues, W_i = np.linalg.eig(Gamma_squared);
-        lambda_matrix = np.matrix(np.diag(np.sqrt(eigenvalues.astype('complex'))));
-        W_i = np.matrix(W_i);
-        #check that W_i is the identity matrix
-        #print(np.linalg.norm(W_i -np.matrix(np.identity(2*NM))))
-        V_i = em.eigen_V(Q, W_i, lambda_matrix); #lambda_matrix is singular...
-
-        #now defIne A and B; FOR INTERMEDIATE LAYERS, WG and VG come AFTER, but for LHI, the order actually doesn't matter
-        A,B = sm.A_B_matrices(Wg, W_i, Vg, V_i);
+        #now defIne A and B, slightly worse conditoined than W and V
+        A,B = sm.A_B_matrices(W_i, Wg, V_i, Vg); #ORDER HERE MATTERS A LOT because W_i is not diagonal
 
         #calculate scattering matrix
         Li = layer_thicknesses[i];
@@ -164,10 +161,11 @@ for i in range(len(wavelengths)): #in SI units
         Sg_matrix, Sg = rs.RedhefferStar(Sg, Sl_dict);
 
     ##========= Working on the Transmission Side==============##
-    m_t = 1; e_t = 1+cmath.sqrt(-1)*1e-12;
+    m_t = 1;    e_t = 1;
     Wt, Vt, kz_trans = hl.homogeneous_module(Kx, Ky, e_t)
 
     #get At, Bt
+    # since transmission is the same as gap, order does not matter
     At, Bt = sm.A_B_matrices(Wg, Wt, Vg, Vt)
 
     ST, ST_dict = sm.S_T(At, Bt)
@@ -177,44 +175,53 @@ for i in range(len(wavelengths)): #in SI units
 
     ## finally CONVERT THE GLOBAL SCATTERING MATRIX BACK TO A MATRIX
 
-    K_inc_vector = n_i * k0*np.matrix([np.sin(theta) * np.cos(phi), \
+    K_inc_vector = n_i *np.array([np.sin(theta) * np.cos(phi), \
                                     np.sin(theta) * np.sin(phi), np.cos(theta)]);
 
     E_inc, cinc, Polarization = ic.initial_conditions(K_inc_vector, theta,  normal_vector, pte, ptm, N,M)
     # print(cinc.shape)
     # print(cinc)
 
-    cinc = Wr.I*cinc; #All W's are identity matrices, so they do nothing
+    cinc = np.linalg.inv(Wr)@cinc;
     ## COMPUTE FIELDS: similar idea but more complex for RCWA since you have individual modes each contributing
-    reflected = Wr*Sg['S11']*cinc; #reflection coefficients for every mode...
-    transmitted = Wt*Sg['S21']*cinc;
+    reflected = Wr@Sg['S11']@cinc;
+    transmitted = Wt@Sg['S21']@cinc;
 
-    ## these include only (rx, ry), (tx, ty), which is okay as these are the only components for normal incidence in LHI
-    rx = reflected[0:NM, :];
-    ry = reflected[NM:, :];
+    rx = reflected[0:NM, :]; # rx is the Ex component.
+    ry = reflected[NM:, :];  #
     tx = transmitted[0:NM,:];
     ty = transmitted[NM:, :];
 
-    #longitudinal components; should be 0
-    rz = -kzr.I*(Kx*rx + Ky*ry);
-    tz = -kz_trans.I*(Kx*tx + Ky*ty)
+    # longitudinal components; should be 0
+    rz = np.linalg.inv(kzr) @ (Kx @ rx + Ky @ ry);
+    tz = np.linalg.inv(kz_trans) @ (Kx @ tx + Ky @ ty)
+
+    ## we need to do some reshaping at some point
 
     ## apparently we're not done...now we need to compute 'diffraction efficiency'
-    r_sq = np.linalg.norm(reflected)**2 +np.linalg.norm(rz)**2
-    t_sq = np.linalg.norm(transmitted)**2+np.linalg.norm(tz)**2;
+    r_sq = np.square(np.abs(rx)) +  np.square(np.abs(ry))+ np.square(np.abs(rz));
+    t_sq = np.square(np.abs(tx)) +  np.square(np.abs(ty))+ np.square(np.abs(tz));
+    R = np.real(kzr) @ r_sq / np.real(kz_inc); #division by a scalar
+    T = np.real(kz_trans)@t_sq/(np.real(kz_inc));
+    ref.append(np.sum(R));
+    trans.append(np.sum(T))
 
-    ## calculate the R 'matrix'... error exists here...
-    R = np.real(kzr)*r_sq/np.real(kz_inc);
+    print('final R vector-> matrix')
+    print(np.reshape(R,(2*N+1,2*M+1))); #should be 3x3
+    print('final T vector/matrix')
+    print(np.reshape(T,(2*N+1,2*M+1)))
 
-    # ref.append(np.sum(R));
-    #  trans.append(1-np.sum(R))
-
-    ref.append(r_sq);
-    trans.append(1-r_sq);
+ref = np.array(ref);
+trans = np.array(trans);
 plt.figure();
-plt.plot(1e6*wavelengths, ref);
-plt.plot(1e6*wavelengths, trans);
+plt.plot(wavelengths, ref);
+plt.plot(wavelengths, trans);
+plt.plot(wavelengths, ref+trans)
+
+plt.figure();
+plt.plot(frequencies*(a/c0), ref);
+plt.plot(frequencies*(a/c0), trans);
+plt.plot(frequencies*(a/c0), ref+trans)
+plt.legend(['ref', 'tran', 'ref+tran'])
 
 plt.show()
-
-print(Wr.shape)

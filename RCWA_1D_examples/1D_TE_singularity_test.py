@@ -88,19 +88,19 @@ mu0 = 4*np.pi*1e-8;
 fill_factor = 0.3; # 50% of the unit cell is the ridge material
 
 
-num_ord = 10; #INCREASING NUMBER OF ORDERS SEEMS TO CAUSE THIS THING TO FAIL, to many orders induce evanescence...particularly
+num_ord = 1; #INCREASING NUMBER OF ORDERS SEEMS TO CAUSE THIS THING TO FAIL, to many orders induce evanescence...particularly
                # when there is a small fill factor
 PQ = 2*num_ord+1;
 indices = np.arange(-num_ord, num_ord+1)
 
-n_ridge = 3.48; #3.48;              # ridge
+n_ridge = 1; #3.48;              # ridge
 n_groove = 1;                # groove (unit-less)
-lattice_constant = 0.7;  # SI units
+lattice_constant = 1;  # SI units
 # we need to be careful about what lattice constant means
 # in the gaylord paper, lattice constant exactly means (0, L) is one unit cell
 
 
-d = 0.46;               # thickness, SI units
+d = 1;               # thickness, SI units
 Nx = 2*256;
 eps_r = n_groove**2*np.ones((2*Nx, 1)); #put in a lot of points in eps_r
 border = int(2*Nx*fill_factor);
@@ -131,7 +131,7 @@ theta = (0)*np.pi/180;
 spectra = list();
 spectra_T = list();
 
-wavelength_scan = np.linspace(0.5,2.3,300)
+wavelength_scan = [0.51]
 ## construct permittivity harmonic components E
 #fill factor = 0 is complete dielectric, 1 is air
 

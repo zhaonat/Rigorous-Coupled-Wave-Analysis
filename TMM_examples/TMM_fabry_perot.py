@@ -38,7 +38,7 @@ kmagnitude_scan = 2 * np.pi / wavelengths; #no
 omega = c0 * kmagnitude_scan; #using the dispersion wavelengths
 
 #source parameters
-theta = 60 * degrees; #%elevation angle; #off -normal incidence does not excite guided resonances...
+theta = 0 * degrees; #%elevation angle; #off -normal incidence does not excite guided resonances...
 phi = 0 * degrees; #%azimuthal angle
 
 ## incident wave properties, at this point, everything is in units of k_0

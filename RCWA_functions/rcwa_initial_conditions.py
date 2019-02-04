@@ -49,6 +49,12 @@ def initial_conditions(K_inc_vector, theta, normal_vector, pte, ptm, P, Q):
     :return:
     calculates the incident E field, cinc, and the polarization fro the initial condition vectors
     '''
+    #ate -> unit vector holding the out of plane direction of TE
+    #atm -> unit vector holding the out of plane direction of TM
+    # what are the out of plane components...(Ey and Hy)
+    # normal_vector = [0,0,-1]; i.e. waves propagate down into the -z direction
+    # cinc = Wr^-1@[Ex_inc, Ey_inc];
+
     if (theta != 0):
         ate_vector = np.cross(K_inc_vector, normal_vector);
         ate_vector = ate_vector / (np.linalg.norm(ate_vector));
@@ -61,10 +67,10 @@ def initial_conditions(K_inc_vector, theta, normal_vector, pte, ptm, P, Q):
     Polarization = pte * ate_vector + ptm * atm_vector; #total E_field incident which is a 3 component vector (ex, ey, ez)
     E_inc = Polarization;
     # go from mode coefficients to FIELDS
-    Polarization = np.squeeze(np.array(Polarization));
+    Polarization = np.squeeze(np.array(Polarization)); #polarization vector holds amplitudes for ALL E-FIELDS
     delta = delta_vector(2*P+1,2*Q+1);
 
-    #cinc
+    #cinc; #remember we ultimately solve for [Ex, Ey, Hx, Hy].
     esrc = np.hstack((Polarization[0]*delta, Polarization[1]*delta));
     esrc = np.matrix(esrc).T; #mode amplitudes of Ex, and Ey
 

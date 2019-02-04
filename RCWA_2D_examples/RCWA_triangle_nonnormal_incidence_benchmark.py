@@ -14,7 +14,7 @@ from convolution_matrices import convmat2D as cm
 import cmath
 '''
 used in conjunction with CEM EMLab triangle to check for correctness
-3x3 spatial harmonics
+3x3 spatial harmonics for non normal incidence
 '''
 t0 = time.time()
 
@@ -24,10 +24,10 @@ degrees = np.pi/180;
 
 # Source parameters
 lam0 = 2*centimeters;
-theta = 0
-phi = 0
-pte = 1; #te polarized
-ptm = 0;
+theta = 60*degrees
+phi = 30*degrees # degrees
+pte = 1/2**0.5; #te polarized
+ptm = 1j/2**0.5;
 normal_vector = np.array([0, 0, -1]) #positive z points down;
 ate_vector = np.array([0, 1, 0]); #vector for the out of plane E-field
 k0 = 2*np.pi/lam0;
@@ -118,8 +118,9 @@ kz_inc = cmath.sqrt(n_i**2 - kx_inc ** 2 - ky_inc ** 2);
 
 Kx, Ky = km.K_matrix_cubic_2D(kx_inc, ky_inc, k0, Lx, Ly,  PQ[0], PQ[1]);
 
+
 #gap media
-Wg, Vg, Kzg = hl.homogeneous_module(Kx, Ky, 1);
+Wg, Vg, Kzg = hl.homogeneous_module(Kx, Ky, 2);
 
 ## Get Kzr and Kztrans
 Wr, Vr, Kzr = hl.homogeneous_module(Kx, Ky, er1);
@@ -156,7 +157,7 @@ Sg_matrix, Sg = rs.RedhefferStar(Sg, S2_dict);
 # #create ST
 Wt, Vt, Kzt = hl.homogeneous_module(Kx, Ky, er2);
 At, Bt = sm.A_B_matrices_half_space(Wt,Wg,  Vt, Vg); #make sure this order is right
-St, St_dict = sm.S_T(At, Bt);
+St, St_dict = sm.S_T(At, Bt); ### FUCKKKKKKKKKKKKKKKK
 Sg_matrix, Sg = rs.RedhefferStar(Sg, St_dict);
 
 print('final Sg')

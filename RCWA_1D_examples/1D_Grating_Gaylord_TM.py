@@ -4,13 +4,6 @@ import matplotlib.pyplot as plt
 from numpy.linalg import cond
 import cmath;
 from scipy.fftpack import fft, fftfreq, fftshift, rfft
-from scipy.fftpack import dst, idst
-from scipy.linalg import expm
-from TMM_functions import eigen_modes as em
-from TMM_functions import scatter_matrices as sm
-from RCWA_functions import redheffer_star as rs
-from RCWA_functions import rcwa_initial_conditions as ic
-from RCWA_functions import homogeneous_layer as hl
 from scipy import linalg as LA
 from numpy.linalg import solve as bslash
 
@@ -90,7 +83,7 @@ mu0 = 4*np.pi*1e-8;
 fill_factor = 0.3; # 50% of the unit cell is the ridge material
 
 
-num_ord = 10; #INCREASING NUMBER OF ORDERS SEEMS TO CAUSE THIS THING TO FAIL, to many orders induce evanescence...particularly
+num_ord = 40; #INCREASING NUMBER OF ORDERS SEEMS TO CAUSE THIS THING TO FAIL, to many orders induce evanescence...particularly
                # when there is a small fill factor
 PQ = 2*num_ord+1;
 indices = np.arange(-num_ord, num_ord+1)
@@ -192,18 +185,18 @@ for wvlen in wavelength_scan:
     KX = np.diag((k_xi/k0)); #singular since we have a n=0, m= 0 order and incidence is normal
 
     ## construct matrix of Gamma^2 ('constant' term in ODE):
-    A = bslash(E_conv_inv,KX*bslash(E, KX) - I); #conditioning of this matrix is not bad, A SHOULD BE SYMMETRIC
-    A = bslash(E_conv_inv,KX*bslash(E, KX) - I); #conditioning of this matrix is not bad, A SHOULD BE SYMMETRIC
+    A = np.linalg.inv(E_conv_inv)@(KX@bslash(E, KX) - I); #conditioning of this matrix is not bad, A SHOULD BE SYMMETRIC
 
     #sum of a symmetric matrix and a diagonal matrix should be symmetric;
 
     ##
     # when we calculate eigenvals, how do we know the eigenvals correspond to each particular fourier order?
-    eigenvals, W = LA.eigh(A); #A should be symmetric or hermitian
+    #eigenvals, W = LA.eigh(A); #A should be symmetric or hermitian, which won't be the case in the TM mode
+    eigenvals, W = LA.eig(A);
     #we should be gauranteed that all eigenvals are REAL
     eigenvals = eigenvals.astype('complex');
     Q = np.diag(np.sqrt(eigenvals)); #Q should only be positive square root of eigenvals
-    V = bslash(E,W)@Q; #H modes
+    V = E_conv_inv@(W@Q); #H modes
 
     ## this is the great typo which has killed us all this time
     X = np.diag(np.exp(-k0*np.diag(Q)*d)); #this is poorly conditioned because exponentiation
@@ -214,11 +207,11 @@ for wvlen in wavelength_scan:
     k_II = k0**2*(n2**2 - (k_xi/k0)**2);   #k_z in transmitted region
     k_I = k_I.astype('complex'); k_I = np.sqrt(k_I);
     k_II = k_II.astype('complex'); k_II = np.sqrt(k_II);
-    Y_I = np.diag(k_I/k0);
-    Y_II = np.diag(k_II/k0);
+    Z_I = np.diag(k_I / (n1**2 * k0 ));
+    Z_II = np.diag(k_II /(n2**2 * k0));
     delta_i0 = np.zeros((len(kx_array),1));
     delta_i0[num_ord] = 1;
-    n_delta_i0 = delta_i0*j*n1*np.cos(theta);
+    n_delta_i0 = delta_i0*j*np.cos(theta)/n1;
 
     ## design auxiliary variables: SEE derivation in notebooks: RCWA_note.ipynb
     # we want to design the computation to avoid operating with X, particularly with inverses
@@ -229,7 +222,7 @@ for wvlen in wavelength_scan:
         [V,-V]
     ]); #this is much better conditioned than S..
     f = I;
-    g = j*Y_II; #all matrices
+    g = j * Z_II; #all matrices
     fg = np.concatenate((f,g),axis = 0)
     ab = np.matmul(np.linalg.inv(O),fg);
     a = ab[0:PQ,:];
@@ -238,15 +231,15 @@ for wvlen in wavelength_scan:
     term = X @ a @ np.linalg.inv(b) @ X;
     f = W @ (I+term);
     g = V@(-I+term);
-    T = np.linalg.inv(j*np.matmul(Y_I,f)+g);
-    T = np.dot(T,(np.dot(j*Y_I,delta_i0)+n_delta_i0));
-    R = np.dot(f,T)-delta_i0;
+    T = np.linalg.inv(np.matmul(j*Z_I, f) + g);
+    T = np.dot(T, (np.dot(j*Z_I, delta_i0) + n_delta_i0));
+    R = np.dot(f,T)-delta_i0; #shouldn't change
     T = np.dot(np.matmul(np.linalg.inv(b),X),T)
 
     ## calculate diffraction efficiencies
     #I would expect this number to be real...
     DE_ri = R*np.conj(R)*np.real(np.expand_dims(k_I,1))/(k0*n1*np.cos(theta));
-    DE_ti = T*np.conj(T)*np.real(np.expand_dims(k_II,1))/(k0*n1*np.cos(theta));
+    DE_ti = T*np.conj(T)*np.real(np.expand_dims(k_II,1)/n2**2)/(k0*np.cos(theta)/n1);
 
     #print(np.sum(DE_ri))
     spectra.append(np.sum(DE_ri)); #spectra_T.append(T);
