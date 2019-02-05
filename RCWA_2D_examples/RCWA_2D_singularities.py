@@ -46,8 +46,8 @@ urd = 1;
 erd = 6;
 
 #dimensions of the unit cell
-Lx = 1*centimeters;
-Ly = 1*centimeters;
+Lx = 1.75*centimeters;
+Ly = 1.5*centimeters;
 
 #thickness of layers
 d1 = 0.5*centimeters
@@ -121,7 +121,7 @@ ERC2= erd*(np.identity(NH));
 ER = [E_conv, ERC2];
 UR = [mu_conv, URC2];
 
-wavelengths = np.linspace(0.51,0.99, 201)*centimeters
+wavelengths = np.linspace(2,4, 501)*centimeters
 ref = list(); trans = list();
 
 ref = list();
