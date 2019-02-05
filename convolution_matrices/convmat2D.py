@@ -17,9 +17,11 @@ def convmat2D(A, P, Q):
     Af = (1 / np.prod(N)) * np.fft.fftshift(np.fft.fft2(A));
     # natural question is to ask what does Af consist of..., what is the normalization for?
 
+    ## NOTE: indexing error; N[0] actually corresponds to y and N[1] corresponds to x.
+
     # central indices marking the (0,0) order
-    p0 = int((N[0] / 2)); #Af grid is Nx, Ny
-    q0 = int((N[1] / 2)); #no +1 offset or anything needed because the array is orders from -P to P
+    p0 = int((N[1] / 2)); #Af grid is Nx, Ny
+    q0 = int((N[0] / 2)); #no +1 offset or anything needed because the array is orders from -P to P
 
     C = np.zeros((NH, NH))
     C = C.astype(complex);
@@ -32,7 +34,7 @@ def convmat2D(A, P, Q):
                     col = (qcol) * (2*P+1) + pcol; #natural indexing
                     pfft = p[prow] - p[pcol]; #get index in Af; #index may be negative.
                     qfft = q[qrow] - q[qcol];
-                    C[row, col] = Af[p0 + pfft, q0 + qfft]; #index may be negative.
+                    C[row, col] = Af[q0 + pfft, p0 + qfft]; #index may be negative.
 
     return C;
 
