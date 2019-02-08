@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3156230-ee27-4ac5-8769-122dc6654d3f" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_2D_singularities.py" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_spectra.py" afterPath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_spectra.py" />
-      <change beforePath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/1D RCWA Test of the First Order Formulation-checkpoint.ipynb" afterPath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/1D RCWA Test of the First Order Formulation-checkpoint.ipynb" />
+      <change beforePath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/Wood's Anomaly-checkpoint.ipynb" afterPath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/Wood's Anomaly-checkpoint.ipynb" />
       <change beforePath="$PROJECT_DIR$/notebooks/1D RCWA Test of the First Order Formulation.ipynb" afterPath="$PROJECT_DIR$/notebooks/1D RCWA Test of the First Order Formulation.ipynb" />
+      <change beforePath="$PROJECT_DIR$/notebooks/Note on Scaling of Maxwell's Equations for TMM.ipynb" afterPath="$PROJECT_DIR$/notebooks/Note on Scaling of Maxwell's Equations for TMM.ipynb" />
+      <change beforePath="$PROJECT_DIR$/notebooks/Wood's Anomaly.ipynb" afterPath="$PROJECT_DIR$/notebooks/Wood's Anomaly.ipynb" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,7 +22,7 @@
       <file leaf-file-name="RCWA_photonic_circle_spectra.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
+            <state relative-caret-position="1400">
               <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="67" selection-end-column="10" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -35,8 +34,8 @@
       <file leaf-file-name="RCWA_triangle_spectra.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_spectra.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="745">
-              <caret line="132" column="23" lean-forward="true" selection-start-line="132" selection-start-column="23" selection-end-line="132" selection-end-column="23" />
+            <state relative-caret-position="4720">
+              <caret line="132" column="23" lean-forward="false" selection-start-line="132" selection-start-column="23" selection-end-line="132" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -45,9 +44,11 @@
       <file leaf-file-name="1D_Grating_Gaylord_TM.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="40" />
-              <folding />
+            <state relative-caret-position="2360">
+              <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+              <folding>
+                <element signature="e#46#64#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,7 +56,7 @@
       <file leaf-file-name="RCWA_2D_singularities.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_2D_singularities.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1345">
+            <state relative-caret-position="5760">
               <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
               <folding />
             </state>
@@ -65,7 +66,7 @@
       <file leaf-file-name="run_RCWA_simulation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-3000">
+            <state relative-caret-position="120">
               <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
               <folding />
             </state>
@@ -87,8 +88,8 @@
       <file leaf-file-name="1D_TE_singularity_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_TE_singularity_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="680">
-              <caret line="109" column="26" lean-forward="true" selection-start-line="109" selection-start-column="26" selection-end-line="109" selection-end-column="26" />
+            <state relative-caret-position="3880">
+              <caret line="109" column="26" lean-forward="false" selection-start-line="109" selection-start-column="26" selection-end-line="109" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -97,8 +98,8 @@
       <file leaf-file-name="1D_Grating_Gaylord_TE.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TE.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="764">
-              <caret line="220" column="26" lean-forward="true" selection-start-line="220" selection-start-column="26" selection-end-line="220" selection-end-column="26" />
+            <state relative-caret-position="8320">
+              <caret line="220" column="26" lean-forward="false" selection-start-line="220" selection-start-column="26" selection-end-line="220" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -107,7 +108,7 @@
       <file leaf-file-name="1D_Grating_TE_scattering.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_TE_scattering.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
+            <state relative-caret-position="2400">
               <caret line="70" column="33" lean-forward="false" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
               <folding />
             </state>
@@ -117,8 +118,8 @@
       <file leaf-file-name="convmat2D.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/convolution_matrices/convmat2D.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+            <state relative-caret-position="1040">
+              <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -256,16 +257,6 @@
             <path>
               <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
               <item name="RCWA" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RCWA" type="462c0819:PsiDirectoryNode" />
-              <item name="RCWA_1D_examples" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
-              <item name="RCWA" type="462c0819:PsiDirectoryNode" />
-              <item name="RCWA_2D_examples" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -471,14 +462,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21326639" sideWeight="0.49668875" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21326639" sideWeight="0.49668875" order="2" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40307868" sideWeight="0.52956986" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29286537" sideWeight="0.4704301" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13205418" sideWeight="0.4768817" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13205418" sideWeight="0.4768817" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17970401" sideWeight="0.5033113" order="1" side_tool="true" content_ui="tabs" />
@@ -661,7 +651,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1960">
           <caret line="49" column="36" lean-forward="false" selection-start-line="49" selection-start-column="36" selection-end-line="49" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -683,9 +672,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -693,7 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="17" column="24" lean-forward="false" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -715,9 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="880">
           <caret line="27" column="26" lean-forward="false" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
-          <folding>
-            <element signature="e#220#238#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -725,7 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="44" column="16" lean-forward="false" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -733,9 +714,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4800">
           <caret line="133" column="32" lean-forward="false" selection-start-line="133" selection-start-column="32" selection-end-line="133" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -743,9 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
           <caret line="81" column="22" lean-forward="true" selection-start-line="81" selection-start-column="22" selection-end-line="81" selection-end-column="22" />
-          <folding>
-            <element signature="e#46#64#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -753,9 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="40">
           <caret line="85" column="31" lean-forward="true" selection-start-line="85" selection-start-column="31" selection-end-line="85" selection-end-column="31" />
-          <folding>
-            <element signature="e#46#64#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -763,9 +735,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
           <caret line="167" column="46" lean-forward="false" selection-start-line="167" selection-start-column="46" selection-end-line="167" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -773,15 +742,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="203" column="29" lean-forward="false" selection-start-line="203" selection-start-column="29" selection-end-line="203" selection-end-column="29" />
-          <folding>
-            <element signature="e#46#64#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_TE_scattering.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
+        <state relative-caret-position="2400">
           <caret line="70" column="33" lean-forward="false" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
           <folding />
         </state>
@@ -789,31 +755,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TE.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="764">
-          <caret line="220" column="26" lean-forward="true" selection-start-line="220" selection-start-column="26" selection-end-line="220" selection-end-column="26" />
+        <state relative-caret-position="8320">
+          <caret line="220" column="26" lean-forward="false" selection-start-line="220" selection-start-column="26" selection-end-line="220" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/convolution_matrices/convmat2D.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="26" column="26" lean-forward="true" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+        <state relative-caret-position="1040">
+          <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_TE_singularity_test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="109" column="26" lean-forward="true" selection-start-line="109" selection-start-column="26" selection-end-line="109" selection-end-column="26" />
+        <state relative-caret-position="3880">
+          <caret line="109" column="26" lean-forward="false" selection-start-line="109" selection-start-column="26" selection-end-line="109" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3000">
+        <state relative-caret-position="120">
           <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
           <folding />
         </state>
@@ -831,7 +797,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_2D_singularities.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1345">
+        <state relative-caret-position="5760">
           <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
           <folding />
         </state>
@@ -839,7 +805,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
+        <state relative-caret-position="1400">
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="67" selection-end-column="10" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
@@ -849,17 +815,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_spectra.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="745">
-          <caret line="132" column="23" lean-forward="true" selection-start-line="132" selection-start-column="23" selection-end-line="132" selection-end-column="23" />
+        <state relative-caret-position="4720">
+          <caret line="132" column="23" lean-forward="false" selection-start-line="132" selection-start-column="23" selection-end-line="132" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="2360">
+          <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding>
+            <element signature="e#46#64#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
