@@ -73,26 +73,26 @@ kmagnitude_scan = 2 * np.pi / wavelengths; #no
 omega = c0 * kmagnitude_scan; #using the dispersion wavelengths
 
 #source parameters
-theta = 72 * degrees; #%elevation angle
 phi = 0 * degrees; #%azimuthal angle
 
 ## incident wave polarization
 normal_vector = np.array([0, 0, -1]) #positive z points down;
 #ampltidue of the te vs tm modes (which are decoupled)
-pte = 1/np.sqrt(2);
-ptm = cmath.sqrt(1)/np.sqrt(2);
+pte = 0; #1/np.sqrt(2);
+ptm = 1; #cmath.sqrt(1)/np.sqrt(2);
 
 
 ## ======================= RUN SIMULATION =========================
 # GET SPECTRAL REFLECTION FOR THE PHOTONIC CRYSTAL, SHOULD SEE FANO RESONANCES
 ref = list(); trans = list();
 
-for i in range(len(wavelengths)): #in SI units
+lam0 = 1.01;
+k0 = 2*np.pi/lam0;
+theta_scan = np.linspace(0,89,81)*degrees;
+for theta in theta_scan:
 
     # define vacuum wavevector k0
-    k0 = kmagnitude_scan[i]; #this is in SI units, it is the normalization constant for the k-vector
-    lam0 = wavelengths[i]; #k0 and lam0 are related by 2*pi/lam0 = k0
-    print('wavelength: '+ str(lam0))
+    #k0 and lam0 are related by 2*pi/lam0 = k0
     ## ============== values to keep track of =======================##
     S_matrices = list();
     kz_storage = list();
@@ -210,14 +210,10 @@ for i in range(len(wavelengths)): #in SI units
 ref = np.array(ref);
 trans = np.array(trans);
 plt.figure();
-plt.plot(wavelengths, ref);
-plt.plot(wavelengths, trans);
-plt.plot(wavelengths, ref+trans)
+plt.plot(theta_scan, ref);
+plt.plot(theta_scan, trans);
+plt.plot(theta_scan, ref+trans)
 
-plt.figure();
-plt.plot(frequencies*(a/c0), ref);
-plt.plot(frequencies*(a/c0), trans);
-plt.plot(frequencies*(a/c0), ref+trans)
 plt.legend(['ref', 'tran', 'ref+tran'])
 
 plt.show()

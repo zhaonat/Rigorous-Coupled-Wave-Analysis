@@ -4,7 +4,17 @@ import cmath;
 from scipy import linalg as LA
 
 
-def RCWA_1D_TE(E, lattice_constant, theta, num_ord, wavelength_scan):
+def RCWA_1D_TE(E, lattice_constant, theta, num_ord, wavelength_scan,d):
+    '''
+
+    :param E:
+    :param lattice_constant:
+    :param theta:
+    :param num_ord:
+    :param wavelength_scan:
+    :param d:  thickness
+    :return:
+    '''
 
     I = np.identity(2 * num_ord + 1)
     indices = np.arange(-num_ord, num_ord + 1);
@@ -14,7 +24,6 @@ def RCWA_1D_TE(E, lattice_constant, theta, num_ord, wavelength_scan):
     for wvlen in wavelength_scan:
         j = cmath.sqrt(-1);
         lam0 = wvlen;     k0 = 2 * np.pi / lam0; #free space wavelength in SI units
-        print('wavelength: ' + str(wvlen));
 
         ## =====================STRUCTURE======================##
         ## Region I: reflected region (half space)

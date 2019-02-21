@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b3156230-ee27-4ac5-8769-122dc6654d3f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/Wood's Anomaly-checkpoint.ipynb" afterPath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/Wood's Anomaly-checkpoint.ipynb" />
-      <change beforePath="$PROJECT_DIR$/notebooks/1D RCWA Test of the First Order Formulation.ipynb" afterPath="$PROJECT_DIR$/notebooks/1D RCWA Test of the First Order Formulation.ipynb" />
-      <change beforePath="$PROJECT_DIR$/notebooks/Note on Scaling of Maxwell's Equations for TMM.ipynb" afterPath="$PROJECT_DIR$/notebooks/Note on Scaling of Maxwell's Equations for TMM.ipynb" />
-      <change beforePath="$PROJECT_DIR$/notebooks/Wood's Anomaly.ipynb" afterPath="$PROJECT_DIR$/notebooks/Wood's Anomaly.ipynb" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/RCWA_1D_examples/RCWA_1D_off_angle.py" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_2d_off_normal.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TE.py" afterPath="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TE.py" />
+      <change beforePath="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TM.py" afterPath="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TM.py" />
+      <change beforePath="$PROJECT_DIR$/RCWA_1D_examples/1D_Longitudinal_Anisotropy.py" afterPath="$PROJECT_DIR$/RCWA_1D_examples/1D_Longitudinal_Anisotropy.py" />
+      <change beforePath="$PROJECT_DIR$/RCWA_1D_functions/TE_solver.py" afterPath="$PROJECT_DIR$/RCWA_1D_functions/TE_solver.py" />
+      <change beforePath="$PROJECT_DIR$/RCWA_1D_functions/TM_solver.py" afterPath="$PROJECT_DIR$/RCWA_1D_functions/TM_solver.py" />
+      <change beforePath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_LHI.py" afterPath="$PROJECT_DIR$/RCWA_2D_examples/RCWA_LHI.py" />
+      <change beforePath="$PROJECT_DIR$/img/sample_1D_grating_spectra.png" afterPath="$PROJECT_DIR$/img/sample_1D_grating_spectra.png" />
+      <change beforePath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/1D RCWA Test of the First Order Formulation-checkpoint.ipynb" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/notebooks/1D RCWA Test of the First Order Formulation.ipynb" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,33 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="750">
-      <file leaf-file-name="RCWA_photonic_circle_spectra.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1400">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="67" selection-end-column="10" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RCWA_triangle_spectra.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_spectra.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4720">
-              <caret line="132" column="23" lean-forward="false" selection-start-line="132" selection-start-column="23" selection-end-line="132" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="1D_Grating_Gaylord_TM.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="1D_Grating_Gaylord_TM.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TM.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2360">
-              <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+            <state relative-caret-position="760">
+              <caret line="160" column="0" lean-forward="true" selection-start-line="148" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
               <folding>
                 <element signature="e#46#64#0" expanded="true" />
               </folding>
@@ -53,31 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RCWA_2D_singularities.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_2D_singularities.py">
+      <file leaf-file-name="RCWA_LHI.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_LHI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5760">
-              <caret line="158" column="0" lean-forward="false" selection-start-line="158" selection-start-column="0" selection-end-line="158" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="run_RCWA_simulation.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="homogeneous_layer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RCWA_functions/homogeneous_layer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="440">
+              <caret line="11" column="29" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -85,11 +51,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="1D_TE_singularity_test.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_TE_singularity_test.py">
+      <file leaf-file-name="RCWA_2d_off_normal.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_2d_off_normal.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3880">
-              <caret line="109" column="26" lean-forward="false" selection-start-line="109" selection-start-column="26" selection-end-line="109" selection-end-column="26" />
+            <state relative-caret-position="547">
+              <caret line="81" column="7" lean-forward="false" selection-start-line="81" selection-start-column="7" selection-end-line="81" selection-end-column="7" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PQ_matrices.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RCWA_functions/PQ_matrices.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="49" column="41" lean-forward="true" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -98,28 +76,60 @@
       <file leaf-file-name="1D_Grating_Gaylord_TE.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TE.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8320">
-              <caret line="220" column="26" lean-forward="false" selection-start-line="220" selection-start-column="26" selection-end-line="220" selection-end-column="26" />
+            <state relative-caret-position="507">
+              <caret line="156" column="32" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="156" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="1D_Grating_TE_scattering.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_TE_scattering.py">
+      <file leaf-file-name="TE_solver.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RCWA_1D_functions/TE_solver.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2400">
-              <caret line="70" column="33" lean-forward="false" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
+            <state relative-caret-position="120">
+              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="convmat2D.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/convolution_matrices/convmat2D.py">
+      <file leaf-file-name="RCWA_1D_off_angle.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/RCWA_1D_off_angle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1040">
-              <caret line="26" column="26" lean-forward="false" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+            <state relative-caret-position="667">
+              <caret line="157" column="18" lean-forward="true" selection-start-line="157" selection-start-column="18" selection-end-line="157" selection-end-column="18" />
+              <folding>
+                <element signature="e#47#65#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TM_solver.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RCWA_1D_functions/TM_solver.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="507">
+              <caret line="100" column="32" lean-forward="false" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RCWA_off_angle_photonic_circle.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_off_angle_photonic_circle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="480">
+              <caret line="90" column="61" lean-forward="false" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RCWA_photonic_circle_spectra.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="467">
+              <caret line="105" column="36" lean-forward="true" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -137,7 +147,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Sr</find>
       <find>kx_inc</find>
       <find>Wr</find>
       <find>kz_inc</find>
@@ -167,6 +176,7 @@
       <find>e_</find>
       <find>e_r</find>
       <find>indices</find>
+      <find>np.linal.inv</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -175,11 +185,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_metal_dielectric_PC.py" />
-        <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_metal_dispersive_medium.py" />
         <option value="$PROJECT_DIR$/RCWA_functions/redheffer_star.py" />
         <option value="$PROJECT_DIR$/RCWA_functions/K_matrix.py" />
-        <option value="$PROJECT_DIR$/RCWA_functions/PQ_matrices.py" />
         <option value="$PROJECT_DIR$/notebooks/speed_ups and enhancements.ipynb" />
         <option value="$PROJECT_DIR$/TMM_functions/eigen_modes.py" />
         <option value="$PROJECT_DIR$/RCWA_functions/homogeneous_layer.py" />
@@ -212,28 +219,30 @@
         <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_nonnormal_incidence_benchmark.py" />
         <option value="$PROJECT_DIR$/RCWA_functions/rcwa_initial_conditions.py" />
         <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_off_angle_photonic_circle.py" />
-        <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_LHI.py" />
         <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_benchmark.py" />
         <option value="$PROJECT_DIR$/TMM_examples/TMM_fabry_perot.py" />
         <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py" />
-        <option value="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TE.py" />
         <option value="$PROJECT_DIR$/RCWA_1D_examples/1D_TE_singularity_test.py" />
-        <option value="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TM.py" />
-        <option value="$PROJECT_DIR$/RCWA_1D_functions/TE_solver.py" />
-        <option value="$PROJECT_DIR$/RCWA_1D_functions/TM_solver.py" />
         <option value="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_TM_scattering.py" />
-        <option value="$PROJECT_DIR$/RCWA_1D_examples/1D_Longitudinal_Anisotropy.py" />
         <option value="$PROJECT_DIR$/convolution_matrices/convmat2D.py" />
         <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_2D_singularities.py" />
         <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_spectra.py" />
+        <option value="$PROJECT_DIR$/RCWA_1D_examples/1D_Longitudinal_Anisotropy.py" />
+        <option value="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TE.py" />
+        <option value="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TM.py" />
+        <option value="$PROJECT_DIR$/RCWA_functions/PQ_matrices.py" />
+        <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_LHI.py" />
+        <option value="$PROJECT_DIR$/RCWA_1D_functions/TE_solver.py" />
+        <option value="$PROJECT_DIR$/RCWA_1D_functions/TM_solver.py" />
+        <option value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_2d_off_normal.py" />
+        <option value="$PROJECT_DIR$/RCWA_1D_examples/RCWA_1D_off_angle.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-16" />
-    <option name="y" value="-16" />
-    <option name="width" value="3872" />
-    <option name="height" value="2092" />
+    <option name="x" value="121" />
+    <option name="width" value="2583" />
+    <option name="height" value="2074" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -251,6 +260,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -258,12 +269,25 @@
               <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
               <item name="RCWA" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RCWA" type="462c0819:PsiDirectoryNode" />
+              <item name="RCWA_1D_functions" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RCWA" type="462c0819:PsiDirectoryNode" />
+              <item name="RCWA_2D_examples" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="RCWA" type="b2602c69:ProjectViewProjectNode" />
+              <item name="RCWA" type="462c0819:PsiDirectoryNode" />
+              <item name="RCWA_functions" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -296,8 +320,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.RCWA_triangle_spectra">
-    <configuration name="1D_Grating_TE_scattering" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.RCWA_1D_off_angle">
+    <configuration name="1D_Grating_Gaylord_TM" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -309,13 +333,13 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RCWA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_TE_scattering.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TM.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="1D_Grating_TM_scattering" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="RCWA_1D_off_angle" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -327,25 +351,43 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RCWA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_TM_scattering.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_1D_examples/RCWA_1D_off_angle.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="1D_Longitudinal_Anisotropy" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="RCWA_2d_off_normal" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RCWA_1D_examples" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RCWA_2D_examples" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="RCWA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_1D_examples/1D_Longitudinal_Anisotropy.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_2d_off_normal.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="RCWA_LHI" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RCWA_2D_examples" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="RCWA" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_LHI.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -369,24 +411,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="RCWA_triangle_spectra" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/RCWA_2D_examples" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="RCWA" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_spectra.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="RCWA" type="Python.Ipnb" factoryName="Jupyter Notebook">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -405,19 +429,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Jupyter Notebook.RCWA" />
-      <item index="1" class="java.lang.String" itemvalue="Python.1D_Grating_TE_scattering" />
-      <item index="2" class="java.lang.String" itemvalue="Python.1D_Grating_TM_scattering" />
-      <item index="3" class="java.lang.String" itemvalue="Python.1D_Longitudinal_Anisotropy" />
-      <item index="4" class="java.lang.String" itemvalue="Python.RCWA_photonic_circle_spectra" />
-      <item index="5" class="java.lang.String" itemvalue="Python.RCWA_triangle_spectra" />
+      <item index="1" class="java.lang.String" itemvalue="Python.RCWA_LHI" />
+      <item index="2" class="java.lang.String" itemvalue="Python.1D_Grating_Gaylord_TM" />
+      <item index="3" class="java.lang.String" itemvalue="Python.RCWA_photonic_circle_spectra" />
+      <item index="4" class="java.lang.String" itemvalue="Python.RCWA_2d_off_normal" />
+      <item index="5" class="java.lang.String" itemvalue="Python.RCWA_1D_off_angle" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.RCWA_triangle_spectra" />
-        <item index="1" class="java.lang.String" itemvalue="Python.RCWA_photonic_circle_spectra" />
-        <item index="2" class="java.lang.String" itemvalue="Python.1D_Longitudinal_Anisotropy" />
-        <item index="3" class="java.lang.String" itemvalue="Python.1D_Grating_TM_scattering" />
-        <item index="4" class="java.lang.String" itemvalue="Python.1D_Grating_TE_scattering" />
+        <item index="0" class="java.lang.String" itemvalue="Python.RCWA_1D_off_angle" />
+        <item index="1" class="java.lang.String" itemvalue="Python.RCWA_2d_off_normal" />
+        <item index="2" class="java.lang.String" itemvalue="Python.RCWA_LHI" />
+        <item index="3" class="java.lang.String" itemvalue="Python.RCWA_photonic_circle_spectra" />
+        <item index="4" class="java.lang.String" itemvalue="Python.1D_Grating_Gaylord_TM" />
       </list>
     </recent_temporary>
   </component>
@@ -468,7 +492,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40307868" sideWeight="0.52956986" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295325" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29286537" sideWeight="0.4704301" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13205418" sideWeight="0.4768817" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.42437923" sideWeight="0.4768817" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17970401" sideWeight="0.5033113" order="1" side_tool="true" content_ui="tabs" />
@@ -514,16 +538,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/PWEM_functions/PWEM_eigen_problem.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
-          <caret line="37" column="41" lean-forward="false" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_hybrid_grating_2D.py" />
-    <entry file="file://$PROJECT_DIR$/TMM_examples/bragg_TMM.png" />
-    <entry file="file://$PROJECT_DIR$/RCWA_1D/1D_Grating_TM_scattering.py" />
     <entry file="file://$PROJECT_DIR$/RCWA_1D/1D_Grating_Gaylord_TM.py" />
     <entry file="file://$PROJECT_DIR$/TMM_examples/anisotropic.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -654,24 +668,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_off_angle_photonic_circle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1840">
-          <caret line="79" column="29" lean-forward="true" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/first_test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3400">
           <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_functions/PQ_matrices.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="15" column="12" lean-forward="false" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -686,13 +686,6 @@
       <provider selected="true" editor-type-id="ipnb-editor">
         <state>
           <selected id="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_LHI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="62" column="0" lean-forward="true" selection-start-line="33" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -717,20 +710,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_1D_functions/TM_solver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="81" column="22" lean-forward="true" selection-start-line="81" selection-start-column="22" selection-end-line="81" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_1D_functions/TE_solver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="85" column="31" lean-forward="true" selection-start-line="85" selection-start-column="31" selection-end-line="85" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_TM_scattering.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -738,26 +717,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Longitudinal_Anisotropy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="203" column="29" lean-forward="false" selection-start-line="203" selection-start-column="29" selection-end-line="203" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_TE_scattering.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2400">
           <caret line="70" column="33" lean-forward="false" selection-start-line="70" selection-start-column="33" selection-end-line="70" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TE.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8320">
-          <caret line="220" column="26" lean-forward="false" selection-start-line="220" selection-start-column="26" selection-end-line="220" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -777,24 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_functions/homogeneous_layer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_2D_singularities.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5760">
@@ -803,30 +748,140 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tests/RCWA_matlab_check.m">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_spectra.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="745">
+          <caret line="132" column="23" lean-forward="false" selection-start-line="132" selection-start-column="23" selection-end-line="132" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Longitudinal_Anisotropy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="640">
+          <caret line="216" column="35" lean-forward="false" selection-start-line="216" selection-start-column="35" selection-end-line="216" selection-end-column="35" />
+          <folding>
+            <element signature="e#46#64#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_functions/homogeneous_layer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="6" column="93" lean-forward="false" selection-start-line="6" selection-start-column="93" selection-end-line="6" selection-end-column="93" />
+          <folding>
+            <element signature="e#0#18#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_functions/run_RCWA_simulation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="37" lean-forward="false" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_off_angle_photonic_circle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="90" column="61" lean-forward="false" selection-start-line="90" selection-start-column="61" selection-end-line="90" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TMM_functions/PQ_matrices.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-173">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_photonic_circle_spectra.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
-          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="67" selection-end-column="10" />
+        <state relative-caret-position="467">
+          <caret line="105" column="36" lean-forward="true" selection-start-line="105" selection-start-column="36" selection-end-line="105" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_LHI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="11" column="29" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="223" selection-end-column="0" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_triangle_spectra.py">
+    <entry file="file://$PROJECT_DIR$/RCWA_1D_functions/TE_solver.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4720">
-          <caret line="132" column="23" lean-forward="false" selection-start-line="132" selection-start-column="23" selection-end-line="132" selection-end-column="23" />
+        <state relative-caret-position="120">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TM.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2360">
-          <caret line="95" column="0" lean-forward="true" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+        <state relative-caret-position="760">
+          <caret line="160" column="0" lean-forward="true" selection-start-line="148" selection-start-column="0" selection-end-line="160" selection-end-column="0" />
           <folding>
             <element signature="e#46#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_1D_functions/TM_solver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="100" column="32" lean-forward="false" selection-start-line="100" selection-start-column="32" selection-end-line="100" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_2D_examples/RCWA_2d_off_normal.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="81" column="7" lean-forward="false" selection-start-line="81" selection-start-column="7" selection-end-line="81" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_functions/PQ_matrices.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="49" column="41" lean-forward="true" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/1D_Grating_Gaylord_TE.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="156" column="32" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="156" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RCWA_1D_examples/RCWA_1D_off_angle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="667">
+          <caret line="157" column="18" lean-forward="true" selection-start-line="157" selection-start-column="18" selection-end-line="157" selection-end-column="18" />
+          <folding>
+            <element signature="e#47#65#0" expanded="true" />
           </folding>
         </state>
       </provider>

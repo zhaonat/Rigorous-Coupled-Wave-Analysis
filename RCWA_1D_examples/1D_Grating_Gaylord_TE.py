@@ -131,7 +131,7 @@ theta = (0)*np.pi/180;
 spectra = list();
 spectra_T = list();
 
-wavelength_scan = np.linspace(0.5,2.3,300)
+wavelength_scan = np.linspace(0.5,2.3,400)
 ## construct permittivity harmonic components E
 #fill factor = 0 is complete dielectric, 1 is air
 

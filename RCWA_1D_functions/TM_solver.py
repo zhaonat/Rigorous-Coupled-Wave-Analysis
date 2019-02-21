@@ -8,7 +8,7 @@ from numpy.linalg import solve as bslash
 
 ## alternate construction of 1D convolution matrix
 
-def RWCA_1D_TM(E, E_conv_inv, lattice_constant, theta, num_ord, wavelength_scan):
+def RWCA_1D_TM(E, E_conv_inv, lattice_constant, theta, num_ord, wavelength_scan,d):
     '''
     :param E: [e]
     :param E_conv_inv: [1/e]
@@ -98,6 +98,7 @@ def RWCA_1D_TM(E, E_conv_inv, lattice_constant, theta, num_ord, wavelength_scan)
         spectra_R.append(np.sum(DE_ri)); #spectra_T.append(T);
         spectra_T.append(np.sum(DE_ti))
 
+    return spectra_R, spectra_T;
 
 
 
