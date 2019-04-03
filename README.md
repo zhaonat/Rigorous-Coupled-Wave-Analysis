@@ -29,6 +29,11 @@ A simple demonstration of TMM can be done by reproducing the spectrum of a Bragg
 ## PWEM
 Plane wave expansion method is simply the solution of Maxwell's equations in Fourier space.
 
+We benchmark the code using a photonic circle. 
+
+Here, we demonstrate several reconstructed modes in real space below
+![Alt_Text](./img/sample_mode_reconstructions_PWEM_photonic_circle.png)
+
 ## Transitioning to RCWA
 RCWA is a synthesis of TMM and PWEM in that it targets layered structures whereby each layer contains some sort of periodic pattern
 In this package, we implement RCWA to handle layers with periodicity along one direction (perpendicular to the propagation direction) or both.
