@@ -1,1 +1,4 @@
 /PRIVATE
+*.mat
+*.p
+*.csv

@@ -5,6 +5,7 @@ import numpy as np
 
 import sys
 sys.path.append("D:\\RCWA\\")
+import matplotlib.patches as mpatches
 
 import matplotlib.pyplot as plt
 from convolution_matrices import convmat2D as cm
@@ -24,8 +25,8 @@ T1 = 2*np.pi/a;
 T2 = 2*np.pi/a;
 
 # determine number of orders to use
-P = 3;
-Q = 3;
+P = 5;
+Q = 5;
 PQ = (2*P+1)*(2*Q+1)
 # ============== build high resolution circle ==================
 Nx = 512; Ny = 512;
@@ -93,25 +94,41 @@ plt.plot(2*k_scan, kx_spectra*a/(2*np.pi*c0_matlab), '.b')
 plt.legend(('pwem','fdfd'));
 plt.title('benchmark with non-dispersive FDFD')
 plt.xlim([-np.pi, np.pi])
+
+red_patch = mpatches.Patch(color='red', label='fdfd_imag')
+blue_patch = mpatches.Patch(color='blue', label='fdfd_real')
+green_patch = mpatches.Patch(color='green', label='pwem')
+
 plt.savefig('benchmarking PWEM and FDFD_nondispsersive.png')
 plt.show()
 
 ## ======================= dispersive benchmark ====================================##
-# in some sense, why do the non-dispersive benchmark
 
-matlab_data = os.path.join('photonic_circle_bandstructure_for_comparison_with_Johannopoulos_book.mat');
+matlab_data = os.path.join('TE_dispersive_photonic_circle_bandstructure_for_comparison_with_Johannopoulos_book.mat');
 mat = scipy.io.loadmat(matlab_data)
-plt.plot(kx_mat[:,0:band_cutoff], eig_store[:,0:band_cutoff]/(2*np.pi),'.g');
+plt.figure(figsize = (5.5, 5.5));
+ax = plt.subplot(111);
+handles = [];
+a1 = plt.plot(kx_mat[:,0:band_cutoff], eig_store[:,0:band_cutoff]/(2*np.pi),'.g', markersize = 0.8);
 plt.title('TE polarization')
 plt.ylim([0,1.2])
 kx_spectra = np.squeeze(mat['kx_spectra'])
 omega_scan = np.squeeze(mat['omega_scan'])
 c0_matlab = np.squeeze(mat['c0'])
 
-plt.plot(kx_spectra, omega_scan, '.b')
+a2 = plt.plot(kx_spectra, omega_scan, '.b', markersize = 0.8)
+a3 = plt.plot(np.imag(kx_spectra), omega_scan, '.r', markersize = 0.8)
 print(max(omega_scan))
-plt.legend(('pwem','fdfd'));
+#plt.legend(handles = [a1, a2, a3])
+#plt.legend(('pwem','fdfd_real', 'fdfd_imag'));
+
+red_patch = mpatches.Patch(color='red', label='fdfd_imag')
+blue_patch = mpatches.Patch(color='blue', label='fdfd_real')
+green_patch = mpatches.Patch(color='green', label='pwem')
+plt.xlabel('ka')
+plt.ylabel('$\omega a/(2 \pi c_0)$')
+plt.legend(handles=[red_patch, blue_patch, green_patch])
 plt.title('benchmark with dispersive solution')
 plt.xlim([-np.pi, np.pi])
-plt.savefig('benchmarking PWEM and FDFD_dispersive.png')
+plt.savefig('benchmarking PWEM and FDFD_dispersive.png', dpi = 300)
 plt.show()

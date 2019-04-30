@@ -75,11 +75,27 @@ for beta_x in kx_scan:
     eig_store.append(np.sqrt(np.real(eigenvalues)));
     #plt.plot(beta_x*np.ones((PQ,)), np.sort(np.sqrt(eigenvalues)), '.')
 eig_store = np.array(eig_store);
+plt.figure(figsize = (5.5,5.5))
+#plt.plot(kx_mat[:,0:band_cutoff], eig_store[:,0:band_cutoff]/(2*np.pi),'.g');
 
-plt.plot(kx_mat[:,0:band_cutoff], eig_store[:,0:band_cutoff]/(2*np.pi),'.g');
-plt.title('TE polarization')
-plt.ylim([0,1.2])
 print('Done procceed to load matlab data')
 
-plt.show();
 ## ================================================================================##
+matlab_data = os.path.join('TM_photonic_circle_bandstructure_for_comparison_with_Johannopoulos_book.mat');
+mat = scipy.io.loadmat(matlab_data)
+l1 = plt.plot(kx_mat[:,0:band_cutoff], eig_store[:,0:band_cutoff]/(2*np.pi),'.g');
+plt.title('TM polarization')
+plt.ylim([0,0.8])
+kx_spectra = np.squeeze(mat['kx_spectra'])
+omega_scan = np.squeeze(mat['omega_scan'])
+c0_matlab = np.squeeze(mat['c0'])
+
+l2 = plt.plot(kx_spectra, omega_scan, '.b')
+l3 =plt.plot(np.imag(kx_spectra), omega_scan, '.r');
+print(max(omega_scan))
+plt.legend(('pwem','real_fdfd','imag_fdfd'));
+plt.title('benchmark with dispersive solution')
+plt.xlim([-np.pi, np.pi])
+plt.savefig('TM_benchmarking_PWEM_and_FDFD_dispersive.png')
+plt.show()
+
