@@ -23,7 +23,8 @@ TMM is usually the 'intellectual' precursor to RCWA. It assumes different layers
 A simple demonstration of TMM can be done by reproducing the spectrum of a Bragg grating.
 ![Alt Text](./img/bragg_TMM.png)
 
-### run_TMM function
+Or the Drude model
+![Alt Text](./img/benchmark_TMM_drude_model.png)
 
 
 ## PWEM
