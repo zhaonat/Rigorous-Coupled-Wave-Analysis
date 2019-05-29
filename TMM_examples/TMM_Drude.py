@@ -72,7 +72,14 @@ layer_thicknesses = [0.3*L0]
 Ref, Tran = rTMM.run_TMM_dispersive(wavelengths, polarization_amplitudes, theta, phi, ER, UR, layer_thicknesses,\
                        transmission_medium, incident_medium)
 
-plt.figure();
+Ref = np.array(Ref);
+Tran = np.array(Tran);
+plt.figure(figsize = (3.5, 3.5));
 plt.plot(wavelengths/L0, Ref);
 plt.plot(wavelengths/L0, Tran);
+plt.plot(wavelengths/L0, 1-Ref-Tran)
+plt.xlabel('wvlen ($\mu$m)')
+plt.legend(('R', 'T', 'A'))
+plt.tight_layout();
+plt.savefig('benchmark_TMM_drude_model.png', dpi = 300)
 plt.show();

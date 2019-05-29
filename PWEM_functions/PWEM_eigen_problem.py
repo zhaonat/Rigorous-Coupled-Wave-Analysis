@@ -34,7 +34,7 @@ def PWEM2D_TM(Kx, Ky, E_r):
 
     #A = Kx.todense() ** 2 + Ky.todense() ** 2
     Er_inv = np.linalg.inv(E_r);
-    A = Kx*Er_inv*Kx +Ky*Er_inv*Ky;
+    A = Kx@Er_inv@Kx +Ky@Er_inv@Ky;
     eigenvalues, eigenvectors = np.linalg.eig(A);
     #get eigenvalues of this
     return eigenvalues, eigenvectors,A;

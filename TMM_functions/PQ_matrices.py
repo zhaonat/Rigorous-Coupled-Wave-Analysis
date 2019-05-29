@@ -23,6 +23,7 @@ def P_Q_kz(kx, ky, e_r, mu_r):
     :param mu_r:
     :return:
     '''
+    # no eigensolution needed in homogeneous medium.
     kz = np.sqrt(mu_r * e_r - kx ** 2 - ky ** 2);
     q = Q(kx, ky, e_r, mu_r)
     p = P(kx, ky, e_r, mu_r)

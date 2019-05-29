@@ -21,7 +21,8 @@ We do have to modify scatter_matrices and redheffer star
 # k = k/k0;
 # COMPARE WITH FAN JOSA B
 FINALLY WORKS 8/11/2018
-#parameters changed to JOSA B from Prof. Fan
+# parameters changed to JOSA B from Prof. Fan
+# but we are doing off angle incidence
 '''
 
 #% General Units
