@@ -22,6 +22,8 @@ def K_matrix_cubic_2D(beta_x, beta_y, a_x, a_y, N_p, N_q):
     # final matrix should be sparse...since it is diagonal at most
     Kx = sparse.diags(np.ndarray.flatten(kx)); #NxNy dimension matrix
     Ky = sparse.diags(np.ndarray.flatten(ky))
+    Kx = Kx.astype('complex');
+    Ky = Ky.astype('complex')
 
     return Kx, Ky
 
