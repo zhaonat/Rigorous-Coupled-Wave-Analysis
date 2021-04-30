@@ -7,7 +7,7 @@ This package actually contains three different methods:
 
 The organization of the package is centered around modules which can run a simulation for each of the three methods, given the correct inputs from the user. 
 
-Please refer to the wiki for detailed information about the status of various functionalities
+The structure of much of the code, particularly the RCWA is based on EMPossible (formerly EMLab) notes (https://empossible.net/academics/emp5337/). These notes provide a good reference.
 
 ## Prerequisites and Installation
 Make sure you have a functional version of python 3 with numpy, scipy, and matplotlib. (Python 3 is required because we use the @ symbol for matrix multiplication)
