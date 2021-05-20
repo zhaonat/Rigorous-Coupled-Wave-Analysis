@@ -5,7 +5,7 @@ This package actually contains three different methods:
 2) Plane Wave Expansion Method: essentially solves Maxwell's equations in k-space.
 3) RCWA: a synthesis of TMM and PWEM to analyze the transmission of light through layered structures with periodic patterning
 
-The organization of the package is centered around modules which can run a simulation for each of the three methods, given the correct inputs from the user. 
+The organization of the package is centered around modules which can run a simulation for each of the three methods, given the correct inputs from the user.  The coding paradigm is most similarly to **procedural** programming. There are basically no objects anywhere in the code (in my opinion objects can quickly bury lower level functionalities that researchers might want to quickly access,test, and/or modify).
 
 The structure of much of the code, particularly the RCWA is based on EMPossible (formerly EMLab) notes (https://empossible.net/academics/emp5337/). These notes provide a good reference.
 
