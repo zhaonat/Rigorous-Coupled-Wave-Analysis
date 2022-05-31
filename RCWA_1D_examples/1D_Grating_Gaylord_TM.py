@@ -229,6 +229,11 @@ for wvlen in wavelength_scan:
     b = ab[PQ:,:];
 
     term = X @ a @ np.linalg.inv(b) @ X;
+    # This is different from the paper which is X @ b @ a_i @ f @ X.
+    # k_I and k_II have positive sign in imaginary part and it's the opposite of the paper.
+    # And because of this, a and b are switched here so it works.
+    # To correct this, use conjugate() method to inverse the sign of the imaginary part.
+
     f = W @ (I+term);
     g = V@(-I+term);
     T = np.linalg.inv(np.matmul(j*Z_I, f) + g);

@@ -237,6 +237,11 @@ for wvlen in wavelength_scan:
     #print(np.linalg.cond(X@b)); #not well conditioned.
 
     term = X@a@fbiX; # THIS IS SHITTILY CONDITIONED
+    # This is different from the paper which is X @ b @ a_i @ f @ X.
+    # k_I and k_II have positive sign in imaginary part and it's the opposite of the paper.
+    # And because of this, a and b are switched here so it works.
+    # To correct this, use conjugate() method to inverse the sign of the imaginary part.
+
     # print((np.linalg.cond(X), np.linalg.cond(term)))
     # print(np.linalg.cond(I+term)); #but this is EXTREMELY WELL CONDITIONED.
     f = np.matmul(W, I+term);
